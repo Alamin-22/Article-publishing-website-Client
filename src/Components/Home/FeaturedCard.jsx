@@ -8,7 +8,7 @@ const FeaturedCard = ({ idx, title, text }) => {
             </div>
             <div>
                 <h1 className='text-gray-800 font-black text-2xl'>{title}</h1>
-                <p className='text-gray-700'>{text}</p>
+                <p className='text-gray-700 text-justify'>{text}</p>
             </div>
         </div>
     );
