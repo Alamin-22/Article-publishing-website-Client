@@ -12,8 +12,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'bg-color': '#DCD7FE',
+        'bg-body': '#d9d9d9',
+        
       },
+      
     }
   },
 };
