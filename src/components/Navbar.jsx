@@ -2,20 +2,21 @@
 
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Button } from 'flowbite-react';
+import { useRouter } from 'next/router';
 
-function Component() {
+function NavbarComponent() {
 
     const user = false;
 
 
     return (
-        <Navbar fluid rounded className='shadow-xl'>
+        <Navbar fluid rounded className='shadow-xl bg-[#ebe3eb] '>
             <Navbar.Brand >
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
                     Flowbite React
                 </span>
             </Navbar.Brand>
-            <div className="flex md:order-2">
+            <div className="flex md:order-2 ">
                 {
                     user ?
                         <>
@@ -46,10 +47,10 @@ function Component() {
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
-                <Navbar.Link href="#" active>
+                <Navbar.Link href="/" >
                     Home
                 </Navbar.Link>
-                <Navbar.Link href="/about">About Us</Navbar.Link>
+                <Navbar.Link href="/about" >About Us</Navbar.Link>
                 <Navbar.Link href="#">Community</Navbar.Link>
                 <Navbar.Link href="#">Support</Navbar.Link>
                 <Navbar.Link href="/contact">Contact</Navbar.Link>
@@ -58,4 +59,4 @@ function Component() {
     );
 }
 
-export default Component
+export default NavbarComponent
