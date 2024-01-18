@@ -1,10 +1,13 @@
-import React from 'react';
+import Banner from "@/Components/Home/Banner";
+import Featured from "@/Components/Home/Featured";
+import React from "react";
 
 const Home = () => {
   return (
-    <div>
-      <h2 className='text-5xl text-red-600 flex justify-center items-center h-[100vh]'>This is the HOme Page of Next.js</h2>
-    </div>
+    <>
+      <Banner />
+      <Featured />
+    </>
   );
 };
 
