@@ -2,14 +2,14 @@
   display: block;
   position: relative;
   max-width: 262px;
-  background-color: #fff;
+  background-color: #ebe3eb;
   border-radius: 4px;
   padding: 32px 24px;
   margin: 12px;
   text-decoration: none;
   z-index: 0;
   overflow: hidden;
-  box-shadow: 2px 2px;
+  box-shadow: 2px 2px 1%;
 }
 
 .card1:before {
@@ -18,7 +18,7 @@
   z-index: -1;
   top: -16px;
   right: -16px;
-  background: #d9d9d9;
+  background: linear-gradient(to bottom, #00838d, #12b3c0);
   height: 50px;
   width: 32px;
   border-radius: 32px;
@@ -33,7 +33,11 @@
 
 .card1:hover p {
   transition: all 0.3s ease-out;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+}
+.card1:hover h1 {
+  transition: all 0.3s ease-out;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .card1:hover h3 {
@@ -51,16 +55,21 @@
   overflow: hidden;
   top: 0;
   right: 0;
-  background-color: #d9d9d9;
+  background-color: #00838d;
   border-radius: 0 4px 0 32px;
 }
 
 .go_arrow {
   margin-top: -4px;
   margin-right: -4px;
-  color: #000000;
+  color: #ffffff;
   font-family: courier, sans;
 }
 .small{
   margin-top: 15px;
+}
+.card1 {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
