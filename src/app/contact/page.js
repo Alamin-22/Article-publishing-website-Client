@@ -1,11 +1,28 @@
-
 const ContactPage = () => {
-    
-    return (
-        <div>
-            <h2 className='text-green-300 text-5xl flex h-[100vh] justify-center items-center'>This is the container of About us Page</h2>
-        </div>
-    );
+  return (
+    <div>
+      <div className="flex bg-bg-color   justify-center items-center h-28">
+        <h2 className="text-3xl font-bold items-center">Contact Us</h2>
+      </div>
+
+      <div>
+        <form class="max-w-sm mx-auto">
+          <div class="mb-5">
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Base input
+            </label>
+            <input
+              type="text"
+              id="base-input"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default ContactPage;
