@@ -12,7 +12,7 @@ const LocationMap = () => {
           latitude: 23.777176,
           zoom: 8
         }}
-        style={{width: "100%", height: " calc(100vh - 77px)"}}
+        style={{width: "100%", height: " calc(65vh - 77px)"}}
         mapStyle="https://api.maptiler.com/maps/streets/style.json?key=6wNGxRfvTtOMfvtAEjPz"
       >
         <NavigationControl position="top-left" />
