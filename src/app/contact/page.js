@@ -1,12 +1,16 @@
 import { FaLocationArrow, FaPhoneSquareAlt, FaMailBulk } from "react-icons/fa";
+import LocationMap from './../../components/LocationMap';
+import { Banner, Button, Label, TextInput } from 'flowbite-react';
+import { HiX } from 'react-icons/hi';
+
 const ContactPage = () => {
   return (
-    <div className="bg-[#d9d9d9]">
-      <div className="flex    justify-center items-center h-28">
+    <div className="">
+      <div className="flex bg-[#d9d9d9]   justify-center items-center h-28">
         <h2 className="text-3xl font-bold ">Contact Us</h2>
       </div>
 
-      <div className="grid pb-5 grid-cols-1 md:grid-cols-2 justify-center mt-5 ">
+      <div className="grid pb-5 grid-cols-1 md:grid-cols-2 justify-center items-center mt-5 ">
         <div className="max-w-sm mx-auto">
           <h1 className="text-xl font-semibold">Contact with Us</h1>
           <ul class="space-y-4 mt-3 text-left text-gray-500 dark:text-gray-400">
@@ -79,7 +83,32 @@ const ContactPage = () => {
           </form>
         </div>
       </div>
-     
+     <div className="  px-20 py-5   bg-[#fcf7e5]">
+    <LocationMap />
+     </div>
+     <div className="h-36 mx-20 border-2 border-black mt-10 py-10 bg-[#d9d9d9] mb-5">
+     <Banner>
+      <div className="flex  overflow-hidden w-full items-center justify-center ">
+        <div className="mx-auto flex w-full flex-shrink-0 items-center sm:w-auto">
+          <form action="#" className="flex w-full flex-col gap-5 items-center md:flex-row md:gap-x-3">
+            <Label
+              htmlFor="email"
+              className="mb-2 mr-auto flex-shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400 md:m-0 md:mb-0"
+            >
+              
+              <h1 className="text-xl font-semibold text-black mb-2">Sign up for our newsletter</h1>
+              <h4>Do you want to get notified when a new Article <br />
+                 is added to Scriptly? Sign up for our newsletter</h4>
+            </Label>
+            <TextInput id="email" placeholder="Enter your email" required type="email" />
+            <Button type="submit">Subscribe</Button>
+          </form>
+        </div>
+        
+
+      </div>
+    </Banner>
+     </div>
     </div>
   );
 };
