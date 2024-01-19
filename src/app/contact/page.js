@@ -95,6 +95,7 @@ const ContactPage = () => {
               htmlFor="email"
               className="mb-2 mr-auto flex-shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400 md:m-0 md:mb-0"
             >
+              
               <h1 className="text-xl font-semibold text-black mb-2">Sign up for our newsletter</h1>
               <h4>Do you want to get notified when a new Article <br />
                  is added to Scriptly? Sign up for our newsletter</h4>
@@ -104,7 +105,7 @@ const ContactPage = () => {
           </form>
         </div>
         
-        
+
       </div>
     </Banner>
      </div>
