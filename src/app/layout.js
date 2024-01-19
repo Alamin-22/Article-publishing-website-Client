@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import NavbarComponent from '@/components/Navbar'
+import FooterCom from '@/components/Footer/Footer'
 
 
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         <div className='max-w-7xl mx-auto'>
           <NavbarComponent></NavbarComponent>
           {children}
+          <FooterCom></FooterCom>
         </div>
       </body>
     </html>
