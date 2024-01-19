@@ -13,7 +13,7 @@ function NavbarComponent() {
         <Navbar fluid rounded className='shadow-xl bg-[#ebe3eb] '>
             <Navbar.Brand >
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                    Flowbite React
+                    <span className='text-[#cd1cd2] text-2xl' >S</span>cr<span className='text-[#da4681]'>ip</span>t<span className='text-[#d24bff]'>ly</span>
                 </span>
             </Navbar.Brand>
             <div className="flex md:order-2 ">
@@ -40,7 +40,7 @@ function NavbarComponent() {
                         </>
                         :
                         <>
-                            <Button gradientMonochrome="teal">Get Start</Button>
+                            <Button gradientDuoTone="purpleToPink">Get Start</Button>
                         </>
                 }
 
