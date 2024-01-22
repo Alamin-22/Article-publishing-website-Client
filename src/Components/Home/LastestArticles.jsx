@@ -45,10 +45,10 @@ const LastestArticles = () => {
 
     return (
         <div className='bg-[#D9D9D9] min-h-screen'>
-            <div className='grid grid-cols-1 lg:grid-cols-4 gap-10 '>
-                <div className='col-span-3 order-2'>
+            <div className='grid grid-cols-4 gap-10 '>
+                <div className='col-span-3'>
                     <h1 className='font-black text-4xl py-10 pl-5'>Latest Articles</h1>
-                    <div className='max-w-7xl px-5'>
+                    <div className='max-w-7xl pl-10'>
                         {latestArticlesData.map((article, index) => (
                             <LastestCard
                                 key={index}
@@ -59,9 +59,9 @@ const LastestArticles = () => {
                         ))}
                     </div>
                 </div>
-                <div className='order-1 lg:order-3'>
+                <div>
                     <h1 className='font-black text-4xl py-10 pl-5'>Categories</h1>
-                    <div className='flex flex-wrap gap-4 px-5'>
+                    <div className='flex flex-wrap gap-4'>
                         {categoryData.map((category, index) => (
                             <CategoryBox key={index} categoryName={category} />
                         ))}
