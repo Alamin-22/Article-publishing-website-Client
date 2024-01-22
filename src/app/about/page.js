@@ -7,13 +7,11 @@ const AboutPage = () => {
       <AboutUsTitle />
 
       <div className="mx-5 mt-20">
-        <h1 className="text-center text-4xl font-medium my-10">
-          Meet The Team
-        </h1>
-        <TeameMember />
+        <h1 className="text-center text-4xl font-medium my-10">Meet The Team</h1>
+        <TeameMember/>
       </div>
 
-      <div className="bg-[#D9D9D9] h-96 my-24">
+      <div className="bg-[#ebe3eb] h-96 my-24">
         <h1 className=" text-center pt-9 text-3xl font-medium">Countdown</h1>
         <div className="grid grid-cols-4 gap-4">
           <div className="bg-slate-200 w-56 h-52 mt-8 rounded-xl mx-5 shadow-xl">
