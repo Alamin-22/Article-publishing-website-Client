@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "firebase": "^10.7.2",
     "flowbite": "^2.2.1",
     "flowbite-react": "^0.7.2",
+    "lottie-react": "^2.4.0",
     "mapbox-gl": "^3.0.1",
     "maplibre-gl": "^3.6.2",
     "next": "^14.0.4",

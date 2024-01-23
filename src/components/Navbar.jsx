@@ -2,6 +2,7 @@
 
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Button } from 'flowbite-react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 function NavbarComponent() {
@@ -10,7 +11,7 @@ function NavbarComponent() {
 
 
     return (
-        <Navbar fluid rounded className='shadow-xl bg-[#D9D9D9] '>
+        <Navbar fluid rounded className='shadow-xl bg-[#D9D9D9]'>
             <Navbar.Brand >
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
                     <span className='text-[#cd1cd2] text-2xl' >S</span>cr<span className='text-[#da4681]'>ip</span>t<span className='text-[#d24bff]'>ly</span>
@@ -40,7 +41,9 @@ function NavbarComponent() {
                         </>
                         :
                         <>
-                            <Button gradientDuoTone="purpleToPink">Get Start</Button>
+                            <Link href={"/login"}>
+                                <Button gradientDuoTone="purpleToPink">Get Start</Button>
+                            </Link>
                         </>
                 }
 
