@@ -6,7 +6,7 @@ import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-
 
 function FooterCom() {
     return (
-        <Footer container className='bg-[#bebcbc] mt-16 '>
+        <Footer container className='bg-[#bebcbc]  '>
             <div className="w-full ">
                 <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
                     <div>
