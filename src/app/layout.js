@@ -1,7 +1,9 @@
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavbarComponent from "@/components/Navbar";
 import FooterCom from "@/components/Footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,10 +17,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="bg-[#D9D9D9]">
-          <div className=" mx-auto">
+          <div className="mx-auto">
             <NavbarComponent></NavbarComponent>
             {children}
             <FooterCom></FooterCom>
+            <Toaster />
           </div>
         </div>
       </body>
