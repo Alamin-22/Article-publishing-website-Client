@@ -6,8 +6,36 @@ import { HiX } from "react-icons/hi";
 const ContactPage = () => {
   return (
     <div className="">
-      <div className="flex bg-[#d9d9d9]   justify-center items-center h-28">
-        <h2 className="text-3xl font-bold ">Contact Us</h2>
+      <div>
+        <div className="bg-[#ebe3eb] w-full h-60 lg:h-[500px] ">
+          {/* <svg
+            className="pt-[160px] lg:pt-[219px]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 326"
+          >
+            <path
+              fill="#fff"
+              fill-opacity="1"
+              d="M0,288L40,261.3C80,235,160,181,240,133.3C320,85,400,43,480,53.3C560,64,640,128,720,154.7C800,181,880,171,960,144C1040,117,1120,75,1200,53.3C1280,32,1360,32,1400,32L1440,32L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+            ></path>
+          </svg> */}
+          <svg className="pt-[160px] lg:pt-[219px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 326">
+            <path
+              fill="#fff"
+              fill-opacity="1"
+              d="M0,128L48,112C96,96,192,64,288,90.7C384,117,480,203,576,224C672,245,768,203,864,176C960,149,1056,139,1152,138.7C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            ></path>
+          </svg>
+          <div className="absolute top-10 lg:top-40 text-center lg:px-44 ">
+            <h1 className="text-2xl md:text-4xl font-semibold">Contact Us</h1>
+            <p className="mt-3 text-xs md:text-base">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia
+              iste nisi deserunt asperiores doloremque, sit porro commodi totam,
+              doloribus similique error dolor reiciendis magnam officiis, nemo
+              dolore sunt. Sunt, eum!
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="grid pb-5 grid-cols-1 md:grid-cols-2 justify-center items-center mt-5 ">
