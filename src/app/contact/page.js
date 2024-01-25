@@ -1,5 +1,5 @@
 import { FaLocationArrow, FaPhoneSquareAlt, FaMailBulk } from "react-icons/fa";
-import LocationMap from "./../../components/LocationMap";
+// import LocationMap from "./../../components/LocationMap";
 import { Banner, Button, Label, TextInput } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 
@@ -84,9 +84,7 @@ const ContactPage = () => {
           </form>
         </div>
       </div>
-      <div className="  px-20 py-5   bg-[#fcf7e5]">
-        <LocationMap />
-      </div>
+      <div className="  px-20 py-5   bg-[#fcf7e5]">{/* <LocationMap /> */}</div>
       <div className="h-36 mx-20 border-2 border-black mt-10 py-10 bg-[#d9d9d9] mb-5">
         <Banner>
           <div className="flex  overflow-hidden w-full items-center justify-center ">

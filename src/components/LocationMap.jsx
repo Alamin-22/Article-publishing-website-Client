@@ -1,12 +1,13 @@
-"use client"
-import Map, {NavigationControl, Marker} from 'react-map-gl';
-import maplibregl from 'maplibre-gl';
-import 'maplibre-gl/dist/maplibre-gl.css';
+// "use client"
+// import Map, {NavigationControl, Marker} from 'react-map-gl';
+// import maplibregl from 'maplibre-gl';
+// import 'maplibre-gl/dist/maplibre-gl.css';
 
 const LocationMap = () => {
   return (
     <div className='overflow-hidden container mx-auto mb-5 px-5'>
-      <Map mapLib={maplibregl} 
+      map
+      {/* <Map mapLib={maplibregl} 
         initialViewState={{
           longitude: 90.399452,
           latitude: 23.777176,
@@ -17,7 +18,7 @@ const LocationMap = () => {
       >
         <NavigationControl position="top-left" />
         <Marker longitude={90.399452} latitude={23.777176} color='#61dbfb' />
-      </Map>
+      </Map> */}
     </div>
   );
 };

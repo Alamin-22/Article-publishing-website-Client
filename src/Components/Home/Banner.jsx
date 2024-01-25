@@ -11,7 +11,7 @@ const Banner = () => {
                 <Image
                     layout="fill"
                     objectFit="cover"
-                    src="/marek-levak-GNVxujZ_CxU-unsplash.jpg" alt="" />
+                    src="/bannerPic.jpg" alt="" />
             </div>
         </div>
     );

@@ -6,39 +6,19 @@ const LastestArticles = () => {
     const latestArticlesData = [
         {
             title: "Long Title for Latest Article",
-            text: " Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            thumbnail: "/marek-levak-GNVxujZ_CxU-unsplash.jpg"
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+            thumbnail: "/bannerPic.jpg"
         },
         {
             title: "Long Title for Latest Article",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            thumbnail: "/marek-levak-GNVxujZ_CxU-unsplash.jpg"
+            thumbnail: "/bannerPic.jpg"
         },
         {
             title: "Long Title for Latest Article",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            thumbnail: "/marek-levak-GNVxujZ_CxU-unsplash.jpg"
-        },
-        {
-            title: "Long Title for Latest Article",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            thumbnail: "/marek-levak-GNVxujZ_CxU-unsplash.jpg"
-        },
-        {
-            title: "Long Title for Latest Article",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            thumbnail: "/marek-levak-GNVxujZ_CxU-unsplash.jpg"
-        },
-        {
-            title: "Long Title for Latest Article",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            thumbnail: "/marek-levak-GNVxujZ_CxU-unsplash.jpg"
-        },
-        {
-            title: "Long Title for Latest Article",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            thumbnail: "/marek-levak-GNVxujZ_CxU-unsplash.jpg"
-        },
+            thumbnail: "/bannerPic.jpg"
+        }
     ];
 
     const categoryData = ["Category A", "Category B", "Category C", "Category D", "Category E"];
