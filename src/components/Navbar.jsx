@@ -4,8 +4,8 @@ import useAuth from '@/Hooks/useAuth';
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Button } from 'flowbite-react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Logo from './Miscellaneous/Logo';
+import { useRouter } from 'next/navigation';
 
 function NavbarComponent() {
 
