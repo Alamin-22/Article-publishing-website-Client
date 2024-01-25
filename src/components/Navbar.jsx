@@ -1,14 +1,24 @@
 'use client';
 
+import useAuth from '@/Hooks/useAuth';
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Button } from 'flowbite-react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
 
 function NavbarComponent() {
 
-    const user = false;
-
+    const { user, logOut } = useAuth();
+    const router = useRouter()
+    
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                // for redirect to the home page after Successful logOut
+                router.push('/');
+            })
+            .catch()
+    }
 
     return (
         <Navbar fluid rounded className='shadow-xl bg-[#D9D9D9]'>
@@ -29,14 +39,14 @@ function NavbarComponent() {
                                 }
                             >
                                 <Dropdown.Header>
-                                    <span className="block text-sm">Bonnie Green</span>
-                                    <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+                                    <span className="block text-sm">{user?.displayName}</span>
+                                    <span className="block truncate text-sm font-medium">{user?.email}</span>
                                 </Dropdown.Header>
                                 <Dropdown.Item>Dashboard</Dropdown.Item>
                                 <Dropdown.Item>Settings</Dropdown.Item>
                                 <Dropdown.Item>Earnings</Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item>Sign out</Dropdown.Item>
+                                <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
                             </Dropdown>
                         </>
                         :

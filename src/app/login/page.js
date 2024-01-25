@@ -2,17 +2,44 @@
 
 'use client';
 
+import useAuth from '@/Hooks/useAuth';
 import SocialLogin from '@/components/SocialLogin/SocialLogin';
 import { Button } from 'flowbite-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 
 
 const LoginPage = () => {
 
     const [showPassword, setShowPassword] = useState(false);
+    const { Login } = useAuth();
+    const router = useRouter();
 
+
+    const handleLogin = (e) => {
+
+        e.preventDefault();
+        const form = new FormData(e.currentTarget);
+        const email = form.get("email");
+        const password = form.get("password");
+
+        // login
+        Login(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                toast.success(`User Successfully Logged in`)
+                router.push('/');
+            })
+            .catch(error => {
+                console.log(error);
+                const message = error.message;
+                toast.error(`Error!, ${message.slice(10, 50)}`)
+            })
+    }
 
 
 
@@ -58,7 +85,7 @@ const LoginPage = () => {
                                     <h3 className="mb-4 text-xl font-semibold text-center sm:mb-6 sm:text-2xl">
                                         Welcome Back!
                                     </h3>
-                                    <form>
+                                    <form onSubmit={handleLogin}>
                                         <div className="mb-1 sm:mb-2">
                                             <label
                                                 htmlFor="email"
@@ -100,7 +127,7 @@ const LoginPage = () => {
                                             </label>
                                         </div>
                                         <div className="mt-4 mb-2 sm:mb-4">
-                                            <Button gradientDuoTone="purpleToBlue" className='w-full'>
+                                            <Button type='submit' gradientDuoTone="purpleToBlue" className='w-full'>
                                                 Login
                                             </Button>
                                         </div>

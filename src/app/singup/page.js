@@ -10,17 +10,22 @@ import toast from 'react-hot-toast';
 
 import auth from "@/app/Firebase/firebase.config"
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import useAuth from '@/Hooks/useAuth';
+import { useRouter } from 'next/navigation'
 
 const SingUpPage = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
 
+    const { UpdateProfile } = useAuth()
+    const router = useRouter();
+
 
     const handleSingUp = (e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
-        const FullName = form.get("FullName");
+        const displayName = form.get("FullName");
         const email = form.get("email");
         const password = form.get("password");
         const ConfirmPassword = form.get("ConfirmPassword");
@@ -38,7 +43,7 @@ const SingUpPage = () => {
             return;
         }
 
-        console.log(FullName, email, password);
+        console.log(displayName, email, password);
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
@@ -46,6 +51,13 @@ const SingUpPage = () => {
                 const user = result.user;
                 toast.success('Congratulations User Crated Successfully')
                 console.log(user);
+                router.push('/');
+                UpdateProfile(displayName)
+                    .then(() => {
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
                 // ...
             })
             .catch((error) => {
