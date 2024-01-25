@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="bg-[#D9D9D9]">
-          <div className="mx-auto">
+          <div className=" mx-auto">
             <NavbarComponent></NavbarComponent>
             {children}
             <FooterCom></FooterCom>

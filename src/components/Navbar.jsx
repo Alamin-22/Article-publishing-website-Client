@@ -2,6 +2,7 @@
 
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Button } from 'flowbite-react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Logo from './Miscellaneous/Logo';
 
@@ -11,7 +12,7 @@ function NavbarComponent() {
 
 
     return (
-        <Navbar fluid rounded className='shadow-xl bg-[#D9D9D9] '>
+        <Navbar fluid rounded className='shadow-xl bg-[#D9D9D9]'>
             <Navbar.Brand >
                 <Logo className={"text-2xl"} />
             </Navbar.Brand>
@@ -39,7 +40,9 @@ function NavbarComponent() {
                         </>
                         :
                         <>
-                            <Button color='dark' pill>Get Start</Button>
+                            <Link href={"/login"}>
+                                <Button color='dark' pill>Get Start</Button>
+                            </Link>
                         </>
                 }
 
