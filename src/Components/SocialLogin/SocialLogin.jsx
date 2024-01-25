@@ -1,12 +1,17 @@
 import useAuth from "@/Hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 const SocialLogin = () => {
 
     const { GoogleSingIn } = useAuth();
+    const router = useRouter();
+
     const handleSocialLogin = (media) => {
         media()
             .then(res => {
                 console.log(res.user);
+                router.push('/');
+
             })
             .catch(error => {
                 console.log(error)

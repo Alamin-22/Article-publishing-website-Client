@@ -10,7 +10,7 @@ function NavbarComponent() {
 
     const { user, logOut } = useAuth();
     const router = useRouter()
-    
+
     const handleLogout = () => {
         logOut()
             .then(() => {
@@ -27,7 +27,7 @@ function NavbarComponent() {
                     <span className='text-[#cd1cd2] text-2xl' >S</span>cr<span className='text-[#da4681]'>ip</span>t<span className='text-[#d24bff]'>ly</span>
                 </span>
             </Navbar.Brand>
-            <div className="flex md:order-2 ">
+            <div className="flex md:order-2 z-50">
                 {
                     user ?
                         <>
