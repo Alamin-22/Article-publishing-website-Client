@@ -1,12 +1,27 @@
+import useAuth from "@/Hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 const SocialLogin = () => {
-    
 
+    const { GoogleSingIn } = useAuth();
+    const router = useRouter();
+
+    const handleSocialLogin = (media) => {
+        media()
+            .then(res => {
+                console.log(res.user);
+                router.push('/');
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
 
     return (
         <>
-            <div
+            <div onClick={() => handleSocialLogin(GoogleSingIn)}
                 className="flex hover:cursor-pointer items-center justify-center mb-5 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 bg-slate-200 hover:shadow-lg"
             >
                 <div className="px-4 py-2">
