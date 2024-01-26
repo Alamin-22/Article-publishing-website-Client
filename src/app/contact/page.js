@@ -3,9 +3,12 @@ import { FaLocationArrow, FaPhoneSquareAlt, FaMailBulk } from "react-icons/fa";
 import { Banner, Button, Label, TextInput } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 
+
+
 const ContactPage = () => {
   return (
     <div className="">
+      
       <div className="flex bg-[#d9d9d9]   justify-center items-center h-28">
         <h2 className="text-3xl font-bold ">Contact Us</h2>
       </div>
