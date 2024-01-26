@@ -6,7 +6,8 @@ import toast from "react-hot-toast";
 
 const page = () => {
   const { user, logOut } = useAuth();
-  const apiEndPoint = "http://localhost:5000/addArticle";
+  const apiEndPoint =
+    "https://article-publishing-website-server.vercel.app/addArticle";
 
   const handleAdd = async (e) => {
     e.preventDefault();

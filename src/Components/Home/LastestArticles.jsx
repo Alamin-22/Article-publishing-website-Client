@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const LastestArticles = () => {
     const [latestArticlesData, setLastestArticlesData] = useState([]);
-    const apiEndPoint = "http://localhost:5000/latestArticles"
+    const apiEndPoint = "https://article-publishing-website-server.vercel.app/latestArticles"
 
     useEffect(() => {
         const getlastestArticlesData = async () => {

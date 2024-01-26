@@ -5,7 +5,8 @@ import axios from "axios";
 
 const page = () => {
   const [allArticlesData, setAllArticlesData] = useState([]);
-  const apiEndPoint = "http://localhost:5000/allArticle";
+  const apiEndPoint =
+    "https://article-publishing-website-server.vercel.app/allArticle";
 
   useEffect(() => {
     const getAllArticlesData = async () => {
