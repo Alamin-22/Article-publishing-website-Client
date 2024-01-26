@@ -1,25 +1,21 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import LastestCard from './LastestCard';
 import CategoryBox from './CategoryBox';
+import axios from 'axios';
 
 const LastestArticles = () => {
-    const latestArticlesData = [
-        {
-            title: "Long Title for Latest Article",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            thumbnail: "/bannerPic.jpg"
-        },
-        {
-            title: "Long Title for Latest Article",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            thumbnail: "/bannerPic.jpg"
-        },
-        {
-            title: "Long Title for Latest Article",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            thumbnail: "/bannerPic.jpg"
+    const [latestArticlesData, setLastestArticlesData] = useState([]);
+    const apiEndPoint = "https://article-publishing-website-server.vercel.app/latestArticles"
+
+    useEffect(() => {
+        const getlastestArticlesData = async () => {
+            const { data: res } = await axios.get(apiEndPoint);
+            setLastestArticlesData(res);
+            console.log(res);
         }
-    ];
+        getlastestArticlesData();
+    }, [])
 
     const categoryData = ["Category A", "Category B", "Category C", "Category D", "Category E"];
 
@@ -31,10 +27,11 @@ const LastestArticles = () => {
                     <div className='max-w-7xl px-5'>
                         {latestArticlesData.map((article, index) => (
                             <LastestCard
-                                key={index}
+                                key={article._id}
+                                articleId={article._id}
                                 title={article.title}
-                                text={article.text}
-                                thumbnail={article.thumbnail}
+                                author={article.author}
+                                text={article.article}
                             />
                         ))}
                     </div>
