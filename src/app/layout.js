@@ -1,11 +1,10 @@
-"use client"
+"use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import NavbarComponent from "@/components/Navbar";
-import FooterCom from "@/components/Footer/Footer";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "@/Provider/AuthProvider";
-
+import NavbarComponent from "@/Components/Navbar";
+import FooterCom from "@/Components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +25,6 @@ export default function RootLayout({ children }) {
               <FooterCom></FooterCom>
               <Toaster />
             </AuthProvider>
-
           </div>
         </div>
       </body>
