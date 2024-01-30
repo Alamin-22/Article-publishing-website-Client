@@ -22,7 +22,7 @@ function NavbarComponent() {
     }
 
     return (
-        <Navbar fluid rounded className='shadow-xl bg-[#D9D9D9]'>
+        <Navbar fluid rounded className='shadow-xl bg-[#ebe3eb] '>
             <Navbar.Brand >
                 <Logo className={"text-2xl"} />
             </Navbar.Brand>

@@ -3,7 +3,7 @@ import React from "react";
 const AboutUsTitle = () => {
   return (
     <div>
-      <div className="bg-[#D9D9D9] w-full h-60 lg:h-[500px] ">
+      <div className="bg-[#ebe3eb] w-full h-60 lg:h-[500px] ">
         <svg
           className="pt-[160px] lg:pt-[219px]"
           xmlns="http://www.w3.org/2000/svg"
