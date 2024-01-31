@@ -4,6 +4,7 @@ import LastestCard from './LastestCard';
 import CategoryBox from './CategoryBox';
 import axios from 'axios';
 
+
 const LastestArticles = () => {
     const [latestArticlesData, setLastestArticlesData] = useState([]);
     const apiEndPoint = "https://article-publishing-website-server.vercel.app/latestArticles"

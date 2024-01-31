@@ -18,10 +18,7 @@ const AboutUsTitle = () => {
         <div className="absolute top-10 lg:top-40 text-center lg:px-44 ">
           <h1 className="text-2xl md:text-4xl font-semibold">About Us</h1>
           <p className="mt-3 text-xs md:text-base">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia iste
-            nisi deserunt asperiores doloremque, sit porro commodi totam,
-            doloribus similique error dolor reiciendis magnam officiis, nemo
-            dolore sunt. Sunt, eum!
+          Welcome to Scriptly – where words shape worlds! Dive into a community dedicated to the art of article writing. Explore diverse topics, share your insights, and join a creative space that celebrates the beauty of language. Unleash your storytelling prowess at Scriptly – where every word counts.
           </p>
         </div>
       </div>
