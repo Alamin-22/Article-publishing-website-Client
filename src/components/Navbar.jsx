@@ -64,7 +64,7 @@ function NavbarComponent() {
                 </Navbar.Link>
                 <Navbar.Link href="/about" >About Us</Navbar.Link>
                 <Navbar.Link href="/write">Write</Navbar.Link>
-                <Navbar.Link href="#">Community</Navbar.Link>
+                <Navbar.Link href="/community">Community</Navbar.Link>
                 <Navbar.Link href="/contact">Contact</Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
