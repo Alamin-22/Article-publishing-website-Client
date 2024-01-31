@@ -47,27 +47,27 @@ const SingUpPage = () => {
 
     console.log(displayName, email, password, age, Gender);
 
-    // createUserWithEmailAndPassword(auth, email, password)
-    //   .then((result) => {
-    //     // Signed up
-    //     const user = result.user;
-    //     toast.success("Congratulations User created Successfully");
-    //     console.log(user);
-    //     router.push("/");
-    //     UpdateProfile(displayName)
-    //       .then(() => { })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const message = error.message;
-    //     toast.error(`Error!, ${message.slice(10, 50)}`);
-    //     console.log(errorCode, message);
-    //     // ..
-    //   });
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        // Signed up
+        const user = result.user;
+        toast.success("Congratulations User created Successfully");
+        console.log(user);
+        router.push("/");
+        UpdateProfile(displayName)
+          .then(() => { })
+          .catch((error) => {
+            console.log(error);
+          });
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const message = error.message;
+        toast.error(`Error!, ${message.slice(10, 50)}`);
+        console.log(errorCode, message);
+        // ..
+      });
   };
 
   return (
@@ -202,7 +202,7 @@ const SingUpPage = () => {
                       <fieldset  className="flex max-w-md gap-4 " required>
                         <legend className="mb-4"></legend>
                         <div className="flex items-center gap-2">
-                          <Radio id="male" name="gender" value="male" defaultChecked />
+                          <Radio id="male" name="gender" value="male"   />
                           <Label htmlFor="male">Male</Label>
                         </div>
                         <div className="flex items-center gap-2">
