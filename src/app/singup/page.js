@@ -1,12 +1,11 @@
 "use client";
 
-import { Button } from "flowbite-react";
 import Lottie from "lottie-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import loginAnimation from "../../../public/Animation/login.json";
 import toast from "react-hot-toast";
-
+import { Label, Select, Checkbox, Button, Radio } from 'flowbite-react';
 import auth from "@/app/Firebase/firebase.config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import useAuth from "@/Hooks/useAuth";
@@ -27,6 +26,9 @@ const SingUpPage = () => {
     const email = form.get("email");
     const password = form.get("password");
     const ConfirmPassword = form.get("ConfirmPassword");
+    const ageString = form.get("age");
+    const age = parseInt(ageString, 10);
+    const Gender = form.get("gender");
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!0-9]).{8,}$/;
 
@@ -43,29 +45,29 @@ const SingUpPage = () => {
       return;
     }
 
-    console.log(displayName, email, password);
+    console.log(displayName, email, password, age, Gender);
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        // Signed up
-        const user = result.user;
-        toast.success("Congratulations User Crated Successfully");
-        console.log(user);
-        router.push("/");
-        UpdateProfile(displayName)
-          .then(() => {})
-          .catch((error) => {
-            console.log(error);
-          });
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const message = error.message;
-        toast.error(`Error!, ${message.slice(10, 50)}`);
-        console.log(errorCode, message);
-        // ..
-      });
+    // createUserWithEmailAndPassword(auth, email, password)
+    //   .then((result) => {
+    //     // Signed up
+    //     const user = result.user;
+    //     toast.success("Congratulations User created Successfully");
+    //     console.log(user);
+    //     router.push("/");
+    //     UpdateProfile(displayName)
+    //       .then(() => { })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const message = error.message;
+    //     toast.error(`Error!, ${message.slice(10, 50)}`);
+    //     console.log(errorCode, message);
+    //     // ..
+    //   });
   };
 
   return (
@@ -133,6 +135,8 @@ const SingUpPage = () => {
                         name="email"
                       />
                     </div>
+
+
                     <div className="mb-1 sm:mb-2 relative">
                       <label
                         htmlFor="password"
@@ -180,6 +184,49 @@ const SingUpPage = () => {
                       >
                         {showPassword2 ? <p>Show</p> : <p> Hide</p>}
                       </span>
+                    </div>
+                    <div className="flex mb-5 gap-6">
+                      <div className="max-w-md">
+                        <div className="mb-2 block font-bold">
+                          <Label htmlFor="Age" value="Select your Age" />
+                        </div>
+                        <Select id="Age" name="age" required>
+                          {Array.from({ length: 91 }, (_, index) => (
+                            <option key={index + 10} value={index + 10}>
+                              {index + 10}
+                            </option>
+                          ))}
+                        </Select>
+                      </div>
+
+                      <fieldset  className="flex max-w-md gap-4 " required>
+                        <legend className="mb-4"></legend>
+                        <div className="flex items-center gap-2">
+                          <Radio id="male" name="gender" value="male" defaultChecked />
+                          <Label htmlFor="male">Male</Label>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Radio id="female" name="gender" value="female" />
+                          <Label htmlFor="female">Female</Label>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Radio id="others" name="gender" value="others" />
+                          <Label htmlFor="others">Others</Label>
+                        </div>
+
+                      </fieldset>
+
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <Checkbox id="accept" defaultChecked />
+                        <Label htmlFor="accept" className="flex">
+                          I agree with the&nbsp;
+                          <a href="#" className="text-cyan-600 hover:underline dark:text-cyan-500">
+                            terms and conditions
+                          </a>
+                        </Label>
+                      </div>
                     </div>
                     <div className="mt-4 mb-2 sm:mb-4">
                       <Button
