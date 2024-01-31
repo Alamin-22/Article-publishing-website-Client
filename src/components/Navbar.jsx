@@ -1,11 +1,11 @@
 'use client';
 
-import useAuth from '@/Hooks/useAuth';
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Button } from 'flowbite-react';
 import Link from 'next/link';
 import Logo from './Miscellaneous/Logo';
 import { useRouter } from 'next/navigation';
+import useAuth from '@/Hooks/useAuth';
 
 function NavbarComponent() {
 
