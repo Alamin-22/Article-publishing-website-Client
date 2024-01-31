@@ -5,8 +5,6 @@ const useAuth = () => {
 
     const Auth = useContext(AuthContext);
 
-    console.log(Auth)
-
     return Auth;
 };
 

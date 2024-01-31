@@ -1,11 +1,11 @@
 'use client';
 
+import useAuth from '@/Hooks/useAuth';
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Button } from 'flowbite-react';
 import Link from 'next/link';
 import Logo from './Miscellaneous/Logo';
 import { useRouter } from 'next/navigation';
-import useAuth from '@/Hooks/useAuth';
 
 function NavbarComponent() {
 
@@ -22,7 +22,7 @@ function NavbarComponent() {
     }
 
     return (
-        <Navbar fluid rounded className='shadow-xl bg-[#ebe3eb] '>
+        <Navbar fluid rounded className='shadow-xl bg-[#D9D9D9]'>
             <Navbar.Brand >
                 <Logo className={"text-2xl"} />
             </Navbar.Brand>
@@ -64,7 +64,7 @@ function NavbarComponent() {
                 </Navbar.Link>
                 <Navbar.Link href="/about" >About Us</Navbar.Link>
                 <Navbar.Link href="/write">Write</Navbar.Link>
-                <Navbar.Link href="#">Community</Navbar.Link>
+                <Navbar.Link href="/community">Community</Navbar.Link>
                 <Navbar.Link href="/contact">Contact</Navbar.Link>
             </Navbar.Collapse>
         </Navbar>

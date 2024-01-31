@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 const SocialLogin = () => {
 
     const { GoogleSingIn } = useAuth();
-    console.log(GoogleSingIn);
     const router = useRouter();
 
     const handleSocialLogin = (media) => {
