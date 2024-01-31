@@ -219,7 +219,7 @@ const SingUpPage = () => {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <Checkbox id="accept" defaultChecked />
+                        <Checkbox id="accept" required />
                         <Label htmlFor="accept" className="flex">
                           I agree with the&nbsp;
                           <a href="#" className="text-cyan-600 hover:underline dark:text-cyan-500">
