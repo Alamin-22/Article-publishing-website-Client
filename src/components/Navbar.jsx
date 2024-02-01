@@ -35,7 +35,7 @@ function NavbarComponent() {
                                 arrowIcon={false}
                                 inline
                                 label={
-                                    <Avatar alt="User settings" img="https://i.ibb.co/bFq9X83/user.png" rounded />
+                                    <Avatar alt="User Pic"  img={user?.photoURL} rounded />
                                 }
                             >
                                 <Dropdown.Header>
@@ -43,8 +43,6 @@ function NavbarComponent() {
                                     <span className="block truncate text-sm font-medium">{user?.email}</span>
                                 </Dropdown.Header>
                                 <Dropdown.Item href='/dashboard'>Dashboard</Dropdown.Item>
-                                <Dropdown.Item>Settings</Dropdown.Item>
-                                <Dropdown.Item>Earnings</Dropdown.Item>
                                 <Dropdown.Divider />
                                 <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
                             </Dropdown>

@@ -3,6 +3,13 @@ import Link from "next/link";
 import { FaPerson } from "react-icons/fa6";
 import { TbGraph } from "react-icons/tb";
 import { TiChartPieOutline } from "react-icons/ti";
+import { GrArticle } from "react-icons/gr";
+import { GoGear } from "react-icons/go";
+import { BsChatLeftText } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
+
+
+
 const DashboardNav = () => {
 
     const { user } = useAuth();
@@ -11,7 +18,7 @@ const DashboardNav = () => {
     const isAdmin = false;
 
     const links = (
-        <>
+        <> <div className="w-full mb-4 border-b-2"></div>
             <Link
                 className={({ isActive }) =>
                     isActive
@@ -48,6 +55,7 @@ const DashboardNav = () => {
                     :
                     <>
                         <div>
+
                             <Link
                                 className={({ isActive }) =>
                                     isActive
@@ -70,9 +78,11 @@ const DashboardNav = () => {
                                 href={"/contact-us"}
                             >
                                 <p className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100">
-                                    <span className="mx-4 font-medium">Contact Us</span>
+                                    <GrArticle className="text-xl"></GrArticle>
+                                    <span className="mx-4 font-medium">My Articles</span>
                                 </p>
                             </Link>
+                            <div className="w-full mt-4 border-b-2"></div>
                             <Link
                                 className={({ isActive }) =>
                                     isActive
@@ -82,11 +92,37 @@ const DashboardNav = () => {
                                 href={"/customer-reviews"}
                             >
                                 <p className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100">
-                                    <span className="mx-4 font-medium">Customer Reviews</span>
+                                    <GoGear className="text-xl" />
+                                    <span className="mx-4 font-medium">Setting</span>
                                 </p>
                             </Link>
-
-
+                            <Link
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? " bg-gray-200 text-red-500 font-bold"
+                                        : "hover:text-red-400 transition duration-300 delay-100"
+                                }
+                                href={"/support"}
+                            >
+                                <p className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100">
+                                    <BsChatLeftText className="text-xl" />
+                                    <span className="mx-4 font-medium">Support</span>
+                                </p>
+                            </Link>
+                            <div className="w-full mt-4 border-b-2"></div>
+                            <Link
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? " bg-gray-200 text-red-500 font-bold"
+                                        : "hover:text-red-400 transition duration-300 delay-100"
+                                }
+                                href={"/customer-reviews"}
+                            >
+                                <p className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100">
+                                    <FiLogOut className="text-xl" />
+                                    <span className="mx-4 font-medium">Log Out</span>
+                                </p>
+                            </Link>
                         </div>
                     </>
             }
@@ -101,7 +137,7 @@ const DashboardNav = () => {
 
                     <div className="flex flex-col items-center">
                         <div>
-                            <div class="shadow-lg rounded-2xl bg-white dark:bg-gray-800 p-4">
+                            <div class="shadow-lg rounded-2xl  dark:bg-gray-800 p-4">
                                 <div class="flex-row gap-4 flex justify-center items-center">
                                     <div class="flex-shrink-0">
                                         {
