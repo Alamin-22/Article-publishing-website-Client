@@ -115,7 +115,7 @@ const SingUpPage = () => {
                         required
                         type="text"
                         className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                        id="email"
+                        id="FullName"
                         name="FullName"
                       />
                     </div>
@@ -173,7 +173,7 @@ const SingUpPage = () => {
                         required
                         type={showPassword2 ? "text" : "password"}
                         className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                        id="password"
+                        id="ConfirmPassword"
                         name="ConfirmPassword"
                       />
                       <span
@@ -187,30 +187,22 @@ const SingUpPage = () => {
                     </div>
                     <div className="flex mb-5 gap-6">
                       <div className="max-w-md">
-                        <div className="mb-2 block font-bold">
-                          <Label htmlFor="Age" value="Select your Age" />
-                        </div>
-                        <Select id="Age" name="age" required>
-                          {Array.from({ length: 91 }, (_, index) => (
-                            <option key={index + 10} value={index + 10}>
-                              {index + 10}
-                            </option>
-                          ))}
-                        </Select>
+                        
+                        <input type="number" name="age" placeholder="age" className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" required />
                       </div>
 
-                      <fieldset  className="flex max-w-md gap-4 " required>
-                        <legend className="mb-4"></legend>
+                      <fieldset  className="flex max-w-md gap-4 " >
+                        
                         <div className="flex items-center gap-2">
-                          <Radio id="male" name="gender" value="male"   />
+                          <Radio id="male" name="gender" value="male" required  />
                           <Label htmlFor="male">Male</Label>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Radio id="female" name="gender" value="female" />
+                          <Radio id="female" name="gender" value="female" required/>
                           <Label htmlFor="female">Female</Label>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Radio id="others" name="gender" value="others" />
+                          <Radio id="others" name="gender" value="others"required />
                           <Label htmlFor="others">Others</Label>
                         </div>
 
