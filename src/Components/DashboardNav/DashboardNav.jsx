@@ -132,7 +132,7 @@ const DashboardNav = () => {
 
     return (
         <>
-            <div className="">
+            <div className=" hidden md:block">
                 <aside className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto   ">
 
                     <div className="flex flex-col items-center">
@@ -180,7 +180,7 @@ const DashboardNav = () => {
                 </aside>
             </div>
             <div className="block lg:hidden fixed">
-                mobile
+                {/* moobile Responsive */}
             </div>
         </>
     );
