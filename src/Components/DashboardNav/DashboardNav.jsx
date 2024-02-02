@@ -9,7 +9,7 @@ import { BsChatLeftText } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import { ImProfile } from "react-icons/im";
 import { useRouter } from "next/navigation";
-
+import { MdFavoriteBorder } from "react-icons/md";
 
 const DashboardNav = () => {
 
@@ -93,6 +93,20 @@ const DashboardNav = () => {
                                     <span className="mx-4 font-medium">My Articles</span>
                                 </p>
                             </Link>
+                            <Link
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? " bg-gray-200 text-red-500 font-bold"
+                                        : "hover:text-red-400 transition duration-300 delay-100"
+                                }
+                                href={"/contact-us"}
+                            >
+                                <p className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100">
+                                    <MdFavoriteBorder className="text-2xl"/>
+                                    <span className="mx-4 font-medium">Favorite Post</span>
+                                </p>
+                            </Link>
+                            
                             <div className="w-full mt-4 border-b-2"></div>
                             <Link
                                 className={({ isActive }) =>
@@ -107,6 +121,7 @@ const DashboardNav = () => {
                                     <span className="mx-4 font-medium">My Profile</span>
                                 </p>
                             </Link>
+
                             <Link
                                 className={({ isActive }) =>
                                     isActive
@@ -156,7 +171,7 @@ const DashboardNav = () => {
                     <div className="flex flex-col items-center">
                         <div>
                             <div class="shadow-lg rounded-2xl  dark:bg-gray-800 p-4">
-                                <div class="flex-row gap-4 flex justify-center items-center">
+                                <div class="flex-row gap-2 flex justify-center items-center">
                                     <div class="flex-shrink-0">
                                         {
                                             user?.photoURL ?
