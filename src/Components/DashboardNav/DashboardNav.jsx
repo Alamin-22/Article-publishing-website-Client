@@ -7,15 +7,26 @@ import { GrArticle } from "react-icons/gr";
 import { GoGear } from "react-icons/go";
 import { BsChatLeftText } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
-
+import { ImProfile } from "react-icons/im";
+import { useRouter } from "next/navigation";
 
 
 const DashboardNav = () => {
 
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
     console.log(user);
 
+    const router = useRouter()
     const isAdmin = false;
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                // for redirect to the home page after Successful logOut
+                router.push('/');
+            })
+            .catch()
+    }
 
     const links = (
         <> <div className="w-full mb-4 border-b-2"></div>
@@ -29,7 +40,7 @@ const DashboardNav = () => {
             >
                 <p className="flex items-center px-4 py-2 rounded-lg hover:bg-gray-100">
                     <TbGraph className="text-2xl" />
-                    <span className="mx-2 font-medium">DashBoard</span>
+                    <span className="mx-2 font-medium">Dashboard</span>
                 </p>
             </Link>
 
@@ -92,6 +103,19 @@ const DashboardNav = () => {
                                 href={"/customer-reviews"}
                             >
                                 <p className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100">
+                                    <ImProfile className="text-xl" />
+                                    <span className="mx-4 font-medium">My Profile</span>
+                                </p>
+                            </Link>
+                            <Link
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? " bg-gray-200 text-red-500 font-bold"
+                                        : "hover:text-red-400 transition duration-300 delay-100"
+                                }
+                                href={"/customer-reviews"}
+                            >
+                                <p className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100">
                                     <GoGear className="text-xl" />
                                     <span className="mx-4 font-medium">Setting</span>
                                 </p>
@@ -110,19 +134,13 @@ const DashboardNav = () => {
                                 </p>
                             </Link>
                             <div className="w-full mt-4 border-b-2"></div>
-                            <Link
-                                className={({ isActive }) =>
-                                    isActive
-                                        ? " bg-gray-200 text-red-500 font-bold"
-                                        : "hover:text-red-400 transition duration-300 delay-100"
-                                }
-                                href={"/customer-reviews"}
-                            >
-                                <p className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100">
-                                    <FiLogOut className="text-xl" />
-                                    <span className="mx-4 font-medium">Log Out</span>
+                            <div >
+                                <p onClick={handleLogout} className="cursor-pointer flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100">
+                                    <FiLogOut className="text-xl text-red-600" />
+                                    <span className="mx-4 text-red-600 font-medium">Log Out</span>
                                 </p>
-                            </Link>
+                            </div>
+
                         </div>
                     </>
             }
