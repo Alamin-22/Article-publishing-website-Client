@@ -6,12 +6,15 @@ import { Button } from 'flowbite-react';
 import Link from 'next/link';
 import Logo from './Miscellaneous/Logo';
 import { useRouter } from 'next/navigation';
+import axiosInstance from '@/api';
 
 
 function NavbarComponent() {
 
     const { user, logOut } = useAuth();
-    const router = useRouter()
+    const router = useRouter();
+    const axiosPublic = axiosInstance();
+
 
     const handleLogout = () => {
         logOut()
@@ -35,7 +38,7 @@ function NavbarComponent() {
                                 arrowIcon={false}
                                 inline
                                 label={
-                                    <Avatar alt="User Pic"  img={user?.photoURL} rounded />
+                                    <Avatar alt="User Pic" img={user?.photoURL} rounded />
                                 }
                             >
                                 <Dropdown.Header>

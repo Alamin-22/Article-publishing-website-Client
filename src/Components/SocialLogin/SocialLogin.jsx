@@ -1,5 +1,7 @@
 import useAuth from "@/Hooks/useAuth";
+import axiosInstance from "@/api";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const SocialLogin = () => {
 
@@ -9,8 +11,28 @@ const SocialLogin = () => {
     const handleSocialLogin = (media) => {
         media()
             .then(res => {
-                console.log(res.user);
-                router.push('/');
+                const userInfo = {
+                    displayName: res.user?.displayName,
+                    email: res.user?.email,
+                    UserPhoto: res.user?.photoURL
+                }
+                console.log(userInfo);
+                axiosInstance.post("/post-user", userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            toast.success("Congratulations User created Successfully");
+                            router.push("/");
+                        } else {
+                            toast.success(" User Logged In Successfully");
+                            router.push("/");
+                        }
+                    })
+                    .catch(Err => {
+                        console.log(Err);
+                    })
+
+
+
 
             })
             .catch(error => {

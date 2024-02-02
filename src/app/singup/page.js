@@ -11,6 +11,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import useAuth from "@/Hooks/useAuth";
 import { useRouter } from "next/navigation";
 import SocialLogin from "@/Components/SocialLogin/SocialLogin";
+import axiosInstance from "@/api";
 
 const SingUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -45,17 +46,30 @@ const SingUpPage = () => {
       return;
     }
 
+    const UserInfo = { displayName, email, password, age, Gender }
     console.log(displayName, email, password, age, Gender);
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         // Signed up
         const user = result.user;
-        toast.success("Congratulations User created Successfully");
+
         console.log(user);
-        router.push("/");
+
         UpdateProfile(displayName)
-          .then(() => { })
+          .then(() => {
+
+            axiosInstance.post("/post-user", UserInfo)
+              .then(res => {
+                if (res.data.insertedId) {
+                  toast.success("Congratulations User created Successfully");
+                  router.push("/");
+                }
+              })
+              .catch(Error => {
+                console.log(Error);
+              })
+          })
           .catch((error) => {
             console.log(error);
           });
@@ -187,22 +201,22 @@ const SingUpPage = () => {
                     </div>
                     <div className="flex mb-5 gap-6">
                       <div className="max-w-md">
-                        
+
                         <input type="number" name="age" placeholder="age" className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" required />
                       </div>
 
-                      <fieldset  className="flex max-w-md gap-4 " >
-                        
+                      <fieldset className="flex max-w-md gap-4 " >
+
                         <div className="flex items-center gap-2">
-                          <Radio id="male" name="gender" value="male" required  />
+                          <Radio id="male" name="gender" value="male" required />
                           <Label htmlFor="male">Male</Label>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Radio id="female" name="gender" value="female" required/>
+                          <Radio id="female" name="gender" value="female" required />
                           <Label htmlFor="female">Female</Label>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Radio id="others" name="gender" value="others"required />
+                          <Radio id="others" name="gender" value="others" required />
                           <Label htmlFor="others">Others</Label>
                         </div>
 
