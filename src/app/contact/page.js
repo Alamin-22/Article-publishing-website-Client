@@ -7,9 +7,9 @@ import { HiX } from "react-icons/hi";
 
 const ContactPage = () => {
   return (
-    <div className="">
+    <div className="shadow-2xl">
       
-      <div className="flex bg-[#d9d9d9]   justify-center items-center h-28">
+      <div className="flex justify-center items-center h-28">
         <h2 className="text-3xl font-bold ">Contact Us</h2>
       </div>
 
@@ -80,7 +80,7 @@ const ContactPage = () => {
               <input
                 type="submit"
                 id="base-input"
-                class="border border-gray-300 p-2 text-white font-semibold bg-[#525252] rounded-lg hover:ring-blue-500 "
+                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-gray-900 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-gray-700 "
               />
             </div>
           </form>
