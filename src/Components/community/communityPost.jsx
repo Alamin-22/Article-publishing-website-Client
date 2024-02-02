@@ -3,10 +3,14 @@ import React from "react";
 import { RiImageAddFill } from "react-icons/ri";
 const CommunityPost = () => {
  
-  
+  // const handleAddPost= async (e) => {
+  //   const form = e.target;
+  //   const title = form.post.value;
+  // }
+  // console.log(title);
 
   return (
-    <div className="bg-[#ededed] lg:p-5 rounded-md">
+    <div className="bg-[#ededed] p-5 rounded-md">
       <div className="flex gap-5 ">
           <img
             className="w-10 h-10 rounded-full"
@@ -18,7 +22,7 @@ const CommunityPost = () => {
           </h1>
       </div>
       <div>
-        <form className="mt-2">
+        <form  className="mt-2">
           <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
             <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
               <label htmlFor="comment" className="sr-only">
@@ -62,7 +66,7 @@ const CommunityPost = () => {
                   <span className="sr-only">Attach file</span>
                 </button>
                 <button
-                  type="button"
+                  type="submit"
                   className="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
                 >
                   <svg
