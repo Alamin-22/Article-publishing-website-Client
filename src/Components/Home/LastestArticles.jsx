@@ -3,15 +3,16 @@ import React, { useEffect, useState } from 'react';
 import LastestCard from './LastestCard';
 import CategoryBox from './CategoryBox';
 import axios from 'axios';
+import axiosInstance from '@/api';
 
 
 const LastestArticles = () => {
     const [latestArticlesData, setLastestArticlesData] = useState([]);
-    const apiEndPoint = "https://article-publishing-website-server.vercel.app/latestArticles"
+    const apiEndPoint = "/latestArticles"
 
     useEffect(() => {
         const getlastestArticlesData = async () => {
-            const { data: res } = await axios.get(apiEndPoint);
+            const { data: res } = await axiosInstance.get(apiEndPoint);
             setLastestArticlesData(res);
             console.log(res);
         }

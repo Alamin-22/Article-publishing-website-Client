@@ -1,13 +1,12 @@
 "use client";
 import useAuth from "@/Hooks/useAuth";
-import axios from "axios";
+import axiosInstance from "@/api";
 import { Button, FileInput, Label, TextInput, Textarea } from "flowbite-react";
 import toast from "react-hot-toast";
 
 const page = () => {
-  const { user, logOut } = useAuth();
-  const apiEndPoint =
-    "https://article-publishing-website-server.vercel.app/addArticle";
+  const { user } = useAuth();
+  const apiEndPoint = "/addArticle";
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -21,7 +20,7 @@ const page = () => {
     console.log({ title, article, author, authorEmail });
 
     try {
-      const response = await axios.post(apiEndPoint, newArticle);
+      const response = await axiosInstance.post(apiEndPoint, newArticle);
 
       console.log("Article added successfully:", response.data);
       toast.success("Successfully added!");
