@@ -2,15 +2,15 @@
 import React, { useEffect, useState } from "react";
 import LastestCard from "../../Components/Home/LastestCard";
 import axios from "axios";
+import axiosInstance from "@/api";
 
 const page = () => {
   const [allArticlesData, setAllArticlesData] = useState([]);
-  const apiEndPoint =
-    "https://article-publishing-website-server.vercel.app/allArticle";
+  const apiEndPoint = "/allArticle";
 
   useEffect(() => {
     const getAllArticlesData = async () => {
-      const { data: res } = await axios.get(apiEndPoint);
+      const { data: res } = await axiosInstance.get(apiEndPoint);
       setAllArticlesData(res);
       console.log(res);
     };
