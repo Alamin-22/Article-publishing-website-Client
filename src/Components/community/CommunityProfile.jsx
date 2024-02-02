@@ -61,17 +61,21 @@ const CommunityProfile = () => {
           <span className="text-sm text-gray-500 dark:text-gray-400">
           info@scriptly.com
           </span>
-          <div className="flex mt-4 md:mt-6">
-            <a
-              href="#"
-              className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-gray-900 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-              Dashboard
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700 ms-3">
-              Profile
-            </a>
+          <div className="flex mt-4 gap-3 justify-center items-center md:mt-6">
+            <div  className="flex flex-col justify-center items-center">
+              <p className="text-sm font-semibold">450</p>
+              <p className="text-gray-600">Posts</p>
+            </div>
+              <hr className="w-[1px] h-8 bg-gray-600 transform rotate-180 mx-auto" />
+            <div  className="flex flex-col justify-center items-center">
+              <p className="text-sm font-semibold">2k</p>
+              <p className="text-gray-600">Flower</p>
+            </div>
+            <hr className="w-[1px] h-8 bg-gray-600 transform rotate-180 mx-auto" />
+            <div className="flex flex-col justify-center items-center">
+            <p className="text-sm font-semibold">25</p>
+              <p className="text-gray-600">Flowing</p>
+            </div>
           </div>
         </div>
       </div>
