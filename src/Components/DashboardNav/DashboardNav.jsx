@@ -86,7 +86,7 @@ const DashboardNav = () => {
                                         ? " bg-gray-200 text-red-500 font-bold"
                                         : "hover:text-red-400 transition duration-300 delay-100"
                                 }
-                                href={"/contact-us"}
+                                href={"/dashboard/myarticle"}
                             >
                                 <p className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100">
                                     <GrArticle className="text-xl"></GrArticle>
@@ -166,7 +166,7 @@ const DashboardNav = () => {
     return (
         <>
             <div className=" hidden md:block">
-                <aside className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto   ">
+                <aside className="flex flex-col w-64 h-screen px-4 py-2 overflow-y-auto   ">
 
                     <div className="flex flex-col items-center">
                         <div>
