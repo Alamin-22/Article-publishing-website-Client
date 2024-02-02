@@ -13,17 +13,52 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
     const [showComments, setShowComments] = useState(false);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
+    const [isLiked, setIsLiked] = useState(false);
+    const apiEndPointLike = `/addLike/${articleId}`;
+    const apiEndPointUnlike = `/deleteLike/${articleId}`;
     const apiEndPointPost = `/addComment/${articleId}`;
     const apiEndPointGet = `/allCommentsForAnArticle/${articleId}`;
+    const apiEndPointCheckLike = `/checkLike/${articleId}`;
 
     useEffect(() => {
         const getComments = async () => {
             const { data: res } = await axiosInstance.get(apiEndPointGet);
             setComments(res);
             console.log(res);
-        }
+        };
         getComments();
     }, [])
+
+    useEffect(() => {
+        const checkIfLiked = async () => {
+            try {
+                const response = await axiosInstance.get(apiEndPointCheckLike, { params: { userEmail: user?.email } });
+                setIsLiked(response.data.isLiked);
+            } catch (error) {
+                console.error("Error checking like:", error);
+            }
+        };
+        checkIfLiked();
+    }, [user])
+
+    const handleToggleLike = async () => {
+        try {
+            if (!isLiked) {
+                // If the user has not liked the article, send a request to like it
+                await axiosInstance.post(apiEndPointLike, { userEmail: user?.email });
+                toast.success("Liked successfully!");
+            } else {
+                // If the user has already liked the article, send a request to unlike it
+                await axiosInstance.delete(apiEndPointUnlike, { data: { userEmail: user?.email } });
+                toast.success("Unliked successfully!");
+            }
+            // Toggle the isLiked state after a successful like/unlike
+            setIsLiked(!isLiked);
+        } catch (error) {
+            toast.error("Something went wrong with liking/unliking.");
+            console.error("Error toggling like:", error);
+        }
+    };
 
     const truncatedText = text.length > 200 ? text.slice(0, 200) + '...' : text;
 
@@ -82,8 +117,8 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
                         <span className='font-black'>Comments</span>({comments.length}) {showComments ? '▲' : '▼'}
                     </Button>
                     <div className='flex'>
-                        <Button color='light' className='bg-transparent border-none'>
-                            <FaHeart />&nbsp;8532
+                        <Button color='light' className='bg-transparent border-none' onClick={handleToggleLike}>
+                            <FaHeart />&nbsp;{isLiked ? 'Unlike' : 'Like'}
                         </Button>
                         <Button color='light' className='bg-transparent border-none'>
                             <FaSave />&nbsp;234
