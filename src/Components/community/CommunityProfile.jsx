@@ -1,6 +1,9 @@
+"use client"
 import React from "react";
+import useAuth from './../../Hooks/useAuth';
 
 const CommunityProfile = () => {
+  const {user} =useAuth()
   return (
     <div>
       <div className="w-full lg:max-w-sm bg-[#ededed] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -52,14 +55,14 @@ const CommunityProfile = () => {
         <div className="flex flex-col items-center pb-10">
           <img
             className="w-24 h-24 mb-3 rounded-full shadow-lg"
-            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-            alt="Bonnie image"
+            src={user?.photoURL}
+            alt="Profile Image"
           />
           <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-            Bonnie Green
+            {user?.displayName}
           </h5>
           <span className="text-sm text-gray-500 dark:text-gray-400">
-          info@scriptly.com
+          {user?.email}
           </span>
           <div className="flex mt-4 gap-3 justify-center items-center md:mt-6">
             <div  className="flex flex-col justify-center items-center">
