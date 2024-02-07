@@ -7,7 +7,7 @@ import useAuth from './../../Hooks/useAuth';
 
 const CommunityPost = () => {
   const {user} =useAuth()
-  // console.log(user?.displayName);
+  
   const apiEndPoint = "/v1/api/posts";
   const handleAddPost = async (e) => {
     e.preventDefault();
