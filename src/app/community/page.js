@@ -1,3 +1,4 @@
+
 import CommunityPost from "./../../components/community/CommunityPost";
 import CommunityViewPost from "./../../components/community/CommunityViewPost";
 import TopContributors from "./../../components/community/TopContributors";
@@ -18,7 +19,7 @@ const community = () => {
         <div className="lg:col-span-4  lg:mx-5">
           {/* write you post section  */}
           <CommunityPost />
-          <div className="bg-[#ededed] my-5 rounded-lg p-5">
+          <div className=" my-5 rounded-lg">
             {/* view your post section  */}
             <CommunityViewPost />
             
