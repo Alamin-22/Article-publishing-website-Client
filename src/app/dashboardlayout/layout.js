@@ -13,7 +13,7 @@ const DashboardLayout = ({ children }) => {
                 <div>
                     <DashboardNav></DashboardNav>
                 </div>
-                <div className="flex-1 bg-green-500 ">
+                <div className="flex-1 bg-red-200">
                     {children}
                 </div>
             </div>
