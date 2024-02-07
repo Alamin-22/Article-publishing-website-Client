@@ -76,14 +76,14 @@ const DashboardNav = () => {
                     </p>
                     <div className="w-full mt-4 border-b-2"></div>
                     <p
-                        onClick={() => handleLinkClick("/dashboardlayout/customer-reviews")}
+                        onClick={() => handleLinkClick("/dashboardlayout/my-profile")}
                         className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
                     >
                         <ImProfile className="text-xl" />
                         <span className="mx-4 font-medium">My Profile</span>
                     </p>
                     <p
-                        onClick={() => handleLinkClick("/dashboardlayout/settings")}
+                        onClick={() => handleLinkClick("/dashboardlayout/setting")}
                         className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
                     >
                         <GoGear className="text-xl" />

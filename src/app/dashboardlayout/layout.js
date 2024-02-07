@@ -9,7 +9,7 @@ const DashboardLayout = ({ children }) => {
     return (
         <>
 
-            <div className="flex flex-col lg:flex-row ">
+            <div className="flex flex-col md:flex-row ">
                 <div>
                     <DashboardNav></DashboardNav>
                 </div>
