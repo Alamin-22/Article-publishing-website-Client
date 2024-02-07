@@ -45,7 +45,7 @@ function NavbarComponent() {
                                     <span className="block text-sm">{user?.displayName}</span>
                                     <span className="block truncate text-sm font-medium">{user?.email}</span>
                                 </Dropdown.Header>
-                                <Dropdown.Item href='/dashboard'>Dashboard</Dropdown.Item>
+                                <Dropdown.Item href='/dashboardlayout'>Dashboard</Dropdown.Item>
                                 <Dropdown.Divider />
                                 <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
                             </Dropdown>
