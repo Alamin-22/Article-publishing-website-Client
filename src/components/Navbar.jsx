@@ -122,53 +122,57 @@ function NavbarComponent() {
 
     return (
         <Navbar fluid rounded className='shadow-xl bg-[#D9D9D9]'>
-            <Navbar.Brand >
+            <Navbar fluid rounded className='w-full max-w-7xl mx-auto bg-[#D9D9D9]' >
 
-                <div className='md:hidden'>
-                    <DashboardNavPhone links={links} ></DashboardNavPhone>
+
+                <Navbar.Brand >
+
+                    <div className='md:hidden'>
+                        <DashboardNavPhone links={links} ></DashboardNavPhone>
+                    </div>
+                    <Logo className={"text-2xl"} />
+
+                </Navbar.Brand>
+                <div className="flex md:order-2 z-50">
+                    {
+                        user ?
+                            <>
+                                <Dropdown
+                                    arrowIcon={false}
+                                    inline
+                                    label={
+                                        <Avatar alt="User Pic" img={user?.photoURL} rounded />
+                                    }
+                                >
+                                    <Dropdown.Header>
+                                        <span className="block text-sm">{user?.displayName}</span>
+                                        <span className="block truncate text-sm font-medium">{user?.email}</span>
+                                    </Dropdown.Header>
+                                    <Dropdown.Item href='/dashboardlayout'>Dashboard</Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
+                                </Dropdown>
+                            </>
+                            :
+                            <>
+                                <Link href={"/login"}>
+                                    <Button color='dark' pill>Get Start</Button>
+                                </Link>
+                            </>
+                    }
+
+                    <Navbar.Toggle />
                 </div>
-                <Logo className={"text-2xl"} />
-
-            </Navbar.Brand>
-            <div className="flex md:order-2 z-50">
-                {
-                    user ?
-                        <>
-                            <Dropdown
-                                arrowIcon={false}
-                                inline
-                                label={
-                                    <Avatar alt="User Pic" img={user?.photoURL} rounded />
-                                }
-                            >
-                                <Dropdown.Header>
-                                    <span className="block text-sm">{user?.displayName}</span>
-                                    <span className="block truncate text-sm font-medium">{user?.email}</span>
-                                </Dropdown.Header>
-                                <Dropdown.Item href='/dashboardlayout'>Dashboard</Dropdown.Item>
-                                <Dropdown.Divider />
-                                <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
-                            </Dropdown>
-                        </>
-                        :
-                        <>
-                            <Link href={"/login"}>
-                                <Button color='dark' pill>Get Start</Button>
-                            </Link>
-                        </>
-                }
-
-                <Navbar.Toggle />
-            </div>
-            <Navbar.Collapse>
-                <Navbar.Link href="/" >
-                    Home
-                </Navbar.Link>
-                <Navbar.Link href="/about" >About Us</Navbar.Link>
-                <Navbar.Link href="/write">Write</Navbar.Link>
-                <Navbar.Link href="/community">Community</Navbar.Link>
-                <Navbar.Link href="/contact">Contact</Navbar.Link>
-            </Navbar.Collapse>
+                <Navbar.Collapse>
+                    <Navbar.Link href="/" >
+                        Home
+                    </Navbar.Link>
+                    <Navbar.Link href="/about" >About Us</Navbar.Link>
+                    <Navbar.Link href="/write">Write</Navbar.Link>
+                    <Navbar.Link href="/community">Community</Navbar.Link>
+                    <Navbar.Link href="/contact">Contact</Navbar.Link>
+                </Navbar.Collapse>
+            </Navbar>
         </Navbar>
     );
 }
