@@ -16,7 +16,9 @@ export default function RootLayout({ children }) {
           <div className="mx-auto">
             <AuthProvider>
               <NavbarComponent></NavbarComponent>
-              {children}
+              <div className="max-w-7xl mx-auto">
+                {children}
+              </div>
               <FooterCom></FooterCom>
               <Toaster />
             </AuthProvider>
