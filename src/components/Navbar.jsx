@@ -7,6 +7,17 @@ import Link from 'next/link';
 import Logo from './Miscellaneous/Logo';
 import { useRouter } from 'next/navigation';
 import axiosInstance from '@/api';
+import DashboardNavPhone from './DashboardNav/DashboardNavPhone';
+// 
+import { FaPerson } from "react-icons/fa6";
+import { TbGraph } from "react-icons/tb";
+import { TiChartPieOutline } from "react-icons/ti";
+import { GrArticle } from "react-icons/gr";
+import { GoGear } from "react-icons/go";
+import { BsChatLeftText } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
+import { ImProfile } from "react-icons/im";
+import { MdFavoriteBorder } from "react-icons/md";
 
 
 function NavbarComponent() {
@@ -14,7 +25,7 @@ function NavbarComponent() {
     const { user, logOut } = useAuth();
     const router = useRouter();
     const axiosPublic = axiosInstance();
-
+    const isAdmin = false;
 
     const handleLogout = () => {
         logOut()
@@ -25,10 +36,99 @@ function NavbarComponent() {
             .catch()
     }
 
+    const links = (
+        <>
+            <div className="w-full mb-4 border-b-2"></div>
+            <p
+                onClick={() => handleLinkClick("/dashboardlayout")}
+                className="flex items-center px-4 py-2 rounded-lg hover:bg-gray-100 cursor-pointer"
+            >
+                <TbGraph className="text-2xl" />
+                <span className="mx-2 font-medium">Dashboard</span>
+            </p>
+
+            {isAdmin ? (
+                <div>
+                    <p
+                        onClick={() => handleLinkClick("/admin-profile")}
+                        className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
+                    >
+                        <FaPerson className="text-2xl" />
+                        <span className="mx-4 font-medium">Admin Profile</span>
+                    </p>
+                </div>
+            ) : (
+                <div>
+                    <p
+                        onClick={() => handleLinkClick("/dashboardlayout/analytics")}
+                        className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
+                    >
+                        <TiChartPieOutline className="text-2xl" />
+                        <span className="mx-2 font-medium">Analytics</span>
+                    </p>
+                    <p
+                        onClick={() => handleLinkClick("/dashboardlayout/my-articles")}
+                        className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
+                    >
+                        <GrArticle className="text-xl" />
+                        <span className="mx-4 font-medium">My Articles</span>
+                    </p>
+                    <p
+                        onClick={() => handleLinkClick("/dashboardlayout/favorite-post")}
+                        className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
+                    >
+                        <MdFavoriteBorder className="text-2xl" />
+                        <span className="mx-4 font-medium">Favorite Post</span>
+                    </p>
+                    <div className="w-full mt-4 border-b-2"></div>
+                    <p
+                        onClick={() => handleLinkClick("/dashboardlayout/my-profile")}
+                        className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
+                    >
+                        <ImProfile className="text-xl" />
+                        <span className="mx-4 font-medium">My Profile</span>
+                    </p>
+                    <p
+                        onClick={() => handleLinkClick("/dashboardlayout/setting")}
+                        className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
+                    >
+                        <GoGear className="text-xl" />
+                        <span className="mx-4 font-medium">Setting</span>
+                    </p>
+                    <p
+                        onClick={() => handleLinkClick("/dashboardlayout/support")}
+                        className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
+                    >
+                        <BsChatLeftText className="text-xl" />
+                        <span className="mx-4 font-medium">Support</span>
+                    </p>
+                    <div className="w-full mt-4 border-b-2"></div>
+                    <div>
+                        <p
+                            onClick={handleLogout}
+                            className="cursor-pointer flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100"
+                        >
+                            <FiLogOut className="text-xl text-red-600" />
+                            <span className="mx-4 text-red-600 font-medium">Log Out</span>
+                        </p>
+                    </div>
+                </div>
+            )}
+        </>
+    );
+    const handleLinkClick = (path) => {
+        router.push(path);
+    };
+
     return (
         <Navbar fluid rounded className='shadow-xl bg-[#D9D9D9]'>
             <Navbar.Brand >
+
+                <div className='md:hidden'>
+                    <DashboardNavPhone links={links} ></DashboardNavPhone>
+                </div>
                 <Logo className={"text-2xl"} />
+
             </Navbar.Brand>
             <div className="flex md:order-2 z-50">
                 {

@@ -1,5 +1,8 @@
 import useAuth from '@/Hooks/useAuth';
 import React, { useState } from 'react';
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { Button } from 'flowbite-react';
+
 
 const DashboardNavPhone = ({ links }) => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -11,15 +14,13 @@ const DashboardNavPhone = ({ links }) => {
   return (
     <>
       {/* Drawer init and show button */}
-      <div className="text-center">
-        <button
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          type="button"
-          onClick={toggleDrawer}
-        >
-          Menu
-        </button>
-      </div>
+
+
+      <Button color="light" pill type="button" className='p-0 bg-opacity-20'
+        onClick={toggleDrawer}>
+        <MdKeyboardArrowRight className='text-4xl' />
+      </Button>
+
 
       {/* Drawer component */}
       <div
@@ -44,30 +45,30 @@ const DashboardNavPhone = ({ links }) => {
           <span className="sr-only">Close menu</span>
         </button>
         <div className="shadow-lg rounded-2xl dark:bg-gray-800 p-4">
-                                <div className="flex-row gap-2 flex justify-center items-center">
-                                    <div className="flex-shrink-0">
-                                        {user?.photoURL ? (
-                                            <img
-                                                className="mx-auto object-cover rounded-full h-16 w-16 "
-                                                src={user?.photoURL}
-                                                alt={user?.displayName}
-                                            />
-                                        ) : (
-                                            <img
-                                                className="mx-auto object-cover rounded-full h-16 w-16 "
-                                                src={"https://i.ibb.co/bFq9X83/user.png"}
-                                                alt={user?.displayName}
-                                            />
-                                        )}
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <span className="text-lg font-medium text-gray-600 dark:text-white">
-                                            {user?.displayName}
-                                        </span>
-                                        <span className="text-xs text-gray-400">FullStack dev</span>
-                                    </div>
-                                </div>
-                            </div>
+          <div className="flex-row gap-2 flex justify-center items-center">
+            <div className="flex-shrink-0">
+              {user?.photoURL ? (
+                <img
+                  className="mx-auto object-cover rounded-full h-16 w-16 "
+                  src={user?.photoURL}
+                  alt={user?.displayName}
+                />
+              ) : (
+                <img
+                  className="mx-auto object-cover rounded-full h-16 w-16 "
+                  src={"https://i.ibb.co/bFq9X83/user.png"}
+                  alt={user?.displayName}
+                />
+              )}
+            </div>
+            <div className="flex flex-col">
+              <span className="text-lg font-medium text-gray-600 dark:text-white">
+                {user?.displayName}
+              </span>
+              <span className="text-xs text-gray-400">FullStack dev</span>
+            </div>
+          </div>
+        </div>
         <nav>{links}</nav>
       </div>
     </>
