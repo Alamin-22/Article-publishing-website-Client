@@ -4,41 +4,52 @@ import LastestCard from "../../Components/Home/LastestCard";
 import axiosInstance from "@/api";
 import { Pagination } from "flowbite-react";
 
-const page = () => {
+const Page = () => {
   const [allArticlesData, setAllArticlesData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
   const apiEndPoint = "/allArticle";
 
   useEffect(() => {
     const getAllArticlesData = async () => {
       const { data: res } = await axiosInstance.get(
-        `${apiEndPoint}?page=${currentPage}`
+        `${apiEndPoint}?page=${currentPage}&search=${searchTerm}`
       );
       setAllArticlesData(res);
       console.log(res);
     };
 
     const getTotalPages = async () => {
-      const { data: res } = await axiosInstance.get("/totalPages");
+      const { data: res } = await axiosInstance.get(
+        `/totalPages?search=${searchTerm}`
+      );
       setTotalPages(res.totalPages);
     };
 
     getAllArticlesData();
     getTotalPages();
-  }, [currentPage]);
+  }, [currentPage, searchTerm]);
 
   const onPageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const onSubmit = async (e) => {
+    console.log(totalPages);
+    e.preventDefault();
+    const searchInput = e.target.elements.searchInput.value;
+    setSearchTerm(searchInput);
+    setCurrentPage(1);
   };
 
   return (
     <div className="min-h-screen max-w-7xl m-auto">
       <h1 className="font-black text-center text-3xl py-10">All Articles</h1>
 
-      <form className="p-5">
+      <form className="p-5" onSubmit={onSubmit}>
         <label
-          for="default-search"
+          htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
         >
           Search
@@ -63,13 +74,14 @@ const page = () => {
           </div>
           <input
             id="default-search"
+            name="searchInput"
             className="block w-full p-4 ps-10 text-sm text-gray-900 rounded-lg bg-[#ffffff85] border-none"
             placeholder="Search articles"
             required
           />
           <button
             type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white absolute end-2.5 bottom-2.5 bg-black hover:bg-white hover:text-black hover:border hover:border-black font-medium rounded-lg text-sm px-4 py-2 "
           >
             Search
           </button>
@@ -107,4 +119,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
