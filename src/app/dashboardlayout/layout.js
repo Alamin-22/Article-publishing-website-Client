@@ -8,7 +8,6 @@ const inter = Inter({ subsets: ["latin"] });
 const DashboardLayout = ({ children }) => {
     return (
         <>
-
             <div className="flex flex-col md:flex-row ">
                 <div>
                     <DashboardNav></DashboardNav>
@@ -17,8 +16,6 @@ const DashboardLayout = ({ children }) => {
                     {children}
                 </div>
             </div>
-
-
         </>
     );
 };

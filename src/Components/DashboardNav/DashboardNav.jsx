@@ -151,7 +151,7 @@ const DashboardNav = () => {
             </div>
             <div className="block lg:hidden fixed">
                 {/* mobile Responsive */}
-                <DashboardNavPhone links={links}></DashboardNavPhone>
+                
             </div>
         </>
     );
