@@ -1,28 +1,55 @@
 'use client';
 import React from "react";
 import { RiImageAddFill } from "react-icons/ri";
+import axiosInstance from "@/api";
+import toast from "react-hot-toast";
+import useAuth from './../../Hooks/useAuth';
+
 const CommunityPost = () => {
- 
-  // const handleAddPost= async (e) => {
-  //   const form = e.target;
-  //   const title = form.post.value;
-  // }
-  // console.log(title);
+  const {user} =useAuth()
+  
+  const apiEndPoint = "/v1/api/posts";
+  const handleAddPost = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const post = form.post.value;
+    const currentDate = new Date(); 
+    const formattedDate = currentDate.toISOString();
+    const userName= user.displayName;
+    const userEmail= user.email;
+    const userPhoto = user.photoURL;
+
+
+    const postData = {
+      content: post,
+      datetime: formattedDate,
+      userName, userEmail,userPhoto
+    };
+
+    try {
+      const response = await axiosInstance.post(apiEndPoint, postData);
+      console.log("Article added successfully:", response.data);
+      toast.success("Successfully added!");
+    } catch (error) {
+      toast.error("This didn't work.");
+      console.error("Error adding article:", error);
+    }
+  };
 
   return (
     <div className="bg-[#ededed] p-5 rounded-md">
       <div className="flex gap-5 ">
           <img
             className="w-10 h-10 rounded-full"
-            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-            alt="Rounded avatar"
+            src={user?.photoURL}
+            alt="Image"
           />
           <h1 className="block mb-5 font-bold text-gray-900 dark:text-white">
-            Name
+            {user?.displayName}
           </h1>
       </div>
       <div>
-        <form  className="mt-2">
+        <form onSubmit={handleAddPost} className="mt-2">
           <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
             <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
               <label htmlFor="comment" className="sr-only">

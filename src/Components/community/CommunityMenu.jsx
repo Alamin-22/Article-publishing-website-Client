@@ -17,10 +17,10 @@ const CommunityMenu = () => {
       <Sidebar aria-label="Default sidebar example" className="w-full">
         <Sidebar.Items>
           <Sidebar.ItemGroup>
-            <Sidebar.Item href="#" icon={HiChartPie}>
+            <Sidebar.Item href="/dashboard" icon={HiChartPie}>
               Dashboard
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiUser} label="70%" labelColor="dark">
+            <Sidebar.Item href="profile" icon={HiUser} label="70%" labelColor="dark">
               Profile
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={HiInbox} label="3">

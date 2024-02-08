@@ -1,22 +1,37 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import LastestCard from "../../Components/Home/LastestCard";
-import axios from "axios";
 import axiosInstance from "@/api";
-import { TextInput } from "flowbite-react";
+import { Pagination } from "flowbite-react";
 
 const page = () => {
   const [allArticlesData, setAllArticlesData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const apiEndPoint = "/allArticle";
 
   useEffect(() => {
     const getAllArticlesData = async () => {
-      const { data: res } = await axiosInstance.get(apiEndPoint);
+      const { data: res } = await axiosInstance.get(
+        `${apiEndPoint}?page=${currentPage}`
+      );
       setAllArticlesData(res);
       console.log(res);
     };
+
+    const getTotalPages = async () => {
+      const { data: res } = await axiosInstance.get("/totalPages");
+      setTotalPages(res.totalPages);
+    };
+
     getAllArticlesData();
-  }, []);
+    getTotalPages();
+  }, [currentPage]);
+
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="min-h-screen max-w-7xl m-auto">
       <h1 className="font-black text-center text-3xl py-10">All Articles</h1>
@@ -62,6 +77,13 @@ const page = () => {
       </form>
 
       <div className="px-5">
+        <Pagination
+          layout="navigation"
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
+          showIcons
+        />
         {allArticlesData.map((article, index) => (
           <LastestCard
             key={article._id}
@@ -71,6 +93,15 @@ const page = () => {
             text={article.article}
           />
         ))}
+      </div>
+
+      <div className="flex justify-center my-5">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
+          showIcons
+        />
       </div>
     </div>
   );
