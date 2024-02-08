@@ -1,12 +1,8 @@
-import DashboardLayout from '@/components/DashboardLayout/DashboardLayout';
-import React from 'react';
+import DashboardLayout from "@/Components/DashboardLayout/DashboardLayout";
+import React from "react";
 
 const DashBoardPage = () => {
-    return (
-        <DashboardLayout>
-
-        </DashboardLayout>
-    );
+  return <DashboardLayout></DashboardLayout>;
 };
 
 export default DashBoardPage;
