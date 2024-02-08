@@ -1,6 +1,6 @@
 import useAuth from '@/Hooks/useAuth';
 import React, { useState } from 'react';
-
+import { RiMenu2Fill } from "react-icons/ri";
 const DashboardNavPhone = ({ links }) => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const { user } = useAuth();
@@ -13,7 +13,7 @@ const DashboardNavPhone = ({ links }) => {
       {/* Drawer init and show button */}
       <div className="text-center">
         <button
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          className="text-white bg-blue-700 hover:bg--800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 "
           type="button"
           onClick={toggleDrawer}
         >
