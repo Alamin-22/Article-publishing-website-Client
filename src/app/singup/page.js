@@ -59,7 +59,7 @@ const SingUpPage = () => {
         UpdateProfile(displayName)
           .then(() => {
 
-            axiosInstance.post("/post-user", UserInfo)
+            axiosInstance.post("/v1/api/post-user", UserInfo)
               .then(res => {
                 if (res.data.insertedId) {
                   toast.success("Congratulations User created Successfully");

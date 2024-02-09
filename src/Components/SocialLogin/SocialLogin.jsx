@@ -14,10 +14,10 @@ const SocialLogin = () => {
                 const userInfo = {
                     displayName: res.user?.displayName,
                     email: res.user?.email,
-                    UserPhoto: res.user?.photoURL
+                    UserPhoto: res.user?.photoURL,
                 }
                 console.log(userInfo);
-                axiosInstance.post("/post-user", userInfo)
+                axiosInstance.post("/v1/api/post-user", userInfo)
                     .then(res => {
                         if (res.data.insertedId) {
                             toast.success("Congratulations User created Successfully");
@@ -30,10 +30,6 @@ const SocialLogin = () => {
                     .catch(Err => {
                         console.log(Err);
                     })
-
-
-
-
             })
             .catch(error => {
                 console.log(error)
