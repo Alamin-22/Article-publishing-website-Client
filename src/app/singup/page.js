@@ -59,7 +59,7 @@ const SingUpPage = () => {
         UpdateProfile(displayName)
           .then(() => {
 
-            axiosInstance.post("/post-user", UserInfo)
+            axiosInstance.post("/v1/api/post-user", UserInfo)
               .then(res => {
                 if (res.data.insertedId) {
                   toast.success("Congratulations User created Successfully");
@@ -207,17 +207,13 @@ const SingUpPage = () => {
 
                       <fieldset className="flex max-w-md gap-4 " >
 
-                        <div className="flex items-center gap-2">
-                          <Radio id="male" name="gender" value="male" required />
-                          <Label htmlFor="male">Male</Label>
+                        <div className="flex  items-center gap-2">
+                          <Radio id="male" name="gender" className="cursor-pointer" value="male" required />
+                          <Label htmlFor="male" className="cursor-pointer">Male</Label>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <Radio id="female" name="gender" value="female" required />
-                          <Label htmlFor="female">Female</Label>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Radio id="others" name="gender" value="others" required />
-                          <Label htmlFor="others">Others</Label>
+                        <div className="flex  items-center gap-2">
+                          <Radio id="female" name="gender" className="cursor-pointer" value="female" required />
+                          <Label htmlFor="female" className="cursor-pointer" >Female</Label>
                         </div>
 
                       </fieldset>
