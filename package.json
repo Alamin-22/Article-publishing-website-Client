@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "apexcharts": "^3.45.2",
     "axios": "^1.6.7",
     "firebase": "^10.7.2",
     "flowbite": "^2.2.1",
