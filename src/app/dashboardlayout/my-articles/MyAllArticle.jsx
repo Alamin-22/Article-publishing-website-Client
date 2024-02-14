@@ -27,8 +27,8 @@ const MyAllArticle = () => {
   );
 
   return (
-    <div>
-        <div className="bg-[#D7D7D7] shadow-2xl rounded-2xl m-2 p-5"><h1>Total Post: {myArticles?.length}</h1></div>
+    <div className="bg-[#D7D7D7] shadow-2xl rounded-2xl">
+        <div ><h1 className="font-semibold p-5 shadow mb-2 text-center">Total Post: {myArticles?.length}</h1></div>
       <div>
         {myArticles?.length === 0 && <div>You Have No Article</div>}
         {myArticles?.map((article, index) => (
