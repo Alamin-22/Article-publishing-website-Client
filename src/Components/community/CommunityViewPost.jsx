@@ -11,7 +11,7 @@ const CommunityViewPost = () => {
   const [allCommunityData, setAllCommunityData] = useState([]);
   const apiEndPointComment = "/v1/api/CommunityComments";
   const apiEndPoint = "/v1/api/posts";
-
+  const [postLikes, setPostLikes] = useState({});
   const handleAddComment = async (e, postId) => {
     e.preventDefault();
     const form = e.target;
@@ -35,13 +35,26 @@ const CommunityViewPost = () => {
       const response = await axiosInstance.post(apiEndPointComment, postData);
       console.log("Comment added successfully:", response.data);
       toast.success("Successfully added!");
-      // Clear comment input after successful submission
       form.reset();
-      // Update allCommunityData state to include the new comment
       setAllCommunityData((prevData) => [...prevData, response.data]);
     } catch (error) {
       toast.error("Failed to add comment.");
       console.error("Error adding comment:", error);
+    }
+  };
+  const handleLike = async (postId) => {
+    try {
+      
+      await axiosInstance?.post(`/v1/api/posts/${postId}`);
+      
+      setPostLikes((prevLikes) => ({
+        ...prevLikes,
+        [postId]: (prevLikes[postId] || 0) + 1,
+      }));
+      toast.success("Post liked successfully!");
+    } catch (error) {
+      toast.error("Failed to like post.");
+      console.error("Error liking post:", error);
     }
   };
 
@@ -100,17 +113,27 @@ const CommunityViewPost = () => {
               {/* like comments and share section  */}
               <div>
                 <div className="flex justify-evenly py-1 bg-white mt-2 rounded-lg">
-                  <p className="hover:text-blue-700 text-sm font-semibold">
-                    Like
-                  </p>
+                  <div className="hover:text-blue-700 text-sm font-semibold cursor-pointer">
+                    <span className="mr-1">{postLikes[post._id] || ""}</span> 
+                    <button
+                      className="hover:text-blue-700 text-sm font-semibold cursor-pointer"
+                      onClick={() => handleLike(post._id)}>
+                       Like
+                    </button>
+                  </div>
                   <div>
                     <button
                       className="hover:text-blue-700 text-sm font-semibold"
                       onClick={() => setComment({ [post._id]: true })}>
+                      {
+                        allCommunityData.filter(
+                          (comment) => comment.postId === post._id
+                        ).length
+                      }{" "}
                       Comment
                     </button>
                   </div>
-                  <p className="hover:text-blue-700 text-sm font-semibold">
+                  <p className="hover:text-blue-700 text-sm font-semibold cursor-pointer">
                     Share
                   </p>
                 </div>

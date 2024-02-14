@@ -30,6 +30,8 @@ const CommunityPost = () => {
       const response = await axiosInstance.post(apiEndPoint, postData);
       console.log("Article added successfully:", response.data);
       toast.success("Successfully added!");
+      // Clear comment input after successful submission
+    form.reset();
     } catch (error) {
       toast.error("This didn't work.");
       console.error("Error adding article:", error);
