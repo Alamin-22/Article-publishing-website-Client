@@ -44,9 +44,9 @@ const CommunityViewPost = () => {
   };
   const handleLike = async (postId) => {
     try {
-      // Send a request to the backend to like the post
-      await axiosInstance?.post(`/v1/api/posts/${postId}/like`);
-      // Update the like count in the frontend
+      
+      await axiosInstance?.post(`/v1/api/posts/${postId}`);
+      
       setPostLikes((prevLikes) => ({
         ...prevLikes,
         [postId]: (prevLikes[postId] || 0) + 1,
