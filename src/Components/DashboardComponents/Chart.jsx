@@ -7,10 +7,10 @@ const Chart = () => {
     const [state, setState] = useState({
 
         series: [{
-            name: 'series1',
+            name: 'New user',
             data: [31, 40, 28, 51, 42, 109, 100]
         }, {
-            name: 'series2',
+            name: 'Old User',
             data: [11, 32, 45, 32, 34, 52, 41]
         }],
         options: {
@@ -40,11 +40,9 @@ const Chart = () => {
     })
 
 
-
-
     return (
         <div>
-            <div className=' xl:w-[350px] md:w-[500px] lg:w-[1000px]  mx-auto'>
+            <div className=' sm:w-[350px] md:w-[500px] lg:w-[750px] xl:w-[1000px]  mx-auto'>
                 <ReactApexChart
                     options={state.options}
                     series={state.series}
