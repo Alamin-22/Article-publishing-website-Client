@@ -8,8 +8,10 @@ const dashboard = () => {
     return (
         <div className=' bg-slate-50 '>
             <Chart></Chart>
-            <PieChart></PieChart>
-            <BarChart></BarChart>
+            <div className='flex flex-col lg:flex-row'>
+                <PieChart></PieChart>
+                <BarChart></BarChart>
+            </div>
         </div>
     );
 };
