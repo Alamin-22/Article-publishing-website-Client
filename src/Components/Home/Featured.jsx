@@ -26,10 +26,10 @@ const featuredData = [
 
 const Featured = () => {
     return (
-        <div className='bg-[#D9D9D9] min-h-screen flex flex-col items-start justify-center py-10'>
+        <div className='bg-[#D9D9D9] flex flex-col items-start justify-center py-10'>
             <h1 className='font-black text-4xl py-10 pl-5'>Featured Articles</h1>
 
-            <div className='grid grid-cols-2 gap-10 px-10'>
+            <div className='grid lg:grid-cols-2 gap-10 px-10'>
                 {featuredData.map((data) => (
                     <FeaturedCard key={data.idx} idx={data.idx} title={data.title} text={data.text} />
                 ))}
