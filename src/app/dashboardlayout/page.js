@@ -1,9 +1,12 @@
+import Chart from '@/components/DashboardComponents/Chart';
+import Statics from '@/components/DashboardComponents/Statics';
 import React from 'react';
 
 const dashboard = () => {
     return (
-        <div className='bg-red-400 h-screen'>
-            <h2 className='text-5xl text-white' >this is dashboard</h2>
+        <div className=' bg-slate-50 h-screen'>
+            <Chart></Chart>
+            <Statics></Statics>
         </div>
     );
 };

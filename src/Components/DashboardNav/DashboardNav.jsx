@@ -113,7 +113,7 @@ const DashboardNav = () => {
 
     return (
         <>
-            <div className=" hidden md:block">
+            <div className=" hidden md:block bg-[#D9D9D9]">
                 <aside className="flex flex-col w-64 h-screen px-4 py-2 overflow-y-auto   ">
                     <div className="flex flex-col items-center">
                         <div>
