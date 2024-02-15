@@ -4,7 +4,7 @@ import React from 'react';
 
 const dashboard = () => {
     return (
-        <div className=' h-screen'>
+        <div className=' bg-slate-50 h-screen'>
             <Chart></Chart>
             <Statics></Statics>
         </div>
