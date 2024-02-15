@@ -1,12 +1,17 @@
+import BarChart from '@/components/DashboardComponents/BarChart';
 import Chart from '@/components/DashboardComponents/Chart';
-import Statics from '@/components/DashboardComponents/Statics';
+import PieChart from '@/components/DashboardComponents/PieChart';
+import Statics from '@/components/DashboardComponents/PieChart';
 import React from 'react';
 
 const dashboard = () => {
     return (
-        <div className=' bg-slate-50 h-screen'>
+        <div className=' bg-slate-50 '>
             <Chart></Chart>
-            <Statics></Statics>
+            <div className='flex flex-col lg:flex-row'>
+                <PieChart></PieChart>
+                <BarChart></BarChart>
+            </div>
         </div>
     );
 };
