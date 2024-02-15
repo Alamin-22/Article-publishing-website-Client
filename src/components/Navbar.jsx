@@ -121,8 +121,8 @@ function NavbarComponent() {
     };
 
     return (
-        <Navbar fluid rounded className='shadow-xl bg-[#D9D9D9]'>
-            <Navbar fluid rounded className='w-full max-w-7xl mx-auto bg-[#D9D9D9]' >
+        <Navbar fluid rounded className='shadow-xl bg-[#ebe7e7]'>
+            <Navbar fluid rounded className='w-full max-w-7xl mx-auto bg-[#ebe7e7]' >
 
 
                 <Navbar.Brand >

@@ -7,8 +7,8 @@ import Logo from '../Miscellaneous/Logo';
 
 function FooterCom() {
     return (
-        <Footer container className='bg-gray-700 text-white rounded-none'>
-            <Footer container className='bg-gray-700 max-w-7xl mx-auto w-full text-white rounded-none'>
+        <Footer container className='bg-gray-500 text-white rounded-none'>
+            <Footer container className='bg-gray-500 max-w-7xl mx-auto w-full text-white rounded-none'>
 
 
                 <div className="w-full ">
