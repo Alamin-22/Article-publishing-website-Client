@@ -90,7 +90,7 @@ const BarChart = () => {
 
     return (
         <div>
-            <div className=' sm:w-[250px] md:w-[300px] lg:w-[550px] xl:w-[500px]  mx-auto'>
+            <div className=' sm:w-[320px] md:w-[500px] lg:w-[400px] xl:w-[500px]  mx-auto'>
                 <ReactApexChart
                     options={state.options}
                     series={state.series}

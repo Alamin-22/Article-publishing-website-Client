@@ -28,7 +28,7 @@ const Chart = () => {
 
     return (
         <div>
-            <div className=' sm:w-[350px] md:w-[400px] lg:w-[550px] xl:w-[500px]  mx-auto'>
+            <div className=' sm:w-[350px] md:w-[400px] lg:w-[350px] xl:w-[500px]  mx-auto'>
                 <ReactApexChart
                     options={state.options}
                     series={state.series}
