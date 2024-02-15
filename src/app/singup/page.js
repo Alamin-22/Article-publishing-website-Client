@@ -224,7 +224,7 @@ const SingUpPage = () => {
                         <Checkbox id="accept" required />
                         <Label htmlFor="accept" className="flex">
                           I agree with the&nbsp;
-                          <a href="#" className="text-cyan-600 hover:underline dark:text-cyan-500">
+                          <a href="/termsAndCondition" className="text-cyan-600 hover:underline dark:text-cyan-500">
                             terms and conditions
                           </a>
                         </Label>

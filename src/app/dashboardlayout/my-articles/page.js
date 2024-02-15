@@ -1,11 +1,18 @@
 import React from 'react';
+import PostUser from './PostUser';
+import MyAllArticle from './MyAllArticle';
 
-const MyArticle = () => {
+const page = () => {
     return (
         <div>
-            <h2>This is my article page coming from fashboard</h2>
+            <div>
+                <PostUser />
+            </div>
+            <div>
+                <MyAllArticle />
+            </div>
         </div>
     );
 };
 
-export default MyArticle;
+export default page;
