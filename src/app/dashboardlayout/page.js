@@ -1,3 +1,4 @@
+import BarChart from '@/components/DashboardComponents/BarChart';
 import Chart from '@/components/DashboardComponents/Chart';
 import PieChart from '@/components/DashboardComponents/PieChart';
 import Statics from '@/components/DashboardComponents/PieChart';
@@ -8,6 +9,7 @@ const dashboard = () => {
         <div className=' bg-slate-50 '>
             <Chart></Chart>
             <PieChart></PieChart>
+            <BarChart></BarChart>
         </div>
     );
 };
