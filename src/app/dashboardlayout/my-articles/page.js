@@ -5,8 +5,8 @@ import MyAllArticle from './MyAllArticle';
 const page = () => {
     return (
         <div>
+            
             <div>
-                
                 {/* <PostUser /> */}
             </div>
             <div>
