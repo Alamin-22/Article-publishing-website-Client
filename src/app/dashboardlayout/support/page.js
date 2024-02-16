@@ -89,23 +89,23 @@ const support = () => {
 
                     </div>
                     <div>
-                        <form className="mt-6 p-6 bg-gray-100 rounded-lg">
+                        <form className="mt-6 p-6 bg-gray-200 mx-2 rounded-lg">
                             <div className="flex-1">
-                                <label className="block mb-2 text-sm text-gray-600 ">Full Name</label>
+                                <label className="block mb-2 font-semibold text-sm text-gray-600 ">Full Name</label>
                                 <input type="text" name="Name" placeholder="John Doe" className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-rose-200 focus:ring-rose-200 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                             </div>
 
                             <div className="flex-1 mt-6">
-                                <label className="block mb-2 text-sm text-gray-600 ">Email address</label>
+                                <label className="block mb-2 font-semibold text-sm text-gray-600 ">Email address</label>
                                 <input name="email" type="email" placeholder="johndoe@example.com" className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-rose-200 focus:ring-rose-200  focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
                             <div className="flex-1 mt-6">
-                                <label className="block mb-2 text-sm text-gray-600 ">Subject</label>
+                                <label className="block font-semibold mb-2 text-sm text-gray-600 ">Subject</label>
                                 <input name="email" type="email" placeholder="Write your Topic" className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-rose-200 focus:ring-rose-200  focus:ring-opacity-40  focus:outline-none focus:ring" />
                             </div>
 
                             <div className="w-full mt-6">
-                                <label className="block mb-2 text-sm text-gray-600 ">Message</label>
+                                <label className="block font-semibold mb-2 text-sm text-gray-600 ">Message</label>
                                 <textarea name="message" className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 focus:border-rose-200 focus:ring-rose-200  focus:ring-opacity-40  focus:outline-none focus:ring" placeholder="Message"></textarea>
                             </div>
 
