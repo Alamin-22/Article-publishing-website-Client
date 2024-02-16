@@ -1,6 +1,6 @@
-import AboutUsTitle from "@/Component/AboutUsTitle/AboutUsTitle";
-import TeameMember from "@/Component/TeameMember/TeameMember";
-import { FaUsers } from "react-icons/fa";
+"use client"
+import AboutUsTitle from "@/components/AboutUsTitle/AboutUsTitle";
+import TeamMember from "@/components/TeamMember/TeamMember";
 const AboutPage = () => {
   return (
     <div>
@@ -10,7 +10,7 @@ const AboutPage = () => {
         <h1 className="text-center text-4xl font-medium my-10">
           Meet The Team
         </h1>
-        <TeameMember />
+        <TeamMember />
       </div>
 
       <div className="bg-[#D9D9D9] h-96 my-24">

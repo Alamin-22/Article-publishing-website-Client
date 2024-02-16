@@ -3,7 +3,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaEnvelopeCircleCheck } from "react-icons/fa6";
 
-const TeameMember = () => {
+const TeamMember = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <a className={Member.card1} id="shadow-xl" href="#">
@@ -103,4 +103,4 @@ const TeameMember = () => {
   );
 };
 
-export default TeameMember;
+export default TeamMember;
