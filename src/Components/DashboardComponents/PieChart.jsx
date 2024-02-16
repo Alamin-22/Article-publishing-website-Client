@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts'
 
 import React, { useState } from 'react';
 
-const Chart = () => {
+const PieChart = () => {
     const [state, setState] = useState({
 
         series: [44, 55, 41, 17, 15],
@@ -38,6 +38,6 @@ const Chart = () => {
     );
 };
 
-export default Chart;
+export default PieChart;
 
 

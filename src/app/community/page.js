@@ -1,10 +1,10 @@
-
-import CommunityPost from "./../../components/community/CommunityPost";
-import CommunityViewPost from "./../../components/community/CommunityViewPost";
-import TopContributors from "./../../components/community/TopContributors";
-import CommunityProfile from './../../components/community/CommunityProfile';
-import CommunityMenu from './../../components/community/CommunityMenu';
-import CommunityRecentPost from './../../components/community/CommunityRecentPost';
+"use client"
+import CommunityMenu from "@/components/community/CommunityMenu";
+import CommunityProfile from "@/components/community/CommunityProfile";
+import CommunityRecentPost from "@/components/community/CommunityRecentPost";
+import CommunityViewPost from "@/components/community/CommunityViewPost";
+import CommunityPost from "@/components/community/communityPost";
+import TopContributors from "@/components/community/topContributors";
 
 const community = () => {
   return (

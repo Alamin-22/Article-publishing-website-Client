@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import LastestCard from "../../Components/Home/LastestCard";
+import LastestCard from "../../components/Home/LastestCard";
+// import LastestCard from "../../Components/Home/LastestCard";
 import axios from "axios";
 import axiosInstance from "@/api";
 
