@@ -1,12 +1,12 @@
 import React from 'react';
-import PostUser from './PostUser';
+// import PostUser from './PostUser';
 import MyAllArticle from './MyAllArticle';
 
 const page = () => {
     return (
         <div>
             <div>
-                <PostUser />
+                {/* <PostUser /> */}
             </div>
             <div>
                 <MyAllArticle />
