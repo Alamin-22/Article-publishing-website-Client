@@ -19,7 +19,7 @@ const LastestArticles = () => {
         getlastestArticlesData();
     }, [])
 
-    const categoryData = ["Category A", "Category B", "Category C", "Category D", "Category E"];
+    const categoryData = ["Web Development", "Python", "Article", "Education", "Health & Care"];
 
     return (
         <div className='bg-[#D9D9D9] min-h-screen'>

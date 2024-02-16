@@ -32,7 +32,7 @@ const DashboardNav = () => {
 
     const links = (
         <>
-            <div className="w-full mb-4 border-b-2"></div>
+            <div className="w-full mb-4 border-b-2 border-white"></div>
             <p
                 onClick={() => handleLinkClick("/dashboardlayout")}
                 className="flex items-center px-4 py-2 rounded-lg hover:bg-gray-100 cursor-pointer"
@@ -53,13 +53,13 @@ const DashboardNav = () => {
                 </div>
             ) : (
                 <div>
-                    <p
+                    {/* <p
                         onClick={() => handleLinkClick("/dashboardlayout/analytics")}
                         className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
                     >
                         <TiChartPieOutline className="text-2xl" />
                         <span className="mx-2 font-medium">Analytics</span>
-                    </p>
+                    </p> */}
                     <p
                         onClick={() => handleLinkClick("/dashboardlayout/my-articles")}
                         className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
@@ -67,14 +67,14 @@ const DashboardNav = () => {
                         <GrArticle className="text-xl" />
                         <span className="mx-4 font-medium">My Articles</span>
                     </p>
-                    <p
+                    {/* <p
                         onClick={() => handleLinkClick("/dashboardlayout/favorite-post")}
                         className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
                     >
                         <MdFavoriteBorder className="text-2xl" />
                         <span className="mx-4 font-medium">Favorite Post</span>
-                    </p>
-                    <div className="w-full mt-4 border-b-2"></div>
+                    </p> */}
+                    <div className="w-full mt-4 border-b-2 border-white"></div>
                     <p
                         onClick={() => handleLinkClick("/dashboardlayout/my-profile")}
                         className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
@@ -82,13 +82,13 @@ const DashboardNav = () => {
                         <ImProfile className="text-xl" />
                         <span className="mx-4 font-medium">My Profile</span>
                     </p>
-                    <p
+                    {/* <p
                         onClick={() => handleLinkClick("/dashboardlayout/setting")}
                         className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
                     >
                         <GoGear className="text-xl" />
                         <span className="mx-4 font-medium">Setting</span>
-                    </p>
+                    </p> */}
                     <p
                         onClick={() => handleLinkClick("/dashboardlayout/support")}
                         className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
@@ -96,7 +96,7 @@ const DashboardNav = () => {
                         <BsChatLeftText className="text-xl" />
                         <span className="mx-4 font-medium">Support</span>
                     </p>
-                    <div className="w-full mt-4 border-b-2"></div>
+                    <div className="w-full mt-4 border-b-2 border-white"></div>
                     <div>
                         <p
                             onClick={handleLogout}
@@ -113,8 +113,8 @@ const DashboardNav = () => {
 
     return (
         <>
-            <div className=" hidden md:block">
-                <aside className="flex flex-col w-64 h-screen px-4 py-2 overflow-y-auto   ">
+            <div className=" hidden md:block bg-[#eceaea] h-full">
+                <aside className="flex flex-col w-64 h-full px-4 py-2 overflow-y-auto   ">
                     <div className="flex flex-col items-center">
                         <div>
                             <div className="shadow-lg rounded-2xl dark:bg-gray-800 p-4">

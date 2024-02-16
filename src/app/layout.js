@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="bg-[#D9D9D9]">
+        <div className="bg-slate-50">
           <div className="mx-auto">
             <AuthProvider>
               <NavbarComponent></NavbarComponent>
