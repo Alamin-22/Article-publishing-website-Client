@@ -27,34 +27,36 @@ const MyAllArticle = () => {
   );
 
   return (
-    <div className="bg-[#D7D7D7] shadow-2xl rounded-2xl">
-        <div ><h1 className="font-semibold p-5 shadow mb-2 text-center">Total Post: {myArticles?.length}</h1></div>
+    <div className="">
+        <div >
+          <h1 className="bg-[#D7D7D7] w-36 mx-auto shadow-2xl rounded-2xl font-semibold p-5 mb-2 text-center m-2">Total Post: {myArticles?.length}</h1>
+          </div>
       <div>
         {myArticles?.length === 0 && <div>You Have No Article</div>}
         {myArticles?.map((article, index) => (
           <div
-            className="bg-[#D7D7D7] shadow-2xl rounded-2xl m-2 p-5"
+            className="bg-[#D7D7D7] shadow-xl rounded-2xl m-2 p-2"
             key={article?._id}>
             
 
-            <div className="flex items-center gap-5">
-              <div>
-                <h1 className="text-white font-black text-5xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,1)]">
+            <div className="grid justify-center items-center grid-cols-1 lg:grid-cols-8 gap-5">
+              {/* <div className="lg:col-span-1">
+                <h1 className="text-white text-center font-black text-xl lg:text-5xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,1)]">
                   {index + 1}
                 </h1>
-              </div>
-              <div>
+              </div> */}
+              <div className="lg:col-span-2 flex justify-center items-center">
                 <img
-                  className=" h-36 w-56 object-cover shadow-xl border-white border-2"
+                  className="h-36 lg:w-56 w-full rounded-xl object-cover  border-white border-2"
                   src={article?.imglink}
                   alt="Profile Image"
                 />
               </div>
-              <div>
-                <h1 className="text-gray-800 font-black text-2xl">
+              <div className="lg:col-span-6  p-3">
+                <h1 className="text-gray-800 font-black mb-3  text-2xl">
                   {article?.title}
                 </h1>
-                <p className="text-gray-700 text-justify">{article?.article}</p>
+                <p className="text-gray-700 text-justify">{article?.article.slice(0, 200)}</p>
               </div>
             </div>
           </div>
