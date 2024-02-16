@@ -93,8 +93,8 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
                     <h1 className='text-gray-700 font-black text-xs'>{articleId}</h1>
                     <h1 className='text-gray-800 font-black text-2xl'>{title}</h1>
                     <p className='text-gray-700 text-justify pb-4'>Written by {author} </p>
-                    <p className='text-gray-700 text-justify'>
-                        {showFullArticle ? text : truncatedText}
+                    <p className='text-gray-700'>
+                        <span dangerouslySetInnerHTML={{ __html: showFullArticle ? text : truncatedText }} />
                     </p>
                 </div>
                 {text.length > 200 && (
