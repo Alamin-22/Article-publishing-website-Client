@@ -26,12 +26,12 @@ const CommunityMenu = () => {
             <Sidebar.Item href="#" icon={HiInbox} label="3">
               Feeds
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiViewBoards}>
+            <Sidebar.Item href="/community/mypost" icon={HiViewBoards}>
               My Post
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiShoppingBag}>
+            {/* <Sidebar.Item href="#" icon={HiShoppingBag}>
               Save Post
-            </Sidebar.Item>
+            </Sidebar.Item> */}
           </Sidebar.ItemGroup>
         </Sidebar.Items>
       </Sidebar>
