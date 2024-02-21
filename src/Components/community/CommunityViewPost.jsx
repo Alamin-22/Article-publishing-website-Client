@@ -1,8 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axiosInstance from "@/api";
 import useAuth from "./../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import moment from "moment";
 
 const CommunityViewPost = () => {
   const { user } = useAuth();
@@ -12,6 +13,12 @@ const CommunityViewPost = () => {
   const apiEndPointComment = "/v1/api/CommunityComments";
   const apiEndPoint = "/v1/api/posts";
   const [postLikes, setPostLikes] = useState({});
+
+  // Function to format date and time
+  const formatDateTime = (dateTime) => {
+    return moment(dateTime).format("hh:mm a DD-MM-YYYY");
+  };
+
   const handleAddComment = async (e, postId) => {
     e.preventDefault();
     const form = e.target;
@@ -42,11 +49,10 @@ const CommunityViewPost = () => {
       console.error("Error adding comment:", error);
     }
   };
+
   const handleLike = async (postId) => {
     try {
-      
       await axiosInstance?.post(`/v1/api/posts/${postId}`);
-      
       setPostLikes((prevLikes) => ({
         ...prevLikes,
         [postId]: (prevLikes[postId] || 0) + 1,
@@ -101,7 +107,7 @@ const CommunityViewPost = () => {
                   {post?.userName}
                 </h1>
                 <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                  {post?.datetime}
+                  {formatDateTime(post?.datetime)}
                 </p>
               </div>
             </div>
@@ -110,21 +116,22 @@ const CommunityViewPost = () => {
             </div>
             <div className="my-2">
               <hr />
-              {/* like comments and share section  */}
               <div>
                 <div className="flex justify-evenly py-1 bg-white mt-2 rounded-lg">
                   <div className="hover:text-blue-700 text-sm font-semibold cursor-pointer">
-                    <span className="mr-1">{postLikes[post._id] || ""}</span> 
+                    <span className="mr-1">{postLikes[post._id] || ""}</span>
                     <button
                       className="hover:text-blue-700 text-sm font-semibold cursor-pointer"
-                      onClick={() => handleLike(post._id)}>
-                       Like
+                      onClick={() => handleLike(post._id)}
+                    >
+                      Like
                     </button>
                   </div>
                   <div>
                     <button
                       className="hover:text-blue-700 text-sm font-semibold"
-                      onClick={() => setComment({ [post._id]: true })}>
+                      onClick={() => setComment({ [post._id]: true })}
+                    >
                       {
                         allCommunityData.filter(
                           (comment) => comment.postId === post._id
@@ -142,7 +149,8 @@ const CommunityViewPost = () => {
             </div>
             <form
               onSubmit={(e) => handleAddComment(e, post._id)}
-              className={`${comment[post._id] ? "block" : "hidden"}`}>
+              className={`${comment[post._id] ? "block" : "hidden"}`}
+            >
               <label htmlFor="chat" className="sr-only">
                 Your Comment
               </label>
@@ -152,29 +160,32 @@ const CommunityViewPost = () => {
                   id="chat"
                   rows="1"
                   className="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Your message..."></textarea>
+                  placeholder="Your message..."
+                ></textarea>
                 <button
                   type="submit"
-                  className="inline-flex justify-center p-2 text-blue-600 rounded-full cursor-pointer hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-600">
+                  className="inline-flex justify-center p-2 text-blue-600 rounded-full cursor-pointer hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-600"
+                >
                   <svg
                     className="w-5 h-5 rotate-90 rtl:-rotate-90"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
-                    viewBox="0 0 18 20">
+                    viewBox="0 0 18 20"
+                  >
                     <path d="m17.914 18.594-8-18a1 1 0 0 0-1.828 0l-8 18a1 1 0 0 0 1.157 1.376L8 18.281V9a1 1 0 0 1 2 0v9.281l6.758 1.689a1 1 0 0 0 1.156-1.376Z" />
                   </svg>
                   <span className="sr-only">Send Replay</span>
                 </button>
               </div>
               <div>
-                {/* views Comments  */}
                 {allCommunityData
                   .filter((comment) => comment.postId === post._id)
                   .map((communityComment) => (
                     <div
                       className="shadow-2xl mt-2 p-5  rounded-lg"
-                      key={communityComment._id}>
+                      key={communityComment._id}
+                    >
                       <div className="flex gap-3">
                         <img
                           className="w-8 h-8 rounded-full"
@@ -186,7 +197,7 @@ const CommunityViewPost = () => {
                             {communityComment?.userName}
                           </h1>
                           <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                            {communityComment?.datetime}
+                            {formatDateTime(communityComment?.datetime)}
                           </p>
                         </div>
                       </div>

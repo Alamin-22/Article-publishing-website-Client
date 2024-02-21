@@ -1,54 +1,64 @@
-'use client';
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { RiImageAddFill } from "react-icons/ri";
 import axiosInstance from "@/api";
 import toast from "react-hot-toast";
 import useAuth from './../../Hooks/useAuth';
+import moment from 'moment';
 
 const CommunityPost = () => {
-  const {user} =useAuth()
-  
+  const { user } = useAuth();
+  const [image, setImage] = useState(null);
+
   const apiEndPoint = "/v1/api/posts";
+  
   const handleAddPost = async (e) => {
     e.preventDefault();
     const form = e.target;
     const post = form.post.value;
-    const currentDate = new Date(); 
-    const formattedDate = currentDate.toISOString();
-    const userName= user.displayName;
-    const userEmail= user.email;
+    const formattedDate = moment().format("hh:mm a YYYY-MM-DD");
+    const userName = user.displayName;
+    const userEmail = user.email;
     const userPhoto = user.photoURL;
-
 
     const postData = {
       content: post,
       datetime: formattedDate,
-      userName, userEmail,userPhoto
+      userName,
+      userEmail,
+      userPhoto,
+      image: image // Add image data to the postData object
     };
 
     try {
       const response = await axiosInstance.post(apiEndPoint, postData);
       console.log("Article added successfully:", response.data);
       toast.success("Successfully added!");
-      // Clear comment input after successful submission
-    form.reset();
+      form.reset();
+      setImage(null); // Reset the image state after successful submission
     } catch (error) {
       toast.error("This didn't work.");
       console.error("Error adding article:", error);
     }
   };
 
+  const handleImageChange = (e) => {
+    // Retrieve the selected image file
+    const file = e.target.files[0];
+    setImage(file); // Update the image state with the selected file
+  };
+
   return (
     <div className="bg-[#ededed] p-5 rounded-md">
-      <div className="flex gap-5 ">
-          <img
-            className="w-10 h-10 rounded-full"
-            src={user?.photoURL}
-            alt="Image"
-          />
-          <h1 className="block mb-5 font-bold text-gray-900 dark:text-white">
-            {user?.displayName}
-          </h1>
+      <div className="flex gap-5">
+        <img
+          className="w-10 h-10 rounded-full"
+          src={user?.photoURL}
+          alt="Image"
+        />
+        <h1 className="block mb-5 font-bold text-gray-900 dark:text-white">
+          {user?.displayName}
+        </h1>
       </div>
       <div>
         <form onSubmit={handleAddPost} className="mt-2">
@@ -67,64 +77,27 @@ const CommunityPost = () => {
               ></textarea>
             </div>
             <div className="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+              <input
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="hidden"
+              />
+              <label
+                htmlFor="image"
+                className="inline-flex items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
+              >
+                <RiImageAddFill className="w-4 h-4" />
+                <span className="sr-only">Upload image</span>
+              </label>
               <button
                 type="submit"
                 className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-gray-900 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
               >
                 Post
               </button>
-              <div className="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
-                <button
-                  type="button"
-                  className="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 12 20"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M1 6v8a5 5 0 1 0 10 0V4.5a3.5 3.5 0 1 0-7 0V13a2 2 0 0 0 4 0V6"
-                    />
-                  </svg>
-                  <span className="sr-only">Attach file</span>
-                </button>
-                <button
-                  type="submit"
-                  className="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 16 20"
-                  >
-                    <path d="M8 0a7.992 7.992 0 0 0-6.583 12.535 1 1 0 0 0 .12.183l.12.146c.112.145.227.285.326.4l5.245 6.374a1 1 0 0 0 1.545-.003l5.092-6.205c.206-.222.4-.455.578-.7l.127-.155a.934.934 0 0 0 .122-.192A8.001 8.001 0 0 0 8 0Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
-                  </svg>
-                  <span className="sr-only">Set location</span>
-                </button>
-                <button
-                  type="button"
-                  className="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 18"
-                  >
-                    <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                  </svg>
-                  <span className="sr-only">Upload image</span>
-                </button>
-              </div>
             </div>
           </div>
         </form>
