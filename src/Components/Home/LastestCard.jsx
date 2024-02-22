@@ -14,11 +14,13 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
     const [isLiked, setIsLiked] = useState(false);
+    const [likeCount, setLikeCount] = useState(0);
     const apiEndPointLike = `/addLike/${articleId}`;
     const apiEndPointUnlike = `/deleteLike/${articleId}`;
     const apiEndPointPost = `/addComment/${articleId}`;
     const apiEndPointGet = `/allCommentsForAnArticle/${articleId}`;
     const apiEndPointCheckLike = `/checkLike/${articleId}`;
+    const apiEndPointTotalLikes = `/totalLikes/${articleId}`;
 
     useEffect(() => {
         const getComments = async () => {
@@ -40,6 +42,20 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
         };
         checkIfLiked();
     }, [user])
+
+    useEffect(() => {
+        const fetchLikeCount = async () => {
+            try {
+                const response = await axiosInstance.get(apiEndPointTotalLikes);
+                setLikeCount(response.data.totalLikes);
+            } catch (error) {
+                console.error("Error fetching like count:", error);
+            }
+        };
+
+        fetchLikeCount();
+    }, [apiEndPointTotalLikes, isLiked]);
+
 
     const handleToggleLike = async () => {
         try {
@@ -118,7 +134,7 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
                     </Button>
                     <div className='flex'>
                         <Button color='light' className='bg-transparent border-none' onClick={handleToggleLike}>
-                            <FaHeart />&nbsp;{isLiked ? 'Unlike' : 'Like'}
+                            <FaHeart />&nbsp;{isLiked ? 'Unlike' : 'Like'}  ({likeCount})
                         </Button>
                         <Button color='light' className='bg-transparent border-none'>
                             <FaSave />&nbsp;234
