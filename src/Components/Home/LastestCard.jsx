@@ -90,7 +90,7 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
         <div className={`flex flex-col-reverse ${showFullArticle ? '' : 'lg:flex-row'} items-center justify-between gap-5 mb-10  p-4 rounded-lg bg-[#ffffff85]`}>
             <div className='flex flex-col justify-between items-center w-full'>
                 <div className='w-full'>
-                    <h1 className='text-gray-700 font-black text-xs'>{articleId}</h1>
+                    {/* <h1 className='text-gray-700 font-black text-xs'>{articleId}</h1> */}
                     <h1 className='text-gray-800 font-black text-2xl'>{title}</h1>
                     <p className='text-gray-700 text-justify pb-4'>Written by {author} </p>
                     <p className='text-gray-700'>
@@ -151,26 +151,14 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
                     className='rounded-lg overflow-hidden'
                     style={{ maxWidth: '400px', maxHeight: '500px', width: '100%', height: 'auto' }}
                 >
-                    <Image
-                        src={'/bannerPic.jpg'}
-                        alt='Image description'
-                        layout='responsive'
-                        width={400}
-                        height={500}
-                    />
+                    <img className='w-full' src={thumbnail} alt="" />
                 </div>
             ) : (
                 <div
                     className='rounded-lg overflow-hidden'
                     style={{ maxWidth: '1080px', maxHeight: '480px', width: '100%', height: 'auto' }}
                 >
-                    <Image
-                        src={'/bannerPic.jpg'}
-                        alt='Image description'
-                        layout='responsive'
-                        width={400}
-                        height={500}
-                    />
+                    <img className='w-full' src={thumbnail} alt="" />
                 </div>
             )}
         </div>

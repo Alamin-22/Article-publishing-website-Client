@@ -103,6 +103,7 @@ const Page = () => {
             title={article.title}
             author={article.author}
             text={article.article}
+            thumbnail={article.imglink}
           />
         ))}
       </div>
