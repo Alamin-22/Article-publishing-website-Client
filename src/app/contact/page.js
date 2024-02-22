@@ -1,7 +1,5 @@
 import { FaLocationArrow, FaPhoneSquareAlt, FaMailBulk } from "react-icons/fa";
-// import LocationMap from "./../../components/LocationMap";
-import { Banner, Button, Label, TextInput } from "flowbite-react";
-import { HiX } from "react-icons/hi";
+
 
 
 

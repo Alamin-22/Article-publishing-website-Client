@@ -1,11 +1,11 @@
 "use client";
 import axiosInstance from "@/api";
 import { useEffect, useState } from "react";
-import useAuth from "./../../../Hooks/useAuth";
+import useAuth from './../../Hooks/useAuth';
 
-const MyAllArticle = () => {
-  const { user } = useAuth();
-  const apiEndPoint = "/allArticle";
+const MyPost = () => {
+  const { user } = useAuth()
+  const apiEndPoint = "/v1/api/posts";
   const [myAllArticleData, setMyAllArticleData] = useState([]);
 
   useEffect(() => {
@@ -23,13 +23,15 @@ const MyAllArticle = () => {
   }, []);
 
   const myArticles = myAllArticleData.filter(
-    (article) => article?.authorEmail === user?.email
+    (article) => article?.userEmail === user?.email
   );
 
   return (
     <div className="">
         <div >
-          <h1 className="bg-[#D7D7D7] w-36 mx-auto shadow-2xl rounded-2xl font-semibold p-5 mb-2 text-center m-2">Total Post: {myArticles?.length}</h1>
+          
+          
+          <h1 className="bg-[#D7D7D7]   font-semibold my-2 text-center m-2">Total Post: {myArticles?.length}</h1>
           </div>
       <div>
         {myArticles?.length === 0 && <div>You Have No Article</div>}
@@ -48,15 +50,15 @@ const MyAllArticle = () => {
               <div className="lg:col-span-2 flex justify-center items-center">
                 <img
                   className="h-36 lg:w-56 w-full rounded-xl object-cover  border-white border-2"
-                  src={article?.imglink}
+                  src={article?.userPhoto}
                   alt="Profile Image"
                 />
               </div>
               <div className="lg:col-span-6  p-3">
-                <h1 className="text-gray-800 font-black mb-3  text-2xl">
+                {/* <h1 className="text-gray-800 font-black mb-3  text-2xl">
                   {article?.title}
-                </h1>
-                <p className="text-gray-700 text-justify">{article?.article.slice(0, 200)}</p>
+                </h1> */}
+                <p className="text-gray-700 text-justify">{article?.content.slice(0, 200)}</p>
               </div>
             </div>
           </div>
@@ -66,4 +68,4 @@ const MyAllArticle = () => {
   );
 };
 
-export default MyAllArticle;
+export default MyPost;

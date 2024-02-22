@@ -76,7 +76,7 @@ const BarChart = () => {
             
             },
             title: {
-              text: 'Monthly Inflation in Argentina, 2002',
+              text: 'Monthly Inflation at Scriptly, 2024',
               floating: true,
               offsetY: 330,
               align: 'center',

@@ -1,7 +1,7 @@
 "use client"
 import ReactApexChart from 'react-apexcharts'
 
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 const Chart = () => {
     const [state, setState] = useState({
