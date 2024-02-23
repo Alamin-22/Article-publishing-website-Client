@@ -8,8 +8,11 @@ import { FaLinkedin } from "react-icons/fa";
 import { RiInstagramLine } from "react-icons/ri";
 import { FaTwitter } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
-import { Label, Textarea } from 'flowbite-react';
-
+import { Textarea } from 'flowbite-react';
+import { Button } from 'flowbite-react';
+import { HiAdjustments, HiUserCircle } from 'react-icons/hi';
+import { ImCancelCircle } from "react-icons/im";
+import { IoCloudUploadOutline } from "react-icons/io5";
 const ProfileDetails = () => {
 
     const [editMode, setEditMode] = useState(false);
@@ -31,21 +34,35 @@ const ProfileDetails = () => {
                     <div>
                         <div className='flex gap-3'>
                             <h2 className='text-2xl font-semibold text-gray-800 mb-4'>About Me</h2>
-                            <FaRegEdit className='mr-10 mt-1 text-blue-500 text-xl hover:cursor-pointer hover:text-blue-700' />
+                            <FaRegEdit onClick={handleEditClick} className='mr-10 mt-1 text-blue-500 text-xl hover:cursor-pointer hover:text-blue-700' />
                         </div>
 
                     </div>
 
                     <div className='p-1'>
                         {editMode ? (
-                            <div className="max-w-md">
+                            <form >
                                 <div className="max-w-md">
-                                    <Textarea id="about"
-                                        placeholder="Write About Yourself..."
-                                        required rows={10} value={aboutText}
-                                        onChange={handleAboutChange} />
+                                    <div className="max-w-md">
+                                        <Textarea id="about"
+                                            placeholder="Write About Yourself..."
+                                            required rows={10} value={aboutText}
+                                            onChange={handleAboutChange} />
+                                    </div>
                                 </div>
-                            </div>
+                                <div className='mt-2'>
+                                    <Button.Group outline>
+                                        <Button onClick={handleEditClick} gradientMonochrome="info">
+                                            <ImCancelCircle className="mr-3 h-4 w-4" />
+                                            Cancel
+                                        </Button>
+                                        <Button gradientMonochrome="info">
+                                            <IoCloudUploadOutline className="mr-3 h-4 w-4" />
+                                            Update
+                                        </Button>
+                                    </Button.Group>
+                                </div>
+                            </form>
                         ) : (
                             <p>
                                 {aboutText}
