@@ -9,20 +9,20 @@ const CommunityCommentCard = ({ post }) => {
   const { user } = useAuth();
   const [postLikes, setPostLikes] = useState({});
   const [allCommunityData, setAllCommunityData] = useState([]);
-  const [comment, setComment] = useState({}); // Define the comment state variable here
+  const [comment, setComment] = useState({});
   const apiEndPointComment = "/v1/api/CommunityComments";
 
-  // Function to format date and time
+
   const formatDateTime = (dateTime) => {
     return moment(dateTime).format("hh:mm a DD-MM-YYYY");
   };
 
-  // Function to handle like/unlike
+  
   const handleLike = async (postId) => {
     try {
-      // Check if the user has already liked the post
+      
       if (postLikes[postId]) {
-        // If already liked, unlike the post
+        
         await axiosInstance.delete(`/v1/api/posts/${postId}/likes`);
         setPostLikes((prevLikes) => ({
           ...prevLikes,
@@ -30,7 +30,7 @@ const CommunityCommentCard = ({ post }) => {
         }));
         toast.success("Post unliked");
       } else {
-        // If not liked, like the post
+        
         await axiosInstance.post(`/v1/api/posts/${postId}/likes`);
         setPostLikes((prevLikes) => ({
           ...prevLikes,
@@ -92,13 +92,13 @@ const CommunityCommentCard = ({ post }) => {
   }, [post]);
 
   useEffect(() => {
-    // Fetch post likes when component mounts
+   
     const fetchPostLikes = async () => {
       try {
         const { data: likes } = await axiosInstance.get(
           `/v1/api/posts/${post._id}/likes`
         );
-        // Update postLikes state with fetched likes
+       
         setPostLikes({ ...postLikes, [post._id]: likes });
       } catch (error) {
         console.error("Error fetching post likes:", error);
@@ -110,16 +110,16 @@ const CommunityCommentCard = ({ post }) => {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: post.title, // Title of the shared content
-          text: post.content, // Text content to be shared
-          url: window.location.href // URL of the shared content
+          title: post.title, 
+          text: post.content,
+          url: window.location.href 
         });
       } else {
         throw new Error("Web Share API not supported");
       }
     } catch (error) {
       console.error("Error sharing:", error);
-      // Handle error
+     
     }
   };
 

@@ -49,6 +49,7 @@ const CommunityViewPost = () => {
                 alt="User image"
               />
               <div>
+              
                 <h1 className="font-semibold text-gray-900 dark:text-white">
                   {post?.userName}
                 </h1>
@@ -57,9 +58,15 @@ const CommunityViewPost = () => {
                 </p>
               </div>
             </div>
-            <div className="pb-3 mt-3 bg-white p-2 rounded-lg">
+            <div className="pb-3 mt-3 bg-white p-2 rounded-t-lg">
+            
               <p>{post?.content}</p>
             </div>
+            <img
+                className="w-full h-56 rounded-b-lg object-cover"
+                src={post?.postImglink}
+                alt="User image"
+              />
             < CommunityCommentCard post={post} />
           </div>
         ))}
