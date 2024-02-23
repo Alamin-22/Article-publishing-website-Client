@@ -89,7 +89,7 @@ const support = () => {
 
                     </div>
                     <div>
-                        <form className="mt-6 p-6 bg-gray-100 rounded-lg">
+                        <form className="mt-6 p-6 bg-gray-300 rounded-lg">
                             <div className="flex-1">
                                 <label className="block mb-2 text-sm text-gray-600 ">Full Name</label>
                                 <input type="text" name="Name" placeholder="John Doe" className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-rose-200 focus:ring-rose-200 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />

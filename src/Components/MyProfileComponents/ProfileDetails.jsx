@@ -7,7 +7,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { RiInstagramLine } from "react-icons/ri";
 import { FaTwitter } from "react-icons/fa";
-
+import { FaRegEdit } from "react-icons/fa";
 
 
 const ProfileDetails = () => {
@@ -15,10 +15,16 @@ const ProfileDetails = () => {
         <div>
             <div className='grid grid-cols-4 mt-2 gap-4'>
                 <div className='col-span-2'>
-                    <h2 className='text-2xl font-semibold text-gray-800 mb-4'>About Me</h2>
-                    <p>
-                        Hello, I'm Md. Al Amin Mollik, a passionate junior web developer with expertise in the MERN stack - React.js, Node.js, Express.js, and MongoDB. My journey in the world of technology is fueled by a relentless passion for crafting seamless and user-centric web experiences.
-                    </p>
+                    <div className='flex gap-3'>
+                        <h2 className='text-2xl font-semibold text-gray-800 mb-4'>About Me</h2>
+                        <FaRegEdit className='mr-10 mt-1 text-blue-500 text-xl hover:cursor-pointer hover:text-blue-700' />
+                    </div>
+
+                    <div className=' p-1'>
+                        <p>
+                            Hello, I'm Md. Al Amin Mollik, a passionate junior web developer with expertise in the MERN stack - React.js, Node.js, Express.js, and MongoDB. My journey in the world of technology is fueled by a relentless passion for crafting seamless and user-centric web experiences.
+                        </p>
+                    </div>
                     <div className='mt-8 space-y-2 text-gray-700'>
                         <p className='flex items-center gap-2 font-medium'>
                             <CgWebsite className='text-xl ' /> Web Developer
@@ -36,19 +42,22 @@ const ProfileDetails = () => {
 
                 </div>
                 <div className='col-span-2'>
-                    <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Social Media Link</h2>
+                    <div className='flex gap-4'>
+                        <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Social Media Link</h2>
+                        <FaRegEdit className='mr-10 mt-1 text-blue-500 text-xl hover:cursor-pointer hover:text-blue-700' />
+                    </div>
                     <div className=' space-y-2 text-gray-700'>
-                        <p className='flex items-center gap-2 font-medium'>
+                        <p className='flex items-center gap-2 font-medium flex-wrap'>
                             <FaFacebook className='text-xl text-blue-600' /> www.facebook.com/xyz22
                         </p>
-                        <p className='flex items-center gap-2 font-medium'>
-                            <FaLinkedin className='text-xl text-blue-600 ' /> https://www.linkedin.com/in/md-al-amin-mollik
+                        <p className='flex items-center gap-2 font-medium flex-wrap'>
+                            <FaLinkedin className='text-xl text-blue-600 ' /> www.linkedin.com/in/md-al-amin-mollik
                         </p>
                         <p className='flex items-center gap-2 font-medium'>
-                            <FaTwitter className='text-xl text-blue-600 ' /> www.twitter.com/xyz22
+                            <FaTwitter className='text-xl text-blue-600 flex-wrap' /> www.twitter.com/xyz22
                         </p>
                         <p className='flex items-center gap-2 font-medium'>
-                            <RiInstagramLine className='text-xl text-red-500 ' /> www.instagram.com/xyz22
+                            <RiInstagramLine className='text-xl text-red-500 flex-wrap' /> www.instagram.com/xyz22
                         </p>
                     </div>
                 </div>
