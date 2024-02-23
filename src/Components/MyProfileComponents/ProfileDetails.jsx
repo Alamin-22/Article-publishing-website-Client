@@ -1,5 +1,5 @@
 import React, { useState } from 'react'; import { PiDesktopTowerDuotone } from "react-icons/pi";
-import { CgWebsite } from "react-icons/cg"; import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { FaEnvelopeOpenText } from "react-icons/fa";
 import { FaGraduationCap, FaLocationDot } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
@@ -13,18 +13,19 @@ import { ImCancelCircle } from "react-icons/im";
 import { IoCloudUploadOutline } from "react-icons/io5";
 
 import { FloatingLabel } from 'flowbite-react';
+import axiosInstance from '@/api';
+import toast from 'react-hot-toast';
 
 
 
 
-const ProfileDetails = () => {
+const ProfileDetails = ({ ProfileInfo }) => {
 
     const [editMode, setEditMode] = useState(false);
     const [editWorkEdu, setEditWorkEdu] = useState(false);
     const [editSocial, setEditSocial] = useState(false);
-    const [aboutText, setAboutText] = useState("Hello, I'm Md. Al Amin Mollik, a passionate junior web developer with expertise in the MERN stack - React.js, Node.js, Express.js, and MongoDB. My journey in the world of technology is fueled by a relentless passion for crafting seamless and user-centric web experiences.");
 
-
+    // Toggle Related Func
     const handleEditClick = () => {
         setEditMode(!editMode);
     };
@@ -35,10 +36,74 @@ const ProfileDetails = () => {
         setEditSocial(!editSocial);
     };
 
-    const handleAboutChange = (e) => {
-        setAboutText(e.target.value);
-    };
+    // end Toggle Related Func
 
+    // Form Related
+
+    const handleAbout = (e) => {
+        e.preventDefault();
+        const AboutForm = new FormData(e.currentTarget);
+        const About = AboutForm.get("About");
+        // console.log({About});
+        axiosInstance.patch(`/v1/api/patch-user/${ProfileInfo?._id}`, { About })
+            .then(res => {
+                toast.success('About Section Successfully Updated!')
+                console.log(res.data);
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error('Sorry There is some Internal Issue. Please Try again later')
+            })
+        setEditMode(!editMode);
+    }
+    const handleWorkEdu = (e) => {
+        e.preventDefault();
+        const WorkEdu = new FormData(e.currentTarget);
+        const WorkSector = WorkEdu.get("WorkSector");
+        const WorkPlace = WorkEdu.get("WorkPlace");
+        const Education = WorkEdu.get("Education");
+        const location = WorkEdu.get("location");
+
+        const WorkEduInfo = {
+            WorkSector, WorkPlace, Education, location
+        }
+
+        axiosInstance.patch(`/v1/api/patch-user/${ProfileInfo?._id}`, WorkEduInfo)
+            .then(res => {
+                toast.success('Work And Education Successfully Updated!')
+                console.log(res.data);
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error('Sorry There is some Internal Issue. Please Try again later')
+            })
+        setEditWorkEdu(!editWorkEdu);
+    }
+    const handleSocial = (e) => {
+        e.preventDefault();
+        const Social = new FormData(e.currentTarget);
+        const Facebook = Social.get("fb");
+        const LinkedIn = Social.get("lnkdin");
+        const Twitter = Social.get("twtr");
+        const Instagram = Social.get("insta");
+
+        const WorkSocial = {
+            Facebook, LinkedIn, Twitter, Instagram,
+        }
+        axiosInstance.patch(`/v1/api/patch-user/${ProfileInfo?._id}`, WorkSocial)
+            .then(res => {
+                toast.success('Social Links Successfully Updated!')
+                console.log(res.data);
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error('Sorry There is some Internal Issue. Please Try again later')
+            })
+        setEditSocial(!editSocial);
+    }
+
+
+    console.log(ProfileInfo)
     return (
         <div>
             <div className='grid grid-cols-4 mt-2 gap-4'>
@@ -53,13 +118,14 @@ const ProfileDetails = () => {
 
                     <div className='p-1'>
                         {editMode ? (
-                            <form >
+                            <form onSubmit={handleAbout}>
                                 <div className="max-w-md">
                                     <div className="max-w-md">
                                         <Textarea id="about"
+                                            name='About'
                                             placeholder="Write About Yourself..."
-                                            required rows={10} value={aboutText}
-                                            onChange={handleAboutChange} />
+                                            required rows={10} value={ProfileInfo?.About}
+                                        />
                                     </div>
                                 </div>
                                 <div className='mt-2'>
@@ -68,135 +134,184 @@ const ProfileDetails = () => {
                                             <ImCancelCircle className="mr-3 h-4 w-4" />
                                             Cancel
                                         </Button>
-                                        <Button gradientMonochrome="info">
+                                        <Button type='submit' gradientMonochrome="info">
                                             <IoCloudUploadOutline className="mr-3 h-4 w-4" />
-                                            Update
+                                            Save
                                         </Button>
                                     </Button.Group>
                                 </div>
                             </form>
                         ) : (
                             <p>
-                                {aboutText}
+                                {ProfileInfo?.About}
                             </p>
                         )}
                     </div>
                 </div>
-
                 <div className='col-span-4 lg:col-span-2   space-y-2 text-gray-700'>
-                    <div className='flex items-center'>
-                        <div className='flex gap-3'>
-                            <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Work & Education</h2>
-                            <FaRegEdit onClick={handleEditWorkEdu} className='mr-10 mt-1 text-blue-500 text-xl hover:cursor-pointer hover:text-blue-700' />
-                        </div>
-                        {
-                            editWorkEdu && <div className='mb-4'>
-                                <div className='flex gap-3'>
-                                    <Button onClick={handleEditWorkEdu} gradientMonochrome="info">
-                                        <ImCancelCircle className=" text-lg" />
-                                    </Button>
-                                    <Button gradientMonochrome="info">
-                                        <IoCloudUploadOutline className="mr-3 h-4 w-4 " />
-                                        Save
-                                    </Button>
-                                </div>
-
-
+                    <form onSubmit={handleWorkEdu}>
+                        <div className='flex items-center'>
+                            <div className='flex gap-3'>
+                                <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Work & Education</h2>
+                                <FaRegEdit onClick={handleEditWorkEdu} className='mr-10 mt-1 text-blue-500 text-xl hover:cursor-pointer hover:text-blue-700' />
                             </div>
-                        }
-
-                    </div>
-
-                    <div >
-                        {
-                            editWorkEdu ?
-                                <>
-                                    <form >
-                                        <div>
-                                            <FloatingLabel variant="outlined" label="Add Your Work Sector" />
-                                            <FloatingLabel variant="outlined" label="Add A Work place" />
-                                            <FloatingLabel variant="outlined" label="Add Your Education" />
-                                            <FloatingLabel variant="outlined" label="Add Your City and Country" />
-                                        </div>
-                                    </form>
-                                </>
-                                :
-                                <>
-                                    <div className='space-y-2'>
-                                        <p className='flex items-center gap-2 font-medium'>
-                                            <PiDesktopTowerDuotone className='text-xl ' /> Web Developer
-                                        </p>
-                                        <p className='flex items-center gap-2 font-medium'>
-                                            <HiOutlineBuildingOffice2 className='text-xl ' /> Work At Web Developer
-                                        </p>
-                                        <p className='flex items-center gap-2 font-medium'>
-                                            <FaEnvelopeOpenText className='text-xl ' /> xyz@gmail.com
-                                        </p>
-                                        <p className='flex items-center gap-2 font-medium'>
-                                            <FaGraduationCap className='text-xl ' /> Studied at BUET
-                                        </p>
-                                        <p className='flex items-center gap-2 font-medium'>
-                                            <FaLocationDot className='text-xl ' /> Dhaka, Bangladesh
-                                        </p>
+                            {
+                                editWorkEdu && <div className='mb-4'>
+                                    <div className='flex gap-3'>
+                                        <Button onClick={handleEditWorkEdu} gradientMonochrome="info">
+                                            <ImCancelCircle className=" text-lg" />
+                                        </Button>
+                                        <Button type='submit' gradientMonochrome="info">
+                                            <IoCloudUploadOutline className="mr-3 h-4 w-4 " />
+                                            Save
+                                        </Button>
                                     </div>
-                                </>
-                        }
 
 
-                    </div>
+                                </div>
+                            }
 
+                        </div>
+
+                        <div >
+                            {
+                                editWorkEdu ?
+                                    <>
+
+                                        <div>
+                                            <FloatingLabel name='WorkSector' variant="outlined" label="Add Your Work Sector" />
+                                            <FloatingLabel name='WorkPlace' variant="outlined" label="Add A Work place" />
+                                            <FloatingLabel name='Education' variant="outlined" label="Add Your School / College/ University " />
+                                            <FloatingLabel name='location' variant="outlined" label="Add Your City and Country" />
+                                        </div>
+
+                                    </>
+                                    :
+                                    <>
+                                        <div className='space-y-2'>
+                                            <p className='flex items-center gap-2 font-medium'>
+                                                <PiDesktopTowerDuotone className='text-xl ' /> {ProfileInfo?.WorkSector}
+                                            </p>
+                                            <p className='flex items-center gap-2 font-medium'>
+                                                <HiOutlineBuildingOffice2 className='text-xl ' />
+                                                 Work At {ProfileInfo?.WorkPlace}
+                                            </p>
+                                            <p className='flex items-center gap-2 font-medium'>
+                                                <FaEnvelopeOpenText className='text-xl ' /> {ProfileInfo?.email}
+                                            </p>
+                                            <p className='flex items-center gap-2 font-medium'>
+                                                <FaGraduationCap className='text-xl ' />
+                                                 Studied At {ProfileInfo?.Education} 
+                                            </p>
+                                            <p className='flex items-center gap-2 font-medium'>
+                                                <FaLocationDot className='text-xl ' /> {ProfileInfo?.location}
+                                            </p>
+                                        </div>
+                                    </>
+                            }
+
+
+                        </div>
+
+                    </form>
                 </div>
 
             </div>
-            <div className=' mt-8'>
-                <div className='flex gap-4'>
-                    <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Social Media Link</h2>
-                    <FaRegEdit onClick={handleEditSocial} className='mr-10 mt-1 text-blue-500 text-xl hover:cursor-pointer hover:text-blue-700' />
+            <form onSubmit={handleSocial} className=' mt-8'>
+                <div className='flex'>
+                    <div className='flex gap-4'>
+                        <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Social Media Link</h2>
+                        <FaRegEdit onClick={handleEditSocial} className='mr-10 mt-1 text-blue-500 text-xl hover:cursor-pointer hover:text-blue-700' />
+                    </div>
+                    {
+                        editSocial && <div className='mb-4'>
+                            <div className='flex gap-3'>
+                                <Button onClick={handleEditSocial} gradientMonochrome="info">
+                                    <ImCancelCircle className=" text-lg" />
+                                </Button>
+                                <Button type='submit' gradientMonochrome="info">
+                                    <IoCloudUploadOutline className="mr-3 h-4 w-4 " />
+                                    Save
+                                </Button>
+                            </div>
+
+
+                        </div>
+                    }
                 </div>
+
+
                 {
                     editSocial ?
                         <>
-                            <form >
-                                <div>
-                                    <div className='   relative'>
-                                        <FaFacebook  className=' absolute top-3 left-3 z-20 text-2xl text-blue-600' />
-                                        <FloatingLabel className='pl-12' variant="outlined" label="Add Your Facebook Link" />
-                                    </div>
-                                    <div className='   relative'>
-                                        <FaLinkedin  className=' absolute top-3 left-3 z-20 text-2xl text-blue-600' />
-                                        <FloatingLabel className='pl-12' variant="outlined" label="Add Your LinkedIn Link" />
-                                    </div>
-                                    <div className='   relative'>
-                                        <FaTwitter  className=' absolute top-3 left-3 z-20 text-2xl text-blue-600' />
-                                        <FloatingLabel className='pl-12' variant="outlined" label="Add Your Twitter Link" />
-                                    </div>
-                                    <div className='   relative'>
-                                        <RiInstagramLine  className=' absolute top-3 left-3 z-20 text-2xl text-blue-600' />
-                                        <FloatingLabel className='pl-12' variant="outlined" label="Add Your Instagram" />
-                                    </div>
+
+                            <div>
+                                <div className='   relative'>
+                                    <FaFacebook className=' absolute top-3 left-3 z-20 text-2xl text-blue-600' />
+                                    <FloatingLabel name='fb' className='pl-12' variant="outlined"
+                                        label="Add Your Facebook Link" defaultValue={ProfileInfo?.Facebook} />
                                 </div>
-                            </form>
+                                <div className='   relative'>
+                                    <FaLinkedin className=' absolute top-3 left-3 z-20 text-2xl text-blue-600' />
+                                    <FloatingLabel name='lnkdin' className='pl-12' variant="outlined"
+                                        defaultValue={ProfileInfo?.LinkedIn}
+                                        label="Add Your LinkedIn Link" />
+                                </div>
+                                <div className='   relative'>
+                                    <FaTwitter className=' absolute top-3 left-3 z-20 text-2xl text-blue-600' />
+                                    <FloatingLabel name='twtr' className='pl-12' variant="outlined"
+                                        defaultValue={ProfileInfo?.Twitter}
+                                        label="Add Your Twitter Link" />
+                                </div>
+                                <div className='   relative'>
+                                    <RiInstagramLine className=' absolute top-3 left-3 z-20 text-2xl text-blue-600' />
+                                    <FloatingLabel name='insta' className='pl-12' variant="outlined"
+                                        defaultValue={ProfileInfo?.Instagram}
+                                        label="Add Your Instagram" />
+                                </div>
+                            </div>
+
                         </>
                         :
                         <>
                             <div className=' space-y-2 text-gray-700'>
-                                <p className='flex items-center gap-2 font-medium flex-wrap'>
-                                    <FaFacebook className='text-xl text-blue-600' /> www.facebook.com/xyz22
-                                </p>
-                                <p className='flex items-center gap-2 font-medium flex-wrap'>
-                                    <FaLinkedin className='text-xl text-blue-600 ' /> www.linkedin.com/in/md-al-amin-mollik
-                                </p>
-                                <p className='flex items-center gap-2 font-medium'>
-                                    <FaTwitter className='text-xl text-blue-600 flex-wrap' /> www.twitter.com/xyz22
-                                </p>
-                                <p className='flex items-center gap-2 font-medium'>
-                                    <RiInstagramLine className='text-xl text-red-500 flex-wrap' /> www.instagram.com/xyz22
-                                </p>
+                                <div>
+                                    <a href={ProfileInfo?.Facebook} target='_blank'>
+                                        <p className='flex items-center gap-2 font-medium flex-wrap hover:text-blue-600'>
+                                            <FaFacebook className='text-xl text-blue-600' />
+                                            {ProfileInfo?.Facebook}
+                                        </p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href={ProfileInfo?.LinkedIn} target='_blank'>
+                                        <p className='flex items-center gap-2 font-medium flex-wrap  hover:text-blue-600'>
+                                            <FaLinkedin className='text-xl text-blue-600 ' />
+                                            {ProfileInfo?.LinkedIn}
+                                        </p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href={ProfileInfo?.Twitter}>
+                                        <p className='flex items-center gap-2 font-medium hover:text-blue-600'>
+                                            <FaTwitter className='text-xl text-blue-600 flex-wrap' />
+                                            {ProfileInfo?.Twitter}
+                                        </p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href={ProfileInfo?.Instagram} target='_blank'>
+                                        <p className='flex items-center gap-2 font-medium hover:text-blue-600'>
+                                            <RiInstagramLine className='text-xl text-red-500 flex-wrap' />
+                                            {ProfileInfo?.Instagram}
+                                        </p>
+                                    </a>
+                                </div>
                             </div>
                         </>
                 }
 
-            </div>
+            </form>
         </div>
 
     );
