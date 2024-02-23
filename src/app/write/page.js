@@ -2,20 +2,67 @@
 import useAuth from "@/Hooks/useAuth";
 import axiosInstance from "@/api";
 import { Button, FileInput, Label, TextInput, Textarea } from "flowbite-react";
+import { useState } from "react";
 import toast from "react-hot-toast";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css"; // Import Quill styles
+import { imageUpload } from "@/api/utils";
+
+const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
 const page = () => {
   const { user } = useAuth();
+  const [content, setContent] = useState("");
+  const [image, setImage] = useState(null);
   const apiEndPoint = "/addArticle";
+
+  const quillModules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      [{ align: [] }],
+      [{ color: [] }],
+      ["code-block"],
+      ["clean"],
+    ],
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const quillFormats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "link",
+    "image",
+    "align",
+    "color",
+    "code-block",
+  ];
+
+  const handleEditorChange = (newContent) => {
+    setContent(newContent);
+  };
 
   const handleAdd = async (e) => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
-    const article = form.article.value;
+    // const article = form.article.value;
+    const article = content;
     const author = user.displayName;
     const authorEmail = user.email;
-    const imglink = "https://i.ibb.co/zs785ry/business-man-1572059-1920.jpg";
+    const imageData = await imageUpload(image);
+    const imglink = imageData?.data?.display_url;
     const newArticle = { title, article, author, authorEmail, imglink };
     console.log({ title, article, author, authorEmail });
 
@@ -43,7 +90,7 @@ const page = () => {
           <div className="my-2 block">
             <Label htmlFor="uploadImage" value="Upload Image" />
           </div>
-          <FileInput id="upload image" />
+          <FileInput id="upload image" onChange={handleImageChange} />
 
           <div className="my-2 block">
             <Label htmlFor="title" value="Title:" />
@@ -58,12 +105,13 @@ const page = () => {
           <div className="my-2 block">
             <Label htmlFor="article" value="Your Article:" />
           </div>
-          <Textarea
-            id="comment"
-            name="article"
-            placeholder="Write your article here...."
-            required
-            rows={15}
+
+          <QuillEditor
+            value={content}
+            onChange={handleEditorChange}
+            modules={quillModules}
+            formats={quillFormats}
+            className="w-full h-[70%] mt-10 bg-white"
           />
           <Button color="dark" className="my-2" type="submit">
             Publish
