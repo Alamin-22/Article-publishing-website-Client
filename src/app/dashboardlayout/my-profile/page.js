@@ -28,7 +28,7 @@ const MyProfile = () => {
   const ProfileInfo = userInfo && userInfo.find(u => u.email === user?.email);
 
 
-  console.log("user infor", ProfileInfo);
+  // console.log("user infor", ProfileInfo);
 
 
 
@@ -38,7 +38,7 @@ const MyProfile = () => {
         Profile Information
       </h2>
       <div className="py-3">
-        <BreadCrumb></BreadCrumb>
+        <BreadCrumb user={user} ></BreadCrumb>
       </div>
       {/* user profile with banner and title */}
       <figure className="relative">
