@@ -10,12 +10,13 @@ import useAuth from "@/Hooks/useAuth";
 import { FileInput, Label } from 'flowbite-react';
 import { FaRegEdit } from "react-icons/fa";
 import { Button } from 'flowbite-react';
-import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
+import { imageUpload } from "@/api/utils";
 
 const MyProfile = () => {
   const [editCoverPic, setEditCoverPic] = useState(false);
   const [userInfo, setUserInfo] = useState();
   const { user } = useAuth();
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     axiosInstance.get("/v1/api/all-users")
@@ -31,8 +32,12 @@ const MyProfile = () => {
 
 
   // console.log("user infor", ProfileInfo);
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   const handleEditCover = () => {
+    
     setEditCoverPic(!editCoverPic);
   };
 
