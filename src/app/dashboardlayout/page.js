@@ -1,4 +1,4 @@
-"use client";
+
 // import Chart from "@/Components/DashboardComponents/Chart";
 // import BarChart from "@/Components/DashboardComponents/BarChart";
 // import PieChart from "@/Components/DashboardComponents/PieChart";
