@@ -3,8 +3,8 @@ import ReactApexChart from 'react-apexcharts'
 
 import React, { useState } from 'react';
 
-const PieChart = () => {
-    const [PiState, setPiState] = useState({
+const Chart = () => {
+    const [state, setState] = useState({
 
         series: [44, 55, 41, 17, 15],
         options: {
@@ -30,14 +30,14 @@ const PieChart = () => {
         <div>
             <div className=' sm:w-[350px] md:w-[400px] lg:w-[350px] xl:w-[500px]  mx-auto'>
                 <ReactApexChart
-                    options={PiState.options}
-                    series={PiState.series}
+                    options={state.options}
+                    series={state.series}
                     type="donut" height={350} className={"w-full"} />
             </div>
         </div>
     );
 };
 
-export default PieChart;
+export default Chart;
 
 
