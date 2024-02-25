@@ -137,7 +137,7 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
                             {isLiked ? <FaHeart className='text-red-500' /> : <FaHeart className='' />}  &nbsp; {likeCount}
                         </Button>
                         <Button color='light' className='bg-transparent border-none'>
-                            <FaSave />&nbsp;234
+                            <FaSave />&nbsp;
                         </Button>
                     </div>
                 </div>
