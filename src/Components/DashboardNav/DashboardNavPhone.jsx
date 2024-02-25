@@ -25,8 +25,8 @@ const DashboardNavPhone = ({ links }) => {
       {/* Drawer component */}
       <div
         id="drawer-navigation"
-        className={`fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'
-          } bg-white w-64 dark:bg-gray-800 `}
+        className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'
+          } bg-white w-64 dark:bg-gray-800`}
         tabIndex="-1"
         aria-labelledby="drawer-navigation-label"
       >

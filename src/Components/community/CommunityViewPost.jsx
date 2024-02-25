@@ -1,16 +1,41 @@
-
+"use client";
+import  { useState, useEffect } from "react";
+import axiosInstance from "@/api";
+import useAuth from "./../../Hooks/useAuth";
+import toast from "react-hot-toast";
 import moment from "moment";
 import CommunityCommentCard from "./CommunityCommentCard";
-import getCommunityPost from "@/lib/getCommunityPost";
 
-const CommunityViewPost = async () => {
-
+const CommunityViewPost = () => {
+  const { user } = useAuth();
   
+  const [allPostData, setAllPostData] = useState([]);
+  const [allCommunityData, setAllCommunityData] = useState([]);
+  
+  const apiEndPoint = "/v1/api/posts";
+  
+
+
   const formatDateTime = (dateTime) => {
     return moment(dateTime, "hh:mm a YYYY-MM-DD").format("hh:mm a DD-MM-YYYY");
   };
 
-  const allPostData= await getCommunityPost()
+  
+
+  useEffect(() => {
+    const getAllPostData = async () => {
+      try {
+        const { data: res } = await axiosInstance.get(apiEndPoint);
+        setAllPostData(res);
+      } catch (error) {
+        console.error("Error fetching all post data:", error);
+        toast.error("Failed to fetch post data.");
+      }
+    };
+    getAllPostData();
+  }, []);
+
+  
 
   return (
     <div className="">
@@ -36,13 +61,11 @@ const CommunityViewPost = async () => {
             
               <p>{post?.content}</p>
             </div>
-            {post?.postImglink? 
             <img
-            className="w-full h-56 rounded-b-lg object-cover"
-            src={post?.postImglink}
-            alt="User image"
-          /> : "" }
-            
+                className="w-full h-56 rounded-b-lg object-cover"
+                src={post?.postImglink}
+                alt="User image"
+              />
             < CommunityCommentCard post={post} />
           </div>
         ))}

@@ -5,7 +5,7 @@ import { HiHome } from 'react-icons/hi';
 
 import React from 'react';
 
-const BreadCrumb = ({user}) => {
+const BreadCrumb = () => {
     return (
         <Breadcrumb aria-label="Default breadcrumb example">
             <Breadcrumb.Item href="/" icon={HiHome}>
@@ -13,7 +13,7 @@ const BreadCrumb = ({user}) => {
             </Breadcrumb.Item>
             <Breadcrumb.Item >Dashboard</Breadcrumb.Item>
             <Breadcrumb.Item >My Profile</Breadcrumb.Item>
-            <Breadcrumb.Item>{user?.displayName}</Breadcrumb.Item>
+            <Breadcrumb.Item>Alamin mollik</Breadcrumb.Item>
         </Breadcrumb>
     );
 };

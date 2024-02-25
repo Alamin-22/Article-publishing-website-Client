@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState, useEffect } from "react";
 import axiosInstance from "@/api";
 import moment from "moment";
@@ -12,13 +12,17 @@ const CommunityCommentCard = ({ post }) => {
   const [comment, setComment] = useState({});
   const apiEndPointComment = "/v1/api/CommunityComments";
 
+
   const formatDateTime = (dateTime) => {
     return moment(dateTime).format("hh:mm a DD-MM-YYYY");
   };
 
+  
   const handleLike = async (postId) => {
     try {
+      
       if (postLikes[postId]) {
+        
         await axiosInstance.delete(`/v1/api/posts/${postId}/likes`);
         setPostLikes((prevLikes) => ({
           ...prevLikes,
@@ -26,6 +30,7 @@ const CommunityCommentCard = ({ post }) => {
         }));
         toast.success("Post unliked");
       } else {
+        
         await axiosInstance.post(`/v1/api/posts/${postId}/likes`);
         setPostLikes((prevLikes) => ({
           ...prevLikes,
@@ -76,7 +81,10 @@ const CommunityCommentCard = ({ post }) => {
         const { data: res } = await axiosInstance.get(apiEndPointComment);
         setAllCommunityData(res);
       } catch (error) {
-        console.error("Error fetching all community comments data:", error);
+        console.error(
+          "Error fetching all community comments data:",
+          error
+        );
         toast.error("Failed to fetch community comments data.");
       }
     };
@@ -84,12 +92,13 @@ const CommunityCommentCard = ({ post }) => {
   }, [post]);
 
   useEffect(() => {
+   
     const fetchPostLikes = async () => {
       try {
         const { data: likes } = await axiosInstance.get(
           `/v1/api/posts/${post._id}/likes`
         );
-
+       
         setPostLikes({ ...postLikes, [post._id]: likes });
       } catch (error) {
         console.error("Error fetching post likes:", error);
@@ -101,15 +110,16 @@ const CommunityCommentCard = ({ post }) => {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: post.title,
+          title: post.title, 
           text: post.content,
-          url: window.location.href,
+          url: window.location.href 
         });
       } else {
         throw new Error("Web Share API not supported");
       }
     } catch (error) {
       console.error("Error sharing:", error);
+     
     }
   };
 
@@ -144,12 +154,12 @@ const CommunityCommentCard = ({ post }) => {
               </button>
             </div>
             <div className="hover:text-blue-700 text-sm font-semibold cursor-pointer">
-              <button
-                className="hover:text-blue-700 text-sm font-semibold cursor-pointer"
-                onClick={handleShare}
-              >
-                Share
-              </button>
+            <button
+          className="hover:text-blue-700 text-sm font-semibold cursor-pointer"
+          onClick={handleShare}
+        >
+          Share
+        </button>
             </div>
           </div>
         </div>

@@ -134,7 +134,7 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
                     </Button>
                     <div className='flex'>
                         <Button color='light' className='bg-transparent border-none' onClick={handleToggleLike}>
-                            <FaHeart />&nbsp;{isLiked ? 'Unlike' : 'Like'}  ({likeCount})
+                            {isLiked ? <FaHeart className='text-red-500' /> : <FaHeart className='' />}  &nbsp; {likeCount}
                         </Button>
                         <Button color='light' className='bg-transparent border-none'>
                             <FaSave />&nbsp;234

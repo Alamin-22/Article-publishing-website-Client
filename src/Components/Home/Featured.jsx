@@ -1,38 +1,45 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
+import LastestCard from './LastestCard';
+import CategoryBox from './CategoryBox';
+import axios from 'axios';
+import axiosInstance from '@/api';
 import FeaturedCard from './FeaturedCard';
+import { Carousel } from 'flowbite-react';
 
-const featuredData = [
-    {
-        idx: "01",
-        title: "This a Title Sent Through Props",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-        idx: "02",
-        title: "This a Title Sent Through Props",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-        idx: "03",
-        title: "This a Title Sent Through Props",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-        idx: "04",
-        title: "This a Title Sent Through Props",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-];
 
 const Featured = () => {
-    return (
-        <div className='bg-[#D9D9D9] flex flex-col items-start justify-center py-10'>
-            <h1 className='font-black text-4xl py-10 pl-5'>Featured Articles</h1>
+    const [FeaturedArticlesData, setFeaturedArticlesData] = useState([]);
+    const apiEndPoint = "/mostLikedArticles"
 
-            <div className='grid lg:grid-cols-2 gap-10 px-10'>
-                {featuredData.map((data) => (
-                    <FeaturedCard key={data.idx} idx={data.idx} title={data.title} text={data.text} />
-                ))}
+    useEffect(() => {
+        const getFeaturedArticlesData = async () => {
+            const { data: res } = await axiosInstance.get(apiEndPoint);
+            setFeaturedArticlesData(res);
+            console.log(res);
+        }
+        getFeaturedArticlesData();
+    }, [])
+
+
+    return (
+        <div className='bg-[#D9D9D9]'>
+            <div className='col-span-3 order-2'>
+                <h1 className='font-black text-4xl py-10 pl-5'>Featured Articles</h1>
+                <div className='max-w-7xl px-5'>
+                    <Carousel className='px-20' slide={false}>
+                        {FeaturedArticlesData.map((article, index) => (
+                            <FeaturedCard
+                                key={article._id}
+                                articleId={article._id}
+                                title={article.title}
+                                author={article.author}
+                                text={article.article}
+                                thumbnail={article.imglink}
+                            />
+                        ))}
+                    </Carousel>
+                </div>
             </div>
         </div>
     );
