@@ -9,12 +9,12 @@ const CommunityRecentPost = () => {
   const apiEndPointRecentArticles = "/allArticle";
 
 
-  
+
   useEffect(() => {
     const fetchRecentArticles = async () => {
       try {
         const { data } = await axiosInstance.get(apiEndPointRecentArticles);
-        setRecentArticles(data.slice(0, 3)); // Limiting to the latest 3 articles
+        setRecentArticles(data.slice(0, 3)); 
       } catch (error) {
         console.error("Error fetching recent articles:", error);
         toast.error("Failed to fetch recent articles.");
