@@ -47,14 +47,14 @@ const SingUpPage = () => {
     }
 
     const UserInfo = { displayName, email, password, age, Gender }
-    console.log(displayName, email, password, age, Gender);
+    // console.log(displayName, email, password, age, Gender);
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         // Signed up
         const user = result.user;
 
-        console.log(user);
+        // console.log(user);
 
         UpdateProfile(displayName)
           .then(() => {

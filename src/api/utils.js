@@ -8,6 +8,6 @@ export const imageUpload = async (image) => {
     `https://api.imgbb.com/1/upload?key=d5f96f63fdf86fa9c38f16ef618661d0`,
     formData
   );
-  console.log(data.data.display_url);
+  // console.log(data.data.display_url);
   return data;
 };

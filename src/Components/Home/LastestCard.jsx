@@ -26,7 +26,7 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
         const getComments = async () => {
             const { data: res } = await axiosInstance.get(apiEndPointGet);
             setComments(res);
-            console.log(res);
+            // console.log(res);
         };
         getComments();
     }, [])

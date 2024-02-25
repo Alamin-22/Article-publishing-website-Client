@@ -17,7 +17,7 @@ const Page = () => {
         `${apiEndPoint}?page=${currentPage}&search=${searchTerm}`
       );
       setAllArticlesData(res);
-      console.log(res);
+      // console.log(res);
     };
 
     const getTotalPages = async () => {
@@ -36,7 +36,7 @@ const Page = () => {
   };
 
   const onSubmit = async (e) => {
-    console.log(totalPages);
+    // console.log(totalPages);
     e.preventDefault();
     const searchInput = e.target.elements.searchInput.value;
     setSearchTerm(searchInput);

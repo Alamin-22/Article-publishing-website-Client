@@ -8,6 +8,8 @@ const CommunityRecentPost = () => {
   const [recentArticles, setRecentArticles] = useState([]);
   const apiEndPointRecentArticles = "/allArticle";
 
+
+  
   useEffect(() => {
     const fetchRecentArticles = async () => {
       try {

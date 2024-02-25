@@ -64,7 +64,7 @@ const page = () => {
     const imageData = await imageUpload(image);
     const imglink = imageData?.data?.display_url;
     const newArticle = { title, article, author, authorEmail, imglink };
-    console.log({ title, article, author, authorEmail });
+    // console.log({ title, article, author, authorEmail });
 
     try {
       const response = await axiosInstance.post(apiEndPoint, newArticle);

@@ -39,7 +39,7 @@ const CommunityViewPost = () => {
 
   return (
     <div className="">
-      <div>
+      
         {allPostData.map((post, index) => (
           <div className="mt-5 bg-[#ededed] p-5 rounded-lg" key={index}>
             <div className="flex gap-3">
@@ -49,7 +49,6 @@ const CommunityViewPost = () => {
                 alt="User image"
               />
               <div>
-              
                 <h1 className="font-semibold text-gray-900 dark:text-white">
                   {post?.userName}
                 </h1>
@@ -70,7 +69,7 @@ const CommunityViewPost = () => {
             < CommunityCommentCard post={post} />
           </div>
         ))}
-      </div>
+      
     </div>
   );
 };
