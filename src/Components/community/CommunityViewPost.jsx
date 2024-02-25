@@ -24,7 +24,6 @@ const CommunityViewPost = async () => {
                 alt="User image"
               />
               <div>
-              
                 <h1 className="font-semibold text-gray-900 dark:text-white">
                   {post?.userName}
                 </h1>
