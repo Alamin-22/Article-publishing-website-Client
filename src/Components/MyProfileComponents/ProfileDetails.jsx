@@ -124,7 +124,7 @@ const ProfileDetails = ({ ProfileInfo }) => {
                                         <Textarea id="about"
                                             name='About'
                                             placeholder="Write About Yourself..."
-                                            required rows={10} value={ProfileInfo?.About}
+                                            required rows={10} defaultValue={ProfileInfo?.About}
                                         />
                                     </div>
                                 </div>
@@ -194,14 +194,14 @@ const ProfileDetails = ({ ProfileInfo }) => {
                                             </p>
                                             <p className='flex items-center gap-2 font-medium'>
                                                 <HiOutlineBuildingOffice2 className='text-xl ' />
-                                                 Work At {ProfileInfo?.WorkPlace}
+                                                Work At {ProfileInfo?.WorkPlace}
                                             </p>
                                             <p className='flex items-center gap-2 font-medium'>
                                                 <FaEnvelopeOpenText className='text-xl ' /> {ProfileInfo?.email}
                                             </p>
                                             <p className='flex items-center gap-2 font-medium'>
                                                 <FaGraduationCap className='text-xl ' />
-                                                 Studied At {ProfileInfo?.Education} 
+                                                Studied At {ProfileInfo?.Education}
                                             </p>
                                             <p className='flex items-center gap-2 font-medium'>
                                                 <FaLocationDot className='text-xl ' /> {ProfileInfo?.location}
