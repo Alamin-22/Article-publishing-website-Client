@@ -1,41 +1,13 @@
-"use client";
-import  { useState, useEffect } from "react";
-import axiosInstance from "@/api";
-import useAuth from "./../../Hooks/useAuth";
-import toast from "react-hot-toast";
 import moment from "moment";
 import CommunityCommentCard from "./CommunityCommentCard";
+import getAllPostData from "@/lib/getAllPostData";
 
-const CommunityViewPost = () => {
-  const { user } = useAuth();
-  
-  const [allPostData, setAllPostData] = useState([]);
-  const [allCommunityData, setAllCommunityData] = useState([]);
-  
-  const apiEndPoint = "/v1/api/posts";
-  
-
+const CommunityViewPost = async () => {
+const allPostData = await getAllPostData()
 
   const formatDateTime = (dateTime) => {
     return moment(dateTime, "hh:mm a YYYY-MM-DD").format("hh:mm a DD-MM-YYYY");
   };
-
-  
-
-  useEffect(() => {
-    const getAllPostData = async () => {
-      try {
-        const { data: res } = await axiosInstance.get(apiEndPoint);
-        setAllPostData(res);
-      } catch (error) {
-        console.error("Error fetching all post data:", error);
-        toast.error("Failed to fetch post data.");
-      }
-    };
-    getAllPostData();
-  }, []);
-
-  
 
   return (
     <div className="">

@@ -1,4 +1,4 @@
-"use client";
+
 import axiosInstance from "@/api";
 import { useEffect, useState } from "react";
 import useAuth from './../../Hooks/useAuth';
