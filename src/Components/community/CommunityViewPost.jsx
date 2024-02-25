@@ -61,11 +61,14 @@ const CommunityViewPost = () => {
             
               <p>{post?.content}</p>
             </div>
+            {post.postImglink? 
             <img
-                className="w-full h-56 rounded-b-lg object-cover"
-                src={post?.postImglink}
-                alt="User image"
-              />
+            className="w-full h-56 rounded-b-lg object-cover"
+            src={post?.postImglink}
+            alt="User image"
+          />: ""
+            }
+            
             < CommunityCommentCard post={post} />
           </div>
         ))}
