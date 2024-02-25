@@ -14,7 +14,7 @@ const CommunityViewPost = async () => {
 
   return (
     <div className="">
-      <div>
+      
         {allPostData.map((post, index) => (
           <div className="mt-5 bg-[#ededed] p-5 rounded-lg" key={index}>
             <div className="flex gap-3">
@@ -47,7 +47,7 @@ const CommunityViewPost = async () => {
             < CommunityCommentCard post={post} />
           </div>
         ))}
-      </div>
+      
     </div>
   );
 };

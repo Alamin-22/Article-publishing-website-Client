@@ -2,7 +2,7 @@ import recentArticles from "@/lib/recentArticleCommunity";
 import { Button, Card } from "flowbite-react";
 const CommunityRecentPost = async () => {
 const recentArticleCommunity = await recentArticles()
-console.log(recentArticleCommunity);
+// console.log(recentArticleCommunity);
   return (
     <div className="w-full p-2 bg-[#ededed] mt-5 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
       <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">

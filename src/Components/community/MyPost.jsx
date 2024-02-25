@@ -5,7 +5,7 @@ const MyPost = async () => {
   const { user } = useAuth()
   
   const myAllArticleData = await getCommunityPost()
-  console.log(myAllArticleData);
+  // console.log(myAllArticleData);
   const myArticles = myAllArticleData.filter(
     (article) => article?.userEmail === user?.email
   );

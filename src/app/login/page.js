@@ -23,7 +23,7 @@ const LoginPage = () => {
     Login(email, password)
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        // console.log(user);
         toast.success(`User Successfully Logged in`);
         router.push("/");
       })
