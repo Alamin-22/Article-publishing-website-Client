@@ -4,7 +4,7 @@ import ReactApexChart from 'react-apexcharts'
 import React, { useState } from 'react';
 
 const BarChart = () => {
-    const [BarState, setBarState] = useState({
+    const [state, setState] = useState({
 
         series: [{
             name: 'Inflation',
@@ -92,8 +92,8 @@ const BarChart = () => {
         <div>
             <div className=' sm:w-[320px] md:w-[500px] lg:w-[400px] xl:w-[500px]  mx-auto'>
                 <ReactApexChart
-                    options={BarState.options}
-                    series={BarState.series}
+                    options={state.options}
+                    series={state.series}
                     type="bar" height={350} className={"w-full"} />
             </div>
         </div>

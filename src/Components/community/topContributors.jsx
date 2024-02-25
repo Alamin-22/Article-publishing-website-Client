@@ -13,6 +13,9 @@ const TopContributors = () => {
       try {
         const response = await axiosInstance.get("/v1/api/all-users");
         const users = response.data;
+
+        // Assuming users have a field `posts` which represents the number of posts they've made
+        // Sort users based on the number of posts in descending order
         users.sort((a, b) => b.posts - a.posts);
 
         // Get top 5 contributors
