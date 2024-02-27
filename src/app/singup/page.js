@@ -1,5 +1,4 @@
 "use client";
-
 import Lottie from "lottie-react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -10,7 +9,7 @@ import auth from "@/app/Firebase/firebase.config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import useAuth from "@/Hooks/useAuth";
 import { useRouter } from "next/navigation";
-import SocialLogin from "@/Components/SocialLogin/SocialLogin";
+import SocialLogin from "@/components/SocialLogin/SocialLogin";
 import axiosInstance from "@/api";
 
 const SingUpPage = () => {
