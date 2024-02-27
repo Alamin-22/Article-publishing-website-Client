@@ -5,7 +5,7 @@ import axiosInstance from "@/api";
 import toast from "react-hot-toast";
 import useAuth from './../../Hooks/useAuth';
 import moment from 'moment';
-
+import { imageUpload } from "@/api/utils";
 const CommunityPost = () => {
   const { user } = useAuth();
   const [image, setImage] = useState(null);
@@ -20,14 +20,15 @@ const CommunityPost = () => {
     const userName = user.displayName;
     const userEmail = user.email;
     const userPhoto = user.photoURL;
-
+    const imageData = await imageUpload(image);
+    const postImglink = imageData?.data?.display_url;
     const postData = {
       content: post,
       datetime: formattedDate,
       userName,
       userEmail,
       userPhoto,
-      image: image // Add image data to the postData object
+      postImglink // Add image data to the postData object
     };
 
     try {
@@ -43,10 +44,9 @@ const CommunityPost = () => {
   };
 
   const handleImageChange = (e) => {
-    // Retrieve the selected image file
-    const file = e.target.files[0];
-    setImage(file); // Update the image state with the selected file
+    setImage(e.target.files[0]);
   };
+
 
   return (
     <div className="bg-[#ededed] p-5 rounded-md">
