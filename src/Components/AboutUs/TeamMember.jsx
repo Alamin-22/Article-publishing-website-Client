@@ -3,21 +3,23 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaEnvelopeCircleCheck } from "react-icons/fa6";
 
-const TeameMember = () => {
+const TeamMember = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+   <div className="lg:m-10 shadow-xl p-5 bg-slate-300 ">
+    <h1 className="text-3xl font-bold text-center">Meet The Team</h1>
+     <div className="grid justify-center items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <a className={Member.card1} id="shadow-xl" href="#">
         <figure className="flex justify-center  items-center mt-2">
           <img
             src="https://media.licdn.com/dms/image/C5622AQE-BpHGe_If-A/feedshare-shrink_800/0/1666095915290?e=2147483647&v=beta&t=7vaEXtzon2kscoyjqfs1pSGeYSkq1xDlZiC_PSKlMto"
             alt="Shoes"
-            className="rounded-3xl h-48"
+            className="rounded-3xl h-48 bg-cover"
           />
         </figure>
         <div>
           <h1 className="text-center mt-4 text-2xl">Shahin Sadik</h1>
           <p className={Member.small}>
-            Junior Web Developer. Currently studying Applied Physics from Rajshahi City College
+          Web Developer || Frontend Developer || MERN Building Innovative Web Solutions 
           </p>
           <div className={Member.go_corner} href="#">
             <div className={Member.go_arrow}>→</div>
@@ -100,7 +102,8 @@ const TeameMember = () => {
         </div>
       </a>
     </div>
+   </div>
   );
 };
 
-export default TeameMember;
+export default TeamMember;
