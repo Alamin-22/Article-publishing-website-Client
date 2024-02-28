@@ -6,16 +6,23 @@ import CountUp from 'react-countup';
 import BreadCrumb from "@/components/MyProfileComponents/BreadCrumb";
 import ProfileTabs from "@/components/MyProfileComponents/ProfileTabs";
 import useAuth from "@/Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import axiosInstance from "@/api";
 
 const MyProfile = () => {
 
-
   const { user } = useAuth();
-  console.log(user);
 
 
 
-
+  const { data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/v1/api/all-users`);
+      return res.data;
+    },
+  });
+  console.log(users);
 
 
 
@@ -26,13 +33,13 @@ const MyProfile = () => {
         Profile Information
       </h2>
       <div className="py-3">
-        <BreadCrumb></BreadCrumb>
+        <BreadCrumb user={user}></BreadCrumb>
       </div>
       {/* user profile with banner and title */}
       <figure>
         <div className="w-full h-[350px] bg-black relative rounded-xl">
           <div className="absolute z-40 h-full w-full flex items-center justify-center text-center flex-col ">
-            
+
             <Image
               src={user?.photoURL}
               width={144}
