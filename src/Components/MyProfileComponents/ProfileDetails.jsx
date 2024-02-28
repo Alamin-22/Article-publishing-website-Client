@@ -15,9 +15,9 @@ import { TbBuildingBank } from "react-icons/tb";
 
 
 
-const ProfileDetails = ({ ProfileInfo }) => {
+const ProfileDetails = ({ UserInfo }) => {
 
-    console.log(ProfileInfo);
+    // const { About, LinkedIn, Education, Facebook, Twitter, Instagram, workPlace, WorkSector } = UserInfo;
 
     const [editAbout, setEditAbout] = useState(false);
     const [editWorkEdu, setEditWorkEdu] = useState(false);
@@ -121,7 +121,7 @@ const ProfileDetails = ({ ProfileInfo }) => {
                                 :
                                 <>
                                     <p>
-                                        Hello, I'm Md. Al Amin Mollik, a passionate junior web developer with expertise in the MERN stack - React.js, Node.js, Express.js, and MongoDB. My journey in the world of technology is fueled by a relentless passion for crafting seamless and user-centric web experiences.
+                                        {UserInfo?.About}
                                     </p>
                                 </>
                         }
@@ -162,19 +162,19 @@ const ProfileDetails = ({ ProfileInfo }) => {
                                 <>
                                     <div className='mt-2 space-y-2 text-gray-700'>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <FaComputer className='text-xl ' /> Web Developer
+                                            <FaComputer className='text-xl ' /> {UserInfo?.WorkSector}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <FaGraduationCap className='text-xl ' /> Studied at BUET
+                                            <FaGraduationCap className='text-xl ' /> Studied at {UserInfo?.Education}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <ImOffice className='text-xl ' /> Working at XYZ Company LTD
+                                            <ImOffice className='text-xl ' /> Working At {UserInfo?.WorkPlace}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <FaEnvelopeOpenText className='text-xl ' /> xyz@gmail.com
+                                            <FaEnvelopeOpenText className='text-xl ' /> {UserInfo?.email}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <FaLocationDot className='text-xl ' /> Dhaka, Bangladesh
+                                            <FaLocationDot className='text-xl ' /> {UserInfo?.location}
                                         </p>
                                     </div>
                                 </>
@@ -222,16 +222,16 @@ const ProfileDetails = ({ ProfileInfo }) => {
 
                                     <div className='  space-y-2 text-gray-700'>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <FaFacebook className='text-xl text-blue-600' /> www.facebook.com/xyz22
+                                            <FaFacebook className='text-xl text-blue-600' /> {UserInfo?.Facebook}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <FaLinkedin className='text-xl text-blue-600 ' /> https://www.linkedin.com/in/md-al-amin-mollik
+                                            <FaLinkedin className='text-xl text-blue-600 ' />{UserInfo?.LinkedIn}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <FaTwitter className='text-xl text-blue-600 ' /> www.twitter.com/xyz22
+                                            <FaTwitter className='text-xl text-blue-600 ' /> {UserInfo?.Twitter}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <RiInstagramLine className='text-xl text-red-500 ' /> www.instagram.com/xyz22
+                                            <RiInstagramLine className='text-xl text-red-500 ' /> {UserInfo?.Instagram}
                                         </p>
                                     </div>
                                 </>
