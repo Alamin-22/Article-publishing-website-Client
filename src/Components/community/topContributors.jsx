@@ -1,31 +1,8 @@
 "use client"
-import useAuth from "@/Hooks/useAuth";
-import axiosInstance from "@/api";
-import React, { useState, useEffect } from "react";
-import toast from "react-hot-toast";
 
-const TopContributors = () => {
-  const { user } = useAuth();
-  const [topContributors, setTopContributors] = useState([]);
-
-  useEffect(() => {
-    const fetchTopContributors = async () => {
-      try {
-        const response = await axiosInstance.get("/v1/api/all-users");
-        const users = response.data;
-        users.sort((a, b) => b.posts - a.posts);
-
-        // Get top 5 contributors
-        const top5Contributors = users.slice(0, 5);
-        setTopContributors(top5Contributors);
-      } catch (error) {
-        console.error("Error fetching top contributors:", error);
-        toast.error("Failed to fetch top contributors.");
-      }
-    };
-
-    fetchTopContributors();
-  }, []);
+import getTopContributors from "@/lib/getTopContributors";
+const TopContributors = async () => {
+const topContributor = await getTopContributors()
 
   return (
     <div className="w-full p-2 bg-[#ededed] rounded-lg shadow-md sm:p-8 dark:bg-gray-800">
@@ -41,8 +18,8 @@ const TopContributors = () => {
       </div>
       <div className="flow-root">
         <ul role="list" className="divide-y divide-white dark:divide-gray-700">
-          {topContributors.map((contributor, index) => (
-            <li key={contributor._id} className="py-3 sm:py-4">
+          {topContributor.map((contributor, index) => (
+            <li key={contributor?._id} className="py-3 sm:py-4">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
                   <img

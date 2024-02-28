@@ -10,7 +10,7 @@ const community = () => {
     <div className="mt-5 ">
       <div className="grid  lg:grid-cols-9">
         {/* layout 1 */}
-        <div className="lg:col-span-2 col-span-1">
+        <div className="lg:col-span-2 col-span-1 mb-5">
           <CommunityProfile />
           <CommunityMenu />
         </div>

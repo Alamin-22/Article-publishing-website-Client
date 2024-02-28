@@ -1,14 +1,15 @@
-import recentArticles from "@/lib/recentArticleCommunity";
 import { Button, Card } from "flowbite-react";
+import getRecentPostData from "@/lib/getRecentCommunityPost";
+
 const CommunityRecentPost = async () => {
-const recentArticleCommunity = await recentArticles()
-console.log(recentArticleCommunity);
+const recentArticles = await getRecentPostData()
+
   return (
     <div className="w-full p-2 bg-[#ededed] mt-5 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
       <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
         Recent Articles
       </h5>
-      {recentArticleCommunity.map((article, index) => (
+      {recentArticles.map((article, index) => (
         <div key={index}>
           <Card className="mt-3 bg-[#ededed]">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -17,7 +18,7 @@ console.log(recentArticleCommunity);
             <p className="font-normal text-gray-700 dark:text-gray-400">
               {article.description}
             </p>
-            <Button href={`/articles/${article.id}`}>
+            <Button href={`/articles/${article._id}`}>
               Read more
               <svg
                 className="-mr-1 ml-2 h-4 w-4"

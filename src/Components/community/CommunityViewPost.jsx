@@ -1,20 +1,17 @@
-
 import moment from "moment";
 import CommunityCommentCard from "./CommunityCommentCard";
-import getCommunityPost from "@/lib/getCommunityPost";
+import getAllPostData from "@/lib/getAllPostData";
 
 const CommunityViewPost = async () => {
+const allPostData = await getAllPostData()
 
-  
   const formatDateTime = (dateTime) => {
     return moment(dateTime, "hh:mm a YYYY-MM-DD").format("hh:mm a DD-MM-YYYY");
   };
 
-  const allPostData= await getCommunityPost()
-
   return (
     <div className="">
-      <div>
+      
         {allPostData.map((post, index) => (
           <div className="mt-5 bg-[#ededed] p-5 rounded-lg" key={index}>
             <div className="flex gap-3">
@@ -24,7 +21,6 @@ const CommunityViewPost = async () => {
                 alt="User image"
               />
               <div>
-              
                 <h1 className="font-semibold text-gray-900 dark:text-white">
                   {post?.userName}
                 </h1>
@@ -37,17 +33,18 @@ const CommunityViewPost = async () => {
             
               <p>{post?.content}</p>
             </div>
-            {post?.postImglink? 
+            {post.postImglink? 
             <img
             className="w-full h-56 rounded-b-lg object-cover"
             src={post?.postImglink}
             alt="User image"
-          /> : "" }
+          />: ""
+            }
             
             < CommunityCommentCard post={post} />
           </div>
         ))}
-      </div>
+      
     </div>
   );
 };

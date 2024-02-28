@@ -103,13 +103,14 @@ const CommunityCommentCard = ({ post }) => {
         await navigator.share({
           title: post.title,
           text: post.content,
-          url: window.location.href,
+          url: window.location.href
         });
       } else {
         throw new Error("Web Share API not supported");
       }
     } catch (error) {
       console.error("Error sharing:", error);
+
     }
   };
 
