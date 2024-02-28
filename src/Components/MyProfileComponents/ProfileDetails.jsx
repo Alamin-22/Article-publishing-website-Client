@@ -103,7 +103,6 @@ const ProfileDetails = ({ ProfileInfo }) => {
     }
 
 
-    console.log(ProfileInfo)
     return (
         <div>
             <div className='grid grid-cols-4 mt-2 gap-4'>
