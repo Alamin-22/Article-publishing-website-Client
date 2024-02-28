@@ -1,12 +1,13 @@
-
-import axiosInstance from "@/api";
-import { useEffect, useState } from "react";
-import useAuth from './../../Hooks/useAuth';
+"use client"
+// import axiosInstance from "@/api";
+// import { useEffect, useState } from "react";
+import useAuth from '@/Hooks/useAuth';
+import getAllPostData from '@/lib/getAllPostData';
 
 const MyPost = async () => {
   const { user } = useAuth()
   
-  const myAllArticleData = await getCommunityPost()
+  const myAllArticleData = await getAllPostData()
   // console.log(myAllArticleData);
   const myArticles = myAllArticleData.filter(
     (article) => article?.userEmail === user?.email
@@ -36,8 +37,8 @@ const MyPost = async () => {
               <div className="lg:col-span-2 flex justify-center items-center">
                 <img
                   className="h-36 lg:w-56 w-full rounded-xl object-cover  border-white border-2"
-                  src={article?.userPhoto}
-                  alt="Profile Image"
+                  src={article?.postImglink}
+                  alt="Post image"
                 />
               </div>
               <div className="lg:col-span-6  p-3">
