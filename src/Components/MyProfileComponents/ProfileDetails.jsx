@@ -17,6 +17,8 @@ import { TbBuildingBank } from "react-icons/tb";
 
 const ProfileDetails = ({ ProfileInfo }) => {
 
+    console.log(ProfileInfo);
+
     const [editAbout, setEditAbout] = useState(false);
     const [editWorkEdu, setEditWorkEdu] = useState(false);
     const [editSocial, setEditSocial] = useState(false);
@@ -102,7 +104,7 @@ const ProfileDetails = ({ ProfileInfo }) => {
     return (
         <div>
             <div className='grid grid-cols-4 mt-2 gap-4'>
-                <div className='col-span-4 md:col-span-2'>
+                <div className='col-span-4 lg:col-span-2'>
                     <div className='flex gap-5'>
                         <h2 className='text-2xl font-semibold text-gray-800 mb-4'>About Me</h2>
                         <TiEdit onClick={handleEditAbout} className='mt-1 cursor-pointer text-slate-500 hover:text-slate-800 text-2xl' />
@@ -134,25 +136,27 @@ const ProfileDetails = ({ ProfileInfo }) => {
                         {
                             editWorkEdu ?
                                 <>
-                                    <div className='mt-4'>
-                                        <div className=' relative   '>
-                                            <FaComputer className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Work Sector" />
-                                        </div>
-                                        <div className=' relative   '>
-                                            <TbBuildingBank className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Your Institute" />
-                                        </div>
-                                        <div className=' relative   '>
-                                            <ImOffice className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Your Work Company" />
-                                        </div>
-                                        <div className=' relative  '>
-                                            <FaLocationDot className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Your Current City" />
-                                        </div>
+                                    <form onSubmit={handleWorkEdu}>
+                                        <div className='mt-4'>
+                                            <div className=' relative   '>
+                                                <FaComputer className='absolute z-30 mt-3 ml-3 text-xl' />
+                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Work Sector" />
+                                            </div>
+                                            <div className=' relative   '>
+                                                <TbBuildingBank className='absolute z-30 mt-3 ml-3 text-xl' />
+                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Your Institute" />
+                                            </div>
+                                            <div className=' relative   '>
+                                                <ImOffice className='absolute z-30 mt-3 ml-3 text-xl' />
+                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Your Work Company" />
+                                            </div>
+                                            <div className=' relative  '>
+                                                <FaLocationDot className='absolute z-30 mt-3 ml-3 text-xl' />
+                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Your Current City" />
+                                            </div>
 
-                                    </div>
+                                        </div>
+                                    </form>
                                 </>
                                 :
                                 <>
@@ -181,7 +185,7 @@ const ProfileDetails = ({ ProfileInfo }) => {
 
 
                 </div>
-                <div className='col-span-4 md:col-span-2'>
+                <div className='col-span-4 lg:col-span-2'>
                     <div className='flex gap-5 '>
                         <h2 className='text-2xl font-semibold text-gray-800 mb-4 '>Social Media Link</h2>
                         <TiEdit onClick={handleEditSocial} className=' mt-1 cursor-pointer text-slate-500 hover:text-slate-800 text-2xl' />
@@ -190,29 +194,33 @@ const ProfileDetails = ({ ProfileInfo }) => {
                         {
                             editSocial ?
                                 <>
-                                    <div className='mt-4'>
-                                        <div className=' relative  '>
-                                            <FaFacebook className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Facebook " />
-                                        </div>
-                                        <div className=' relative   '>
-                                            <FaLinkedin className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel className='pl-10' variant="outlined" label="Add LinkedIn" />
-                                        </div>
-                                        <div className=' relative   '>
-                                            <FaTwitter className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Twitter" />
-                                        </div>
-                                        <div className=' relative  '>
-                                            <RiInstagramLine className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Instagram" />
-                                        </div>
+                                    <form onSubmit={handleSocial}>
+                                        <div className='mt-4'>
+                                            <div className=' relative  '>
+                                                <FaFacebook className='absolute z-30 mt-3 ml-3 text-xl' />
+                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Facebook " />
+                                            </div>
+                                            <div className=' relative   '>
+                                                <FaLinkedin className='absolute z-30 mt-3 ml-3 text-xl' />
+                                                <FloatingLabel className='pl-10' variant="outlined" label="Add LinkedIn" />
+                                            </div>
+                                            <div className=' relative   '>
+                                                <FaTwitter className='absolute z-30 mt-3 ml-3 text-xl' />
+                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Twitter" />
+                                            </div>
+                                            <div className=' relative  '>
+                                                <RiInstagramLine className='absolute z-30 mt-3 ml-3 text-xl' />
+                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Instagram" />
+                                            </div>
 
-                                    </div>
+                                        </div>
+                                    </form>
+
                                 </>
                                 :
                                 <>
-                                    <div className=' space-y-2 text-gray-700'>
+
+                                    <div className='  space-y-2 text-gray-700'>
                                         <p className='flex items-center gap-2 font-medium'>
                                             <FaFacebook className='text-xl text-blue-600' /> www.facebook.com/xyz22
                                         </p>
