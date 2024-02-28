@@ -2,9 +2,15 @@
 import React from "react";
 import Image from "next/image";
 import bannerImg from "../../../../public/bg-writing.jpg";
-import CountUp from "react-countup";
-import BreadCrumb from "@/Components/MyProfileComponents/BreadCrumb";
-import ProfileTabs from "@/Components/MyProfileComponents/ProfileTabs";
+import CountUp from 'react-countup';
+import BreadCrumb from "@/components/MyProfileComponents/BreadCrumb";
+import ProfileTabs from "@/components/MyProfileComponents/ProfileTabs";
+import axiosInstance from "@/api";
+import useAuth from "@/Hooks/useAuth";
+import { FileInput, Label } from 'flowbite-react';
+import { FaRegEdit } from "react-icons/fa";
+import { Button } from 'flowbite-react';
+import { imageUpload } from "@/api/utils";
 
 const MyProfile = () => {
   return (

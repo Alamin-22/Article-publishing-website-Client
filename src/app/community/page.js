@@ -1,9 +1,9 @@
-import CommunityMenu from "@/Components/community/CommunityMenu";
-import CommunityProfile from "@/Components/community/CommunityProfile";
-import CommunityRecentPost from "@/Components/community/CommunityRecentPost";
-import CommunityViewPost from "@/Components/community/CommunityViewPost";
-import CommunityPost from "@/Components/community/communityPost";
-import TopContributors from "@/Components/community/topContributors";
+import CommunityMenu from "@/components/community/CommunityMenu";
+import CommunityProfile from "@/components/community/CommunityProfile";
+import CommunityRecentPost from "@/components/community/CommunityRecentPost";
+import CommunityViewPost from "@/components/community/CommunityViewPost";
+import CommunityPost from "@/components/community/communityPost";
+import TopContributors from "@/components/community/topContributors";
 
 const community = () => {
   return (
