@@ -36,6 +36,7 @@ const Featured = () => {
                                 author={article.author}
                                 text={article.article}
                                 thumbnail={article.imglink}
+                                idx={index}
                             />
                         ))}
                     </Carousel>
