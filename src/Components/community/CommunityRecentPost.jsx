@@ -18,7 +18,7 @@ const recentArticles = await getRecentPostData()
             <p className="font-normal text-gray-700 dark:text-gray-400">
               {article.description}
             </p>
-            <Button href={`/articles/${article.id}`}>
+            <Button href={`/articles/${article._id}`}>
               Read more
               <svg
                 className="-mr-1 ml-2 h-4 w-4"
