@@ -1,24 +1,6 @@
-// "use client"
-// import React, { useState } from "react";
-// import ReactApexChart from 'react-apexcharts'
-
-// const dashboard = () => {
-//   return (
-//     <div className=" bg-slate-50 ">
-//       {/* <Chart></Chart> */}
-//       <div className="flex flex-col lg:flex-row items-center">
-//         {/* <PieChart></PieChart> */}
-//         {/* <BarChart></BarChart> */}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default dashboard;
-
 "use client"
 import React, { useEffect, useState } from "react";
-
+import { Spinner } from 'flowbite-react';
 const Dashboard = () => {
   const [isClient, setIsClient] = useState(false);
 
@@ -28,7 +10,11 @@ const Dashboard = () => {
 
   if (!isClient) {
     // Render a placeholder or loading indicator during server-side rendering
-    return <div>Loading...</div>;
+    return (
+      <div className="text-center">
+        <Spinner aria-label="Extra large spinner example" size="xl" />
+      </div>
+    )
   }
 
   // Render the dashboard components only on the client-side
