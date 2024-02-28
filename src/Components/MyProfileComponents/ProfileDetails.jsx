@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { CgWebsite } from "react-icons/cg";
 import { FaEnvelopeOpenText } from "react-icons/fa";
-import { MdOutlineMenuBook } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -143,17 +141,17 @@ const ProfileDetails = ({ ProfileInfo }) => {
                                         </div>
                                         <div className=' relative   '>
                                             <TbBuildingBank className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel  className='pl-10' variant="outlined" label="Add Your Institute" />
+                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Your Institute" />
                                         </div>
                                         <div className=' relative   '>
                                             <ImOffice className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel  className='pl-10' variant="outlined" label="Add Your Work Company" />
+                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Your Work Company" />
                                         </div>
                                         <div className=' relative  '>
                                             <FaLocationDot className='absolute z-30 mt-3 ml-3 text-xl' />
-                                            <FloatingLabel className='pl-10'  variant="outlined" label="Add Your Current City" />
+                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Your Current City" />
                                         </div>
-                                        
+
                                     </div>
                                 </>
                                 :
@@ -184,21 +182,55 @@ const ProfileDetails = ({ ProfileInfo }) => {
 
                 </div>
                 <div className='col-span-4 md:col-span-2'>
-                    <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Social Media Link</h2>
-                    <div className=' space-y-2 text-gray-700'>
-                        <p className='flex items-center gap-2 font-medium'>
-                            <FaFacebook className='text-xl text-blue-600' /> www.facebook.com/xyz22
-                        </p>
-                        <p className='flex items-center gap-2 font-medium'>
-                            <FaLinkedin className='text-xl text-blue-600 ' /> https://www.linkedin.com/in/md-al-amin-mollik
-                        </p>
-                        <p className='flex items-center gap-2 font-medium'>
-                            <FaTwitter className='text-xl text-blue-600 ' /> www.twitter.com/xyz22
-                        </p>
-                        <p className='flex items-center gap-2 font-medium'>
-                            <RiInstagramLine className='text-xl text-red-500 ' /> www.instagram.com/xyz22
-                        </p>
+                    <div className='flex gap-5 '>
+                        <h2 className='text-2xl font-semibold text-gray-800 mb-4 '>Social Media Link</h2>
+                        <TiEdit onClick={handleEditSocial} className=' mt-1 cursor-pointer text-slate-500 hover:text-slate-800 text-2xl' />
                     </div>
+                    <div>
+                        {
+                            editSocial ?
+                                <>
+                                    <div className='mt-4'>
+                                        <div className=' relative  '>
+                                            <FaFacebook className='absolute z-30 mt-3 ml-3 text-xl' />
+                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Facebook " />
+                                        </div>
+                                        <div className=' relative   '>
+                                            <FaLinkedin className='absolute z-30 mt-3 ml-3 text-xl' />
+                                            <FloatingLabel className='pl-10' variant="outlined" label="Add LinkedIn" />
+                                        </div>
+                                        <div className=' relative   '>
+                                            <FaTwitter className='absolute z-30 mt-3 ml-3 text-xl' />
+                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Twitter" />
+                                        </div>
+                                        <div className=' relative  '>
+                                            <RiInstagramLine className='absolute z-30 mt-3 ml-3 text-xl' />
+                                            <FloatingLabel className='pl-10' variant="outlined" label="Add Instagram" />
+                                        </div>
+
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    <div className=' space-y-2 text-gray-700'>
+                                        <p className='flex items-center gap-2 font-medium'>
+                                            <FaFacebook className='text-xl text-blue-600' /> www.facebook.com/xyz22
+                                        </p>
+                                        <p className='flex items-center gap-2 font-medium'>
+                                            <FaLinkedin className='text-xl text-blue-600 ' /> https://www.linkedin.com/in/md-al-amin-mollik
+                                        </p>
+                                        <p className='flex items-center gap-2 font-medium'>
+                                            <FaTwitter className='text-xl text-blue-600 ' /> www.twitter.com/xyz22
+                                        </p>
+                                        <p className='flex items-center gap-2 font-medium'>
+                                            <RiInstagramLine className='text-xl text-red-500 ' /> www.instagram.com/xyz22
+                                        </p>
+                                    </div>
+                                </>
+                        }
+
+                    </div>
+
                 </div>
             </div>
         </div>
