@@ -1,11 +1,11 @@
-'use client';
 
 import { Breadcrumb } from 'flowbite-react';
 import { HiHome } from 'react-icons/hi';
 
 import React from 'react';
 
-const BreadCrumb = () => {
+const BreadCrumb = ({ user }) => {
+
     return (
         <Breadcrumb aria-label="Default breadcrumb example">
             <Breadcrumb.Item href="/" icon={HiHome}>
@@ -13,7 +13,7 @@ const BreadCrumb = () => {
             </Breadcrumb.Item>
             <Breadcrumb.Item >Dashboard</Breadcrumb.Item>
             <Breadcrumb.Item >My Profile</Breadcrumb.Item>
-            <Breadcrumb.Item>Alamin mollik</Breadcrumb.Item>
+            <Breadcrumb.Item>{user?.displayName}</Breadcrumb.Item>
         </Breadcrumb>
     );
 };
