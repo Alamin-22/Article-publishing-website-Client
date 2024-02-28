@@ -1,6 +1,6 @@
 "use client";
 
-import SocialLogin from "@/Components/SocialLogin/SocialLogin";
+import SocialLogin from "@/components/SocialLogin/SocialLogin";
 import useAuth from "@/Hooks/useAuth";
 import { Button } from "flowbite-react";
 import Link from "next/link";

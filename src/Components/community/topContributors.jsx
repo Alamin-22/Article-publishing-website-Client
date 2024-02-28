@@ -1,8 +1,6 @@
 "use client"
 
 import getTopContributors from "@/lib/getTopContributors";
-
-
 const TopContributors = async () => {
 const topContributor = await getTopContributors()
 

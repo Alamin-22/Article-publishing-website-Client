@@ -72,12 +72,12 @@ const CommunityProfile = () => {
               <hr className="w-[1px] h-8 bg-gray-600 transform rotate-180 mx-auto" />
             <div  className="flex flex-col justify-center items-center">
               <p className="text-sm font-semibold">2k</p>
-              <p className="text-gray-600">Flower</p>
+              <p className="text-gray-600">Follower</p>
             </div>
             <hr className="w-[1px] h-8 bg-gray-600 transform rotate-180 mx-auto" />
             <div className="flex flex-col justify-center items-center">
             <p className="text-sm font-semibold">25</p>
-              <p className="text-gray-600">Flowing</p>
+              <p className="text-gray-600">Following</p>
             </div>
           </div>
         </div>

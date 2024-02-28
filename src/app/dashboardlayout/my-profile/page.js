@@ -2,11 +2,24 @@
 import React from "react";
 import Image from "next/image";
 import bannerImg from "../../../../public/bg-writing.jpg";
-import CountUp from "react-countup";
-import BreadCrumb from "@/Components/MyProfileComponents/BreadCrumb";
-import ProfileTabs from "@/Components/MyProfileComponents/ProfileTabs";
+import CountUp from 'react-countup';
+import BreadCrumb from "@/components/MyProfileComponents/BreadCrumb";
+import ProfileTabs from "@/components/MyProfileComponents/ProfileTabs";
+import useAuth from "@/Hooks/useAuth";
 
 const MyProfile = () => {
+
+
+  const { user } = useAuth();
+  console.log(user);
+
+
+
+
+
+
+
+
   return (
     <div className="p-4">
       <h2 className="text-2xl font-semibold text-gray-800">
@@ -19,21 +32,24 @@ const MyProfile = () => {
       <figure>
         <div className="w-full h-[350px] bg-black relative rounded-xl">
           <div className="absolute z-40 h-full w-full flex items-center justify-center text-center flex-col ">
-            <img
-              src={"https://i.ibb.co/Bw6HfMF/my-pic.jpg"}
-              className="w-36 h-36 mt-5 rounded-full"
-              alt="user Image"
+            
+            <Image
+              src={user?.photoURL}
+              width={144}
+              height={144}
+              alt="Picture of the author"
+              className="rounded-full"
             />
             <div className="my-2">
               <div>
                 <h2 className="text-gray-100 font-black text-3xl lg:text-3xl max-w-80 lg:max-w-[640px]">
-                  Md. Al Amin Mollik
+                  {user?.displayName}
                 </h2>
                 <p className="text-zinc-200 font-semibold text-xl max-w-[640px] ">
                   Full Stack Developer
                 </p>
               </div>
-              <div className="flex justify-evenly mt-5 text-gray-100 text-3xl">
+              <div className="flex gap-4 justify-evenly mt-5 text-gray-100 text-3xl">
                 <div>
                   <p className="font-semibold ">
                     {" "}
