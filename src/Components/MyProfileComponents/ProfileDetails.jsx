@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEnvelopeOpenText } from "react-icons/fa";
+import { FaEnvelopeOpenText, FaRegCheckCircle } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -11,8 +11,9 @@ import { FaGraduationCap } from "react-icons/fa6";
 import { FloatingLabel } from 'flowbite-react';
 import { ImOffice } from "react-icons/im";
 import { FaComputer } from "react-icons/fa6";
-import { TbBuildingBank } from "react-icons/tb";
-
+import { TbBuildingBank } from "react-icons/tb"; import { Button } from 'flowbite-react';
+import { MdOutlineCancel } from "react-icons/md";
+import { FaCheck } from "react-icons/fa";
 
 
 const ProfileDetails = ({ UserInfo }) => {
@@ -112,9 +113,17 @@ const ProfileDetails = ({ UserInfo }) => {
                     <div>
                         {
                             editAbout ?
-                                <> <form onSubmit={handleAbout}>
+                                <> <form onSubmit={handleAbout} className='relative'>
                                     <div className="max-w-md">
                                         <Textarea name='About' id="comment" placeholder="Write ABout Yourself..." required rows={8} />
+                                    </div>
+                                    <div className="absolute -mt-12 right-12 flex flex-wrap gap-2">
+                                        <Button size={"xs"} pill>
+                                            <MdOutlineCancel className="h-6 w-5" />
+                                        </Button>
+                                        <Button size={"xs"} pill>
+                                            <FaRegCheckCircle className="h-6 w-5" />
+                                        </Button>
                                     </div>
                                 </form>
                                 </>
