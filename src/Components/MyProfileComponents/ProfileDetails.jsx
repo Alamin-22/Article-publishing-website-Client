@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEnvelopeOpenText } from "react-icons/fa";
+import { FaEnvelopeOpenText, FaRegCheckCircle } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -11,13 +11,14 @@ import { FaGraduationCap } from "react-icons/fa6";
 import { FloatingLabel } from 'flowbite-react';
 import { ImOffice } from "react-icons/im";
 import { FaComputer } from "react-icons/fa6";
-import { TbBuildingBank } from "react-icons/tb";
-
+import { TbBuildingBank } from "react-icons/tb"; import { Button } from 'flowbite-react';
+import { MdOutlineCancel } from "react-icons/md";
+import axiosInstance from '@/api';
+import toast from 'react-hot-toast';
 
 
 const ProfileDetails = ({ UserInfo }) => {
 
-    // const { About, LinkedIn, Education, Facebook, Twitter, Instagram, workPlace, WorkSector } = UserInfo;
 
     const [editAbout, setEditAbout] = useState(false);
     const [editWorkEdu, setEditWorkEdu] = useState(false);
@@ -43,7 +44,7 @@ const ProfileDetails = ({ UserInfo }) => {
         const AboutForm = new FormData(e.currentTarget);
         const About = AboutForm.get("About");
         // console.log({About});
-        axiosInstance.patch(`/v1/api/patch-user/${ProfileInfo?._id}`, { About })
+        axiosInstance.patch(`/v1/api/patch-user/${UserInfo?._id}`, { About })
             .then(res => {
                 toast.success('About Section Successfully Updated!')
                 console.log(res.data);
@@ -52,7 +53,7 @@ const ProfileDetails = ({ UserInfo }) => {
                 console.log(error);
                 toast.error('Sorry There is some Internal Issue. Please Try again later')
             })
-        setEditMode(!editMode);
+        setEditAbout(!editAbout);
     }
     const handleWorkEdu = (e) => {
         e.preventDefault();
@@ -66,7 +67,7 @@ const ProfileDetails = ({ UserInfo }) => {
             WorkSector, WorkPlace, Education, location
         }
 
-        axiosInstance.patch(`/v1/api/patch-user/${ProfileInfo?._id}`, WorkEduInfo)
+        axiosInstance.patch(`/v1/api/patch-user/${UserInfo?._id}`, WorkEduInfo)
             .then(res => {
                 toast.success('Work And Education Successfully Updated!')
                 console.log(res.data);
@@ -81,14 +82,14 @@ const ProfileDetails = ({ UserInfo }) => {
         e.preventDefault();
         const Social = new FormData(e.currentTarget);
         const Facebook = Social.get("fb");
-        const LinkedIn = Social.get("lnkdin");
+        const LinkedIn = Social.get("lnkedin");
         const Twitter = Social.get("twtr");
         const Instagram = Social.get("insta");
 
         const WorkSocial = {
             Facebook, LinkedIn, Twitter, Instagram,
         }
-        axiosInstance.patch(`/v1/api/patch-user/${ProfileInfo?._id}`, WorkSocial)
+        axiosInstance.patch(`/v1/api/patch-user/${UserInfo?._id}`, WorkSocial)
             .then(res => {
                 toast.success('Social Links Successfully Updated!')
                 console.log(res.data);
@@ -112,11 +113,20 @@ const ProfileDetails = ({ UserInfo }) => {
                     <div>
                         {
                             editAbout ?
-                                <> <form onSubmit={handleAbout}>
-                                    <div className="max-w-md">
-                                        <Textarea name='About' id="comment" placeholder="Write ABout Yourself..." required rows={8} />
-                                    </div>
-                                </form>
+                                <>
+                                    <form onSubmit={handleAbout} className='relative'>
+                                        <div className="max-w-md">
+                                            <Textarea name='About' id="comment" placeholder="Write ABout Yourself..." required rows={8} defaultValue={UserInfo?.About} />
+                                        </div>
+                                        <div className="absolute -mt-12 right-12 flex flex-wrap gap-2">
+                                            <Button size={"xs"} pill>
+                                                <MdOutlineCancel onClick={handleEditAbout} className="h-6 w-5" />
+                                            </Button>
+                                            <Button type='submit' size={"xs"} pill>
+                                                <FaRegCheckCircle className="h-6 w-5" />
+                                            </Button>
+                                        </div>
+                                    </form>
                                 </>
                                 :
                                 <>
@@ -136,26 +146,34 @@ const ProfileDetails = ({ UserInfo }) => {
                         {
                             editWorkEdu ?
                                 <>
-                                    <form onSubmit={handleWorkEdu}>
+                                    <form className='relative' onSubmit={handleWorkEdu}>
+                                        <div className="absolute -top-12 right-3 flex flex-wrap gap-2">
+                                            <Button size={"xs"} pill>
+                                                <MdOutlineCancel onClick={handleEditWorkEdu} className="h-6 w-5" />
+                                            </Button>
+                                            <Button type='submit' size={"xs"} pill>
+                                                <FaRegCheckCircle className="h-6 w-5" />
+                                            </Button>
+                                        </div>
                                         <div className='mt-4'>
                                             <div className=' relative   '>
                                                 <FaComputer className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Work Sector" />
+                                                <FloatingLabel name='WorkSector' defaultValue={UserInfo?.WorkSector} className='pl-10' variant="outlined" label="Add Work Sector" />
                                             </div>
                                             <div className=' relative   '>
                                                 <TbBuildingBank className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Your Institute" />
+                                                <FloatingLabel name='WorkPlace' defaultValue={UserInfo?.Education} className='pl-10' variant="outlined" label="Add Your Institute" />
                                             </div>
                                             <div className=' relative   '>
                                                 <ImOffice className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Your Work Company" />
+                                                <FloatingLabel name='Education' defaultValue={UserInfo?.WorkPlace} className='pl-10' variant="outlined" label="Add Your Work Company" />
                                             </div>
                                             <div className=' relative  '>
                                                 <FaLocationDot className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Your Current City" />
+                                                <FloatingLabel name='location' defaultValue={UserInfo?.location} className='pl-10' variant="outlined" label="Add Your Current City" />
                                             </div>
-
                                         </div>
+
                                     </form>
                                 </>
                                 :
@@ -194,23 +212,31 @@ const ProfileDetails = ({ UserInfo }) => {
                         {
                             editSocial ?
                                 <>
-                                    <form onSubmit={handleSocial}>
+                                    <form className='relative' onSubmit={handleSocial}>
+                                        <div className="absolute -top-16 right-3 flex flex-wrap gap-2">
+                                            <Button size={"xs"} pill>
+                                                <MdOutlineCancel onClick={handleEditSocial} className="h-6 w-5" />
+                                            </Button>
+                                            <Button type='submit' size={"xs"} pill>
+                                                <FaRegCheckCircle className="h-6 w-5" />
+                                            </Button>
+                                        </div>
                                         <div className='mt-4'>
                                             <div className=' relative  '>
                                                 <FaFacebook className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Facebook " />
+                                                <FloatingLabel name='fb' defaultValue={UserInfo?.Facebook} className='pl-10' variant="outlined" label="Add Facebook " />
                                             </div>
                                             <div className=' relative   '>
                                                 <FaLinkedin className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add LinkedIn" />
+                                                <FloatingLabel name='lnkedin' defaultValue={UserInfo?.LinkedIn} className='pl-10' variant="outlined" label="Add LinkedIn" />
                                             </div>
                                             <div className=' relative   '>
                                                 <FaTwitter className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Twitter" />
+                                                <FloatingLabel name='twtr' defaultValue={UserInfo?.Twitter} className='pl-10' variant="outlined" label="Add Twitter" />
                                             </div>
                                             <div className=' relative  '>
                                                 <RiInstagramLine className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Instagram" />
+                                                <FloatingLabel name='insta' defaultValue={UserInfo?.Instagram} className='pl-10' variant="outlined" label="Add Instagram" />
                                             </div>
 
                                         </div>
@@ -225,7 +251,7 @@ const ProfileDetails = ({ UserInfo }) => {
                                             <FaFacebook className='text-xl text-blue-600' /> {UserInfo?.Facebook}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <FaLinkedin className='text-xl text-blue-600 ' />{UserInfo?.LinkedIn}
+                                            <FaLinkedin className='text-xl text-blue-600 ' /> {UserInfo?.LinkedIn}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
                                             <FaTwitter className='text-xl text-blue-600 ' /> {UserInfo?.Twitter}
