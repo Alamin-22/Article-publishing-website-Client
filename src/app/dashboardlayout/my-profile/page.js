@@ -26,7 +26,7 @@ const MyProfile = () => {
     },
   });
   const UserInfo = users.find(item => item?.email === user?.email);
-  console.log(UserInfo);
+  // console.log(UserInfo);
 
 
 
