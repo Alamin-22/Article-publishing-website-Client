@@ -162,11 +162,11 @@ const ProfileDetails = ({ UserInfo }) => {
                                             </div>
                                             <div className=' relative   '>
                                                 <TbBuildingBank className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel name='WorkPlace' defaultValue={UserInfo?.Education} className='pl-10' variant="outlined" label="Add Your Institute" />
+                                                <FloatingLabel name='WorkPlace' defaultValue={UserInfo?.WorkPlace} className='pl-10' variant="outlined" label="Add Your Institute" />
                                             </div>
                                             <div className=' relative   '>
                                                 <ImOffice className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel name='Education' defaultValue={UserInfo?.WorkPlace} className='pl-10' variant="outlined" label="Add Your Work Company" />
+                                                <FloatingLabel name='Education' defaultValue={UserInfo?.Education} className='pl-10' variant="outlined" label="Add Your Work Company" />
                                             </div>
                                             <div className=' relative  '>
                                                 <FaLocationDot className='absolute z-30 mt-3 ml-3 text-xl' />
