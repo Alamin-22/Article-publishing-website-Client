@@ -19,8 +19,6 @@ import toast from 'react-hot-toast';
 
 const ProfileDetails = ({ UserInfo }) => {
 
-    // const { About, LinkedIn, Education, Facebook, Twitter, Instagram, workPlace, WorkSector } = UserInfo;
-    console.log(UserInfo?._id);
 
     const [editAbout, setEditAbout] = useState(false);
     const [editWorkEdu, setEditWorkEdu] = useState(false);
@@ -84,7 +82,7 @@ const ProfileDetails = ({ UserInfo }) => {
         e.preventDefault();
         const Social = new FormData(e.currentTarget);
         const Facebook = Social.get("fb");
-        const LinkedIn = Social.get("lnkdin");
+        const LinkedIn = Social.get("lnkedin");
         const Twitter = Social.get("twtr");
         const Instagram = Social.get("insta");
 
@@ -226,19 +224,19 @@ const ProfileDetails = ({ UserInfo }) => {
                                         <div className='mt-4'>
                                             <div className=' relative  '>
                                                 <FaFacebook className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Facebook " />
+                                                <FloatingLabel name='fb' defaultValue={UserInfo?.Facebook} className='pl-10' variant="outlined" label="Add Facebook " />
                                             </div>
                                             <div className=' relative   '>
                                                 <FaLinkedin className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add LinkedIn" />
+                                                <FloatingLabel name='lnkedin' defaultValue={UserInfo?.LinkedIn} className='pl-10' variant="outlined" label="Add LinkedIn" />
                                             </div>
                                             <div className=' relative   '>
                                                 <FaTwitter className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Twitter" />
+                                                <FloatingLabel name='twtr' defaultValue={UserInfo?.Twitter} className='pl-10' variant="outlined" label="Add Twitter" />
                                             </div>
                                             <div className=' relative  '>
                                                 <RiInstagramLine className='absolute z-30 mt-3 ml-3 text-xl' />
-                                                <FloatingLabel className='pl-10' variant="outlined" label="Add Instagram" />
+                                                <FloatingLabel name='insta' defaultValue={UserInfo?.Instagram} className='pl-10' variant="outlined" label="Add Instagram" />
                                             </div>
 
                                         </div>
@@ -253,7 +251,7 @@ const ProfileDetails = ({ UserInfo }) => {
                                             <FaFacebook className='text-xl text-blue-600' /> {UserInfo?.Facebook}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
-                                            <FaLinkedin className='text-xl text-blue-600 ' />{UserInfo?.LinkedIn}
+                                            <FaLinkedin className='text-xl text-blue-600 ' /> {UserInfo?.LinkedIn}
                                         </p>
                                         <p className='flex items-center gap-2 font-medium'>
                                             <FaTwitter className='text-xl text-blue-600 ' /> {UserInfo?.Twitter}
