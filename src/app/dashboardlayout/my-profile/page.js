@@ -56,12 +56,13 @@ const MyProfile = () => {
                   <div className="absolute z-40 h-full w-full flex items-center justify-center text-center flex-col ">
 
                     <Image
-                      src={user?.photoURL}
+                      src={user?.photoURL || "https://i.ibb.co/bFq9X83/user.png" }
                       width={144}
                       height={144}
                       alt="Picture of the author"
                       className="rounded-full"
                     />
+
                     <div className="my-2">
                       <div>
                         <h2 className="text-gray-100 font-black text-3xl lg:text-3xl max-w-80 lg:max-w-[640px]">
