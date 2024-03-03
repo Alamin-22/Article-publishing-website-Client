@@ -6,20 +6,20 @@ import useAuth from "./../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import axios from 'axios';
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
+import GetAllCommunityComments from "@/lib/getCommunityComments";
 
 const CommunityCommentCard = ({ post }) => {
   const { user } = useAuth();
-  const [postLikes, setPostLikes] = useState({});
   const [allCommunityData, setAllCommunityData] = useState([]);
   const [liked, setLiked] = useState(false);
   const [comment, setComment] = useState({});
   const apiEndPointComment = "/v1/api/CommunityComments";
 
+  const [getCommunityComments, refetch] = GetAllCommunityComments()
+
   const formatDateTime = (dateTime) => {
     return moment(dateTime).format("hh:mm a DD-MM-YYYY");
   };
-
-  
 
   const handleAddComment = async (e, postId) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ const CommunityCommentCard = ({ post }) => {
     const formattedDate = currentDate.toISOString();
     const userName = user.displayName;
     const userEmail = user.email;
-    const userPhoto = user.photoURL;
+    const userPhoto = user?.photoURL;
 
     const postData = {
       postId,
@@ -45,41 +45,38 @@ const CommunityCommentCard = ({ post }) => {
       console.log("Comment added successfully:", response.data);
       toast.success("Successfully added!");
       form.reset();
-      setAllCommunityData((prevData) => [...prevData, response.data]);
+      refetch()
     } catch (error) {
       toast.error("Failed to add comment.");
       console.error("Error adding comment:", error);
     }
   };
 
-  useEffect(() => {
-    const getAllCommunityCommentsData = async () => {
-      try {
-        const { data: res } = await axiosInstance.get(apiEndPointComment);
-        setAllCommunityData(res);
-      } catch (error) {
-        console.error("Error fetching all community comments data:", error);
-        toast.error("Failed to fetch community comments data.");
-      }
-    };
-    getAllCommunityCommentsData();
-  }, [post]);
 
+
+ 
  
   const handleLike = async (postId) => {
     try {
       const response = await axiosInstance.post(`/v1/api/posts/${postId}/likes`, {
-        userEmail: user?.email, 
+        userEmail: user?.email,
       });
 
       if (response.status === 200) {
         setLiked(!liked);
+        if (!liked) {
+          toast.success("Post liked!");
+        } else {
+          toast.success("Post unliked!");
+        }
       }
     } catch (error) {
       console.error("Error liking post:", error);
-    
+      toast.error("Failed to like/unlike post.");
     }
   };
+
+  
   const handleShare = async () => {
     try {
       if (navigator.share) {
@@ -110,7 +107,9 @@ const CommunityCommentCard = ({ post }) => {
               </span>
               
               <button onClick={() => handleLike(post._id)}>
-                {liked ? <IoIosHeart className="text-red-500 text-xl" /> : <IoIosHeartEmpty className="text-xl"/>}
+              {liked ? <IoIosHeart className="text-red-500 text-xl" /> : <IoIosHeartEmpty className="text-xl"/>}
+              
+
               </button>
             </div>
             <div>
@@ -119,7 +118,7 @@ const CommunityCommentCard = ({ post }) => {
                 onClick={() => setComment({ [post._id]: true })}
               >
                 {
-                  allCommunityData.filter(
+                  getCommunityComments.filter(
                     (comment) => comment.postId === post._id
                   ).length
                 }{" "}
@@ -170,7 +169,7 @@ const CommunityCommentCard = ({ post }) => {
           </button>
         </div>
         <div>
-          {allCommunityData
+          {getCommunityComments
             .filter((comment) => comment.postId === post._id)
             .map((communityComment) => (
               <div

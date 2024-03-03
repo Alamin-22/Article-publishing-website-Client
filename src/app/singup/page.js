@@ -9,8 +9,9 @@ import auth from "@/app/Firebase/firebase.config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import useAuth from "@/Hooks/useAuth";
 import { useRouter } from "next/navigation";
-import SocialLogin from "@/components/SocialLogin/SocialLogin";
+
 import axiosInstance from "@/api";
+import SocialLogin from "@/Components/SocialLogin/SocialLogin";
 
 const SingUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);

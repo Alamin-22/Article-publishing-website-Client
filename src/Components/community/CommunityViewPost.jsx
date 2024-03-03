@@ -1,9 +1,11 @@
+"use client"
 import moment from "moment";
-import CommunityCommentCard from "./CommunityCommentCard";
-import getAllPostData from "@/lib/getAllPostData";
+import GetAllPostData from "@/lib/getAllPostData";
+import CommunityCommentCard from "@/Components/community/CommunityCommentCard";
 
-const CommunityViewPost = async () => {
-const allPostData = await getAllPostData()
+const CommunityViewPost =   () => {
+const [getAllPost, refetch]=   GetAllPostData()
+
 
   const formatDateTime = (dateTime) => {
     return moment(dateTime, "hh:mm a YYYY-MM-DD").format("hh:mm a DD-MM-YYYY");
@@ -12,7 +14,7 @@ const allPostData = await getAllPostData()
   return (
     <div className="">
       
-        {allPostData.map((post, index) => (
+        {getAllPost?.map((post, index) => (
           <div className="mt-5 bg-[#ededed] p-5 rounded-lg" key={index}>
             <div className="flex gap-3">
               <img
@@ -33,7 +35,7 @@ const allPostData = await getAllPostData()
             
               <p>{post?.content}</p>
             </div>
-            {post.postImglink? 
+            {post?.postImglink? 
             <img
             className="w-full h-56 rounded-b-lg object-cover"
             src={post?.postImglink}

@@ -1,6 +1,6 @@
-import Banner from "@/components/Home/Banner";
-import Featured from "@/components/Home/Featured";
-import LastestArticles from "@/components/Home/LastestArticles";
+import Banner from "@/Components/Home/Banner";
+import Featured from "@/Components/Home/Featured";
+import LastestArticles from "@/Components/Home/LastestArticles";
 import { Button } from "flowbite-react";
 import Link from "next/link";
 import React from "react";
