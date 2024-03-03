@@ -6,7 +6,10 @@ import toast from "react-hot-toast";
 import useAuth from './../../Hooks/useAuth';
 import moment from 'moment';
 import { imageUpload } from "@/api/utils";
+import GetAllPostData from "@/lib/getAllPostData";
+
 const CommunityPost = () => {
+  const [getAllPost, refetch] = GetAllPostData()
   const { user } = useAuth();
   const [image, setImage] = useState(null);
 
@@ -36,7 +39,8 @@ const CommunityPost = () => {
       console.log("Article added successfully:", response.data);
       toast.success("Successfully added!");
       form.reset();
-      setImage(null); // Reset the image state after successful submission
+      setImage(null);
+      refetch() // Reset the image state after successful submission
     } catch (error) {
       toast.error("This didn't work.");
       console.error("Error adding article:", error);

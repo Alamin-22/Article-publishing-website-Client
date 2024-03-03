@@ -1,14 +1,16 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import bannerImg from "../../../../public/bg-writing.jpg";
+import bannerImg from "./../../../../public/bg-writing.jpg";
 import CountUp from 'react-countup';
-import BreadCrumb from "@/components/MyProfileComponents/BreadCrumb";
-import ProfileTabs from "@/components/MyProfileComponents/ProfileTabs";
+
+
 import useAuth from "@/Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "@/api";
 import { Spinner } from 'flowbite-react';
+import BreadCrumb from "@/Components/MyProfileComponents/BreadCrumb";
+import ProfileTabs from "@/Components/MyProfileComponents/ProfileTabs";
 
 
 const MyProfile = () => {
@@ -49,6 +51,7 @@ const MyProfile = () => {
               </h2>
               <div className="py-3">
                 <BreadCrumb user={user}></BreadCrumb>
+                
               </div>
               {/* user profile with banner and title */}
               <figure>
@@ -101,6 +104,7 @@ const MyProfile = () => {
               </figure>
               <div className="my-2">
                 <ProfileTabs UserInfo={UserInfo}></ProfileTabs>
+                
               </div>
             </div>
 
