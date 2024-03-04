@@ -1,4 +1,4 @@
-import MyPost from "@/components/community/MyPost";
+import MyPost from "@/Components/community/MyPost";
 
 const page = () => {
   return (

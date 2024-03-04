@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Inter } from "next/font/google";
-import DashboardNav from "@/components/DashboardNav/DashboardNav";
+import DashboardNav from "@/Components/DashboardNav/DashboardNav";
 const inter = Inter({ subsets: ["latin"] });
 
 const DashboardLayout = ({ children }) => {

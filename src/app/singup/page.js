@@ -4,13 +4,13 @@ import Link from "next/link";
 import React, { useState } from "react";
 import loginAnimation from "../../../public/Animation/login.json";
 import toast from "react-hot-toast";
-import { Label, Select, Checkbox, Button, Radio } from 'flowbite-react';
+import { Label, Select, Checkbox, Button, Radio } from "flowbite-react";
 import auth from "@/app/Firebase/firebase.config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import useAuth from "@/Hooks/useAuth";
 import { useRouter } from "next/navigation";
-import SocialLogin from "@/components/SocialLogin/SocialLogin";
 import axiosInstance from "@/api";
+import SocialLogin from "@/Components/SocialLogin/SocialLogin";
 
 const SingUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -45,7 +45,7 @@ const SingUpPage = () => {
       return;
     }
 
-    const UserInfo = { displayName, email, password, age, Gender }
+    const UserInfo = { displayName, email, password, age, Gender };
     // console.log(displayName, email, password, age, Gender);
 
     createUserWithEmailAndPassword(auth, email, password)
@@ -57,17 +57,17 @@ const SingUpPage = () => {
 
         UpdateProfile(displayName)
           .then(() => {
-
-            axiosInstance.post("/v1/api/post-user", UserInfo)
-              .then(res => {
+            axiosInstance
+              .post("/v1/api/post-user", UserInfo)
+              .then((res) => {
                 if (res.data.insertedId) {
                   toast.success("Congratulations User created Successfully");
                   router.push("/");
                 }
               })
-              .catch(Error => {
+              .catch((Error) => {
                 console.log(Error);
-              })
+              });
           })
           .catch((error) => {
             console.log(error);
@@ -149,7 +149,6 @@ const SingUpPage = () => {
                       />
                     </div>
 
-
                     <div className="mb-1 sm:mb-2 relative">
                       <label
                         htmlFor="password"
@@ -200,30 +199,51 @@ const SingUpPage = () => {
                     </div>
                     <div className="flex mb-5 gap-6">
                       <div className="max-w-md">
-
-                        <input type="number" name="age" placeholder="age" className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" required />
+                        <input
+                          type="number"
+                          name="age"
+                          placeholder="age"
+                          className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                          required
+                        />
                       </div>
 
-                      <fieldset className="flex max-w-md gap-4 " >
-
+                      <fieldset className="flex max-w-md gap-4 ">
                         <div className="flex  items-center gap-2">
-                          <Radio id="male" name="gender" className="cursor-pointer" value="male" required />
-                          <Label htmlFor="male" className="cursor-pointer">Male</Label>
+                          <Radio
+                            id="male"
+                            name="gender"
+                            className="cursor-pointer"
+                            value="male"
+                            required
+                          />
+                          <Label htmlFor="male" className="cursor-pointer">
+                            Male
+                          </Label>
                         </div>
                         <div className="flex  items-center gap-2">
-                          <Radio id="female" name="gender" className="cursor-pointer" value="female" required />
-                          <Label htmlFor="female" className="cursor-pointer" >Female</Label>
+                          <Radio
+                            id="female"
+                            name="gender"
+                            className="cursor-pointer"
+                            value="female"
+                            required
+                          />
+                          <Label htmlFor="female" className="cursor-pointer">
+                            Female
+                          </Label>
                         </div>
-
                       </fieldset>
-
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
                         <Checkbox id="accept" required />
                         <Label htmlFor="accept" className="flex">
                           I agree with the&nbsp;
-                          <a href="/termsAndCondition" className="text-cyan-600 hover:underline dark:text-cyan-500">
+                          <a
+                            href="/termsAndCondition"
+                            className="text-cyan-600 hover:underline dark:text-cyan-500"
+                          >
                             terms and conditions
                           </a>
                         </Label>
