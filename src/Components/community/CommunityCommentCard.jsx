@@ -7,10 +7,10 @@ import toast from "react-hot-toast";
 import axios from 'axios';
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 import GetAllCommunityComments from "@/lib/getCommunityComments";
+import { useQuery } from "@tanstack/react-query";
 
 const CommunityCommentCard = ({ post }) => {
   const { user } = useAuth();
-  const [allCommunityData, setAllCommunityData] = useState([]);
   const [liked, setLiked] = useState(false);
   const [comment, setComment] = useState({});
   const apiEndPointComment = "/v1/api/CommunityComments";
@@ -53,21 +53,22 @@ const CommunityCommentCard = ({ post }) => {
   };
 
 
-
- 
- 
   const handleLike = async (postId) => {
     try {
       const response = await axiosInstance.post(`/v1/api/posts/${postId}/likes`, {
         userEmail: user?.email,
       });
-
+      
+      
       if (response.status === 200) {
         setLiked(!liked);
+        refetch()
         if (!liked) {
           toast.success("Post liked!");
+          refetch()
         } else {
           toast.success("Post unliked!");
+          refetch()
         }
       }
     } catch (error) {
@@ -76,6 +77,19 @@ const CommunityCommentCard = ({ post }) => {
     }
   };
 
+  useEffect(() => {
+    const fetchLikedStatus = async () => {
+      try {
+        const response = await axiosInstance.get(`/v1/api/post?post_Id=${post._id}&userEmail=${user?.email}`);
+        
+        setLiked(response.data.Success);
+      } catch (error) {
+        console.error("Error fetching liked status:", error);
+      }
+    };
+
+    fetchLikedStatus();
+  }, [post._id, user?.email]);
   
   const handleShare = async () => {
     try {
