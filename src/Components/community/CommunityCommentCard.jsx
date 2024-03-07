@@ -15,7 +15,7 @@ const CommunityCommentCard = ({ post }) => {
   const apiEndPointComment = "/v1/api/CommunityComments";
 
   const [getCommunityComments, refetch] = GetAllCommunityComments()
-  
+  // console.log(post._id)
   const formatDateTime = (dateTime) => {
     return moment(dateTime).format("hh:mm a DD-MM-YYYY");
   };
@@ -41,8 +41,8 @@ const CommunityCommentCard = ({ post }) => {
 
     try {
       const response = await axiosInstance.post(apiEndPointComment, postData);
-      console.log("Comment added successfully:", response.data);
-      toast.success("Successfully added!");
+      // console.log("Comment added successfully:", response.data);
+      toast.success("Comment added successfully");
       form.reset();
       refetch()
     } catch (error) {
@@ -54,19 +54,22 @@ const CommunityCommentCard = ({ post }) => {
 
   const handleLike = async (postId) => {
     try {
-      const response = await axiosInstance.post(`/v1/api/posts/${postId}/likes`, {
+      const response = await axiosInstance.post(`/v1/api/posts/${postId}/likes`,  {
+       
         userEmail: user?.email,
-      });
-      
-      
+       
+      }
+     
+      );
+    
       if (response.status === 200) {
         setLiked(!liked);
         refetch()
         if (!liked) {
-          toast.success("Post liked!");
+          toast.success("Post liked successfully ");
           refetch()
         } else {
-          toast.success("Post unliked!");
+          toast.success("Post unliked successfully!");
           refetch()
         }
       }
@@ -75,20 +78,25 @@ const CommunityCommentCard = ({ post }) => {
       toast.error("Failed to like/unlike post.");
     }
   };
+  
+  
+ 
 
   useEffect(() => {
     const fetchLikedStatus = async () => {
       try {
-        const response = await axiosInstance.get(`/v1/api/post?post_Id=${post._id}&userEmail=${user?.email}`);
+        const response = await axiosInstance.get(`/v1/api/post?post_Id=${post?._id}&userEmail=${user?.email}`);
         
         setLiked(response.data.Success);
+        
       } catch (error) {
         console.error("Error fetching liked status:", error);
       }
     };
 
     fetchLikedStatus();
-  }, [post._id, user?.email]);
+    
+  }, [post?._id, user?.email]);
   
   const handleShare = async () => {
     try {
@@ -116,10 +124,11 @@ const CommunityCommentCard = ({ post }) => {
             <div className="hover:text-blue-700 flex justify-center items-center text-sm font-semibold cursor-pointer">
               
               <span className="mr-1">
-                {post.likes ? post.likes : ""}
+                {post?.likes ? post.likedBy.length : ""}
+                {/* {post?.likes ? post.likes : ""} */}
               </span>
               
-              <button onClick={() => handleLike(post._id)}>
+              <button onClick={() => handleLike(post?._id)}>
               {liked ? <IoIosHeart className="text-red-500 text-xl" /> : <IoIosHeartEmpty className="text-xl"/>}
               
 
@@ -128,11 +137,11 @@ const CommunityCommentCard = ({ post }) => {
             <div>
               <button
                 className="hover:text-blue-700 text-sm font-semibold"
-                onClick={() => setComment({ [post._id]: true })}
+                onClick={() => setComment({ [post?._id]: true })}
               >
                 {
                   getCommunityComments.filter(
-                    (comment) => comment.postId === post._id
+                    (comment) => comment.postId === post?._id
                   ).length
                 }{" "}
                 💌
@@ -151,8 +160,8 @@ const CommunityCommentCard = ({ post }) => {
         <hr />
       </div>
       <form
-        onSubmit={(e) => handleAddComment(e, post._id)}
-        className={`${comment[post._id] ? "block" : "hidden"}`}
+        onSubmit={(e) => handleAddComment(e, post?._id)}
+        className={`${comment[post?._id] ? "block" : "hidden"}`}
       >
         <label htmlFor="chat" className="sr-only">
           Your Comment
@@ -183,11 +192,11 @@ const CommunityCommentCard = ({ post }) => {
         </div>
         <div>
           {getCommunityComments
-            .filter((comment) => comment.postId === post._id)
+            .filter((comment) => comment?.postId === post?._id)
             .map((communityComment) => (
               <div
                 className="shadow-2xl mt-2 p-5  rounded-lg"
-                key={communityComment._id}
+                key={communityComment?._id}
               >
                 <div className="flex gap-3">
                   <img
