@@ -206,6 +206,7 @@ function NavbarComponent() {
           About Us
         </Navbar.Link>
         
+        
         <Navbar.Link
            className={`${location === "/contact" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
           href="/contact"
