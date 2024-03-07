@@ -4,10 +4,9 @@ import axiosInstance from "@/api";
 import moment from "moment";
 import useAuth from "./../../Hooks/useAuth";
 import toast from "react-hot-toast";
-import axios from 'axios';
-import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
+import { IoIosHeartEmpty, IoIosHeart ,IoMdShare} from "react-icons/io";
 import GetAllCommunityComments from "@/lib/getCommunityComments";
-import { useQuery } from "@tanstack/react-query";
+
 
 const CommunityCommentCard = ({ post }) => {
   const { user } = useAuth();
@@ -16,7 +15,7 @@ const CommunityCommentCard = ({ post }) => {
   const apiEndPointComment = "/v1/api/CommunityComments";
 
   const [getCommunityComments, refetch] = GetAllCommunityComments()
-
+  
   const formatDateTime = (dateTime) => {
     return moment(dateTime).format("hh:mm a DD-MM-YYYY");
   };
@@ -136,15 +135,15 @@ const CommunityCommentCard = ({ post }) => {
                     (comment) => comment.postId === post._id
                   ).length
                 }{" "}
-                Comment
+                💌
               </button>
             </div>
-            <div className="hover:text-blue-700 text-sm font-semibold cursor-pointer">
+            <div className="hover:text-blue-700 text-sm flex justify-center font-semibold cursor-pointer">
               <button
                 className="hover:text-blue-700 text-sm font-semibold cursor-pointer"
                 onClick={handleShare}
               >
-                Share
+                <IoMdShare className="text-xl text-center"  />
               </button>
             </div>
           </div>
