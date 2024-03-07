@@ -13,10 +13,10 @@ import {
 
 const CommunityMenu = () => {
   return (
-    <div className="w-full bg-[#ededed] rounded-lg mt-5">
-      <Sidebar aria-label="Default sidebar example" className="w-full">
-        <Sidebar.Items>
-          <Sidebar.ItemGroup>
+    <div className="w-full rounded-lg mt-5 shadow-xl">
+      <Sidebar aria-label="Default sidebar example" className="w-full  ">
+        <Sidebar.Items className="bg-white">
+          <Sidebar.ItemGroup className="">
             <Sidebar.Item href="/dashboardlayout" icon={HiChartPie}>
               Dashboard
             </Sidebar.Item>

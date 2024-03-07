@@ -1,15 +1,15 @@
 "use client"
-// import axiosInstance from "@/api";
-// import { useEffect, useState } from "react";
+
 import useAuth from '@/Hooks/useAuth';
-import getAllPostData from '@/lib/getAllPostData';
+import GetAllPostData from '@/lib/getAllPostData';
+
 
 const MyPost = async () => {
   const { user } = useAuth()
   
-  const myAllArticleData = await getAllPostData()
+  const [getAllPost] =  GetAllPostData()
   // console.log(myAllArticleData);
-  const myArticles = myAllArticleData.filter(
+  const myArticles = getAllPost.filter(
     (article) => article?.userEmail === user?.email
   );
 

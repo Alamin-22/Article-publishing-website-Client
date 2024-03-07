@@ -14,13 +14,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="bg-slate-50">
+        <div className="bg-[#D9D9D9]">
           <div className="mx-auto">
             <TanStackProvider>
               <AuthProvider>
                 <NavbarComponent></NavbarComponent>
                 <div className="max-w-7xl mx-auto">{children}</div>
                 <FooterCom></FooterCom>
+
                 <Toaster />
               </AuthProvider>
             </TanStackProvider>

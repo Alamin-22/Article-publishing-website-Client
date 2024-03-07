@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+
 import axiosInstance from "@/api";
 import { Pagination } from "flowbite-react";
 import LatestCard from "@/Components/Home/LastestCard";

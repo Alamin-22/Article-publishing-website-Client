@@ -1,11 +1,16 @@
 import axiosInstance from "@/api";
+import { useQuery } from "@tanstack/react-query";
 
-export default async function getAllPostData() {
-    try {
-        const response = await axiosInstance.get("/v1/api/posts");
-        return response.data;
-    } catch (error) {
-        console.error("Error fetching all posts:", error);
-        throw error; // Rethrow the error to handle it somewhere else
-    }
-}
+const GetAllPostData = () => {
+  const { refetch, data: getAllPost = [] } = useQuery({
+    queryKey: ["getAllPost"],
+    queryFn: async () => {
+      const res = await axiosInstance.get("/v1/api/posts?page=1&perPage=5"); // Adding perPage parameter to limit data to 10 posts
+      return res.data;
+    },
+  });
+  return [getAllPost, refetch];
+};
+
+export default GetAllPostData;
+
