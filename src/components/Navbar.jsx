@@ -158,7 +158,9 @@ function NavbarComponent() {
 
           <Navbar.Toggle />
         </div>
-        <Navbar.Collapse>
+        {
+          user ?
+          <Navbar.Collapse>
           <Navbar.Link
             className={`${location === "/" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
             href="/"
@@ -189,7 +191,29 @@ function NavbarComponent() {
           >
             Contact
           </Navbar.Link>
-        </Navbar.Collapse>
+        </Navbar.Collapse> :
+        <Navbar.Collapse>
+        <Navbar.Link
+          className={`${location === "/" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+          href="/"
+        >
+          Home
+        </Navbar.Link>
+        <Navbar.Link
+          className={`${location === "/about" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+          href="/about"
+        >
+          About Us
+        </Navbar.Link>
+        
+        <Navbar.Link
+           className={`${location === "/contact" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+          href="/contact"
+        >
+          Contact
+        </Navbar.Link>
+      </Navbar.Collapse>
+        }
       </Navbar>
     </Navbar>
   );
