@@ -13,7 +13,7 @@ const ProfileTabs = ({UserInfo}) => {
             <Tabs.Item active title="Profile" icon={FaUser}>
                 <ProfileDetails UserInfo={UserInfo}></ProfileDetails>
             </Tabs.Item>
-            <Tabs.Item title="Followers" icon={FaHeart}>
+            {/* <Tabs.Item title="Followers" icon={FaHeart}>
                 <p className='text-3xl text-red-500 text-center'>Currently Followers Section is under Development</p>
             </Tabs.Item>
             <Tabs.Item title="Friends" icon={FaPeopleGroup}>
@@ -21,7 +21,7 @@ const ProfileTabs = ({UserInfo}) => {
             </Tabs.Item>
             <Tabs.Item title="Gallery" icon={GrGallery}>
                 <p className='text-3xl text-red-500 text-center'>Currently Gallery Section is under Development</p>
-            </Tabs.Item>
+            </Tabs.Item> */}
 
         </Tabs>
     );
