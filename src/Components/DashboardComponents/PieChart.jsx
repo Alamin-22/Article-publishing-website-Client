@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 const Chart = () => {
     const [state, setState] = useState({
 
-        series: [44, 55, 41, 17, 15],
+        series: [44, 55, 41],
         options: {
           chart: {
             type: 'donut',
