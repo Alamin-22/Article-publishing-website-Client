@@ -106,7 +106,6 @@ const Page = () => {
             text={article.article}
             thumbnail={article.imglink}
           />
-          
         ))}
       </div>
 

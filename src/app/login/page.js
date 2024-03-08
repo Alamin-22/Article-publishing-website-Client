@@ -1,6 +1,5 @@
 "use client";
 
-
 import SocialLogin from "@/Components/SocialLogin/SocialLogin";
 import useAuth from "@/Hooks/useAuth";
 import { Button } from "flowbite-react";
@@ -80,7 +79,6 @@ const LoginPage = () => {
                 <div className="bg-white rounded-xl shadow-2xl p-7 sm:p-10">
                   <div>
                     <SocialLogin></SocialLogin>
-                   
                   </div>
                   <h3 className="mb-4 text-xl font-semibold text-center sm:mb-6 sm:text-2xl">
                     Welcome Back!

@@ -111,7 +111,7 @@ const page = () => {
             onChange={handleEditorChange}
             modules={quillModules}
             formats={quillFormats}
-            className="w-full h-[70%] mt-10 bg-white"
+            className="w-full bg-white h-96"
           />
           <Button color="dark" className="my-2" type="submit">
             Publish
