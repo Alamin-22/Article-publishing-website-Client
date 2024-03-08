@@ -3,10 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
-import NavbarComponent from "@/components/Navbar";
-import FooterCom from "@/components/Footer/Footer";
+
 import AuthProvider from "@/Provider/AuthProvider";
 import TanStackProvider from "@/Provider/TanStackProvider";
+import NavbarComponent from "@/Components/Navbar";
+import FooterCom from "@/Components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
                   {children}
                 </div>
                 <FooterCom></FooterCom>
+                
                 <Toaster />
               </AuthProvider>
             </TanStackProvider>

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import about from "@/Asset/image/about.webp";
-import goal from "@/Asset/image/goals.avif";
+import aboutImage from "@/Asset/image/about.webp";
+import goalImage from "@/Asset/image/goals.avif";
 import Link from "next/link";
 import AboutCount from "@/Components/AboutUs/AboutCount";
 import TeamMember from "@/Components/AboutUs/TeamMember";
@@ -15,7 +15,7 @@ const page = () => {
           <div>
             <Image
               className="rounded-t-lg"
-              src={about}
+              src={aboutImage}
               width={500}
               height={500}
               placeholder="blur"
@@ -89,7 +89,7 @@ const page = () => {
           <div>
             <Image
               className="rounded-t-lg"
-              src={goal}
+              src={goalImage}
               width={500}
               height={500}
               placeholder="blur"
