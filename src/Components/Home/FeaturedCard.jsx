@@ -136,7 +136,7 @@ const FeaturedCard = ({ title, author, text, thumbnail, articleId, idx }) => {
                             <span className='font-black'>Comments</span>({comments.length}) {showComments ? '▲' : '▼'}
                         </Button>
                         <div className='flex'>
-                            <Button color='light' className='bg-transparent border-none' onClick={handleToggleLike}>
+                            <Button color='light' className='bg-transparent border-none' onClick={handleToggleLike} disabled={!user}>
                                 {isLiked ? <FaHeart className='text-red-500' /> : <FaHeart className='' />}  &nbsp; {likeCount}
                             </Button>
                             {/* <Button color='light' className='bg-transparent border-none'>

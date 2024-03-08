@@ -133,7 +133,7 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
                         <span className='font-black'>Comments</span>({comments.length}) {showComments ? '▲' : '▼'}
                     </Button>
                     <div className='flex'>
-                        <Button color='light' className='bg-transparent border-none' onClick={handleToggleLike}>
+                        <Button color='light' className='bg-transparent border-none' disabled={!user} onClick={handleToggleLike}>
                             {isLiked ? <FaHeart className='text-red-500' /> : <FaHeart className='' />}  &nbsp; {likeCount}
                         </Button>
                         {/* <Button color='light' className='bg-transparent border-none'>
