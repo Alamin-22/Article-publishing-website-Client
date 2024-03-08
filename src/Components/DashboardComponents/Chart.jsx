@@ -1,16 +1,29 @@
 "use client"
 import ReactApexChart from 'react-apexcharts'
 
-import  { useState } from 'react';
+import { useState } from 'react';
+import axiosInstance from '@/api';
+import { useQuery } from '@tanstack/react-query';
 
 const Chart = () => {
+
+    const { data: articlesPerDay = {}, isPending } = useQuery({
+        queryKey: ["articles"],
+        queryFn: async () => {
+            const res = await axiosInstance.get(`/articlesPerDay`);
+            return res.data;
+        },
+    });
+    const {dates, counts}= articlesPerDay;
+    console.log(counts);
+
     const [state, setState] = useState({
 
         series: [{
-            name: 'New user',
-            data: [31, 40, 28, 51, 42, 109, 100]
+            name: 'Total Article',
+            data: articlesPerDay?.counts,
         }, {
-            name: 'Old User',
+            name: 'Total Posts',
             data: [11, 32, 45, 32, 34, 52, 41]
         }],
         options: {
@@ -26,7 +39,7 @@ const Chart = () => {
             },
             xaxis: {
                 type: 'day',
-                categories: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]
+                categories: articlesPerDay?.dates
             },
             tooltip: {
                 x: {
