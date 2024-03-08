@@ -56,13 +56,7 @@ function NavbarComponent() {
         </div>
       ) : (
         <div>
-          <p
-            onClick={() => handleLinkClick("/dashboardlayout/analytics")}
-            className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
-          >
-            <TiChartPieOutline className="text-2xl" />
-            <span className="mx-2 font-medium">Analytics</span>
-          </p>
+          
           <p
             onClick={() => handleLinkClick("/dashboardlayout/my-articles")}
             className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
@@ -70,13 +64,6 @@ function NavbarComponent() {
             <GrArticle className="text-xl" />
             <span className="mx-4 font-medium">My Articles</span>
           </p>
-          {/* <p
-            onClick={() => handleLinkClick("/dashboardlayout/favorite-post")}
-            className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
-          >
-            <MdFavoriteBorder className="text-2xl" />
-            <span className="mx-4 font-medium">Favorite Post</span>
-          </p> */}
           <div className="w-full mt-4 border-b-2"></div>
           <p
             onClick={() => handleLinkClick("/dashboardlayout/my-profile")}
@@ -85,13 +72,6 @@ function NavbarComponent() {
             <ImProfile className="text-xl" />
             <span className="mx-4 font-medium">My Profile</span>
           </p>
-          {/* <p
-            onClick={() => handleLinkClick("/dashboardlayout/setting")}
-            className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
-          >
-            <GoGear className="text-xl" />
-            <span className="mx-4 font-medium">Setting</span>
-          </p> */}
           <p
             onClick={() => handleLinkClick("/dashboardlayout/support")}
             className="flex items-center px-4 py-2 rounded-lg mt-3 hover:bg-gray-100 cursor-pointer"
@@ -121,9 +101,12 @@ function NavbarComponent() {
     <Navbar fluid rounded className="shadow-xl bg-[#ebe7e7]">
       <Navbar fluid rounded className="w-full max-w-7xl mx-auto bg-[#ebe7e7]">
         <Navbar.Brand>
-          <div className="md:hidden">
-            <DashboardNavPhone links={links}></DashboardNavPhone>
-          </div>
+          {
+            user &&
+            <div className="md:hidden z-50">
+              <DashboardNavPhone links={links}></DashboardNavPhone>
+            </div>
+          }
           <Logo className={"text-2xl"} />
         </Navbar.Brand>
         <div className="flex md:order-2 z-50">
@@ -159,58 +142,58 @@ function NavbarComponent() {
         </div>
         {
           user ?
-          <Navbar.Collapse>
-          <Navbar.Link
-            className={`${location === "/" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
-            href="/"
-          >
-            Home
-          </Navbar.Link>
-          <Navbar.Link
-            className={`${location === "/about" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
-            href="/about"
-          >
-            About Us
-          </Navbar.Link>
-          <Navbar.Link
-            className={`${location === "/community" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
-            href="/community"
-          >
-            Community
-          </Navbar.Link>
-          <Navbar.Link
-             className={`${location === "/write" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
-            href="/write"
-          >
-            Write
-          </Navbar.Link>
-          <Navbar.Link
-             className={`${location === "/contact" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
-            href="/contact"
-          >
-            Contact
-          </Navbar.Link>
-        </Navbar.Collapse> :
-        <Navbar.Collapse>
-        <Navbar.Link
-          className={`${location === "/" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
-          href="/"
-        >
-          Home
-        </Navbar.Link>
-        <Navbar.Link
-          className={`${location === "/about" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
-          href="/about"
-        >
-          About Us
-        </Navbar.Link>       
-        <Navbar.Link
-           className={`${location === "/contact" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
-          href="/contact"
-        >
-          Contact
-        </Navbar.Link>
-      </Navbar.Collapse>
+            <Navbar.Collapse>
+              <Navbar.Link
+                className={`${location === "/" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+                href="/"
+              >
+                Home
+              </Navbar.Link>
+              <Navbar.Link
+                className={`${location === "/about" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+                href="/about"
+              >
+                About Us
+              </Navbar.Link>
+              <Navbar.Link
+                className={`${location === "/community" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+                href="/community"
+              >
+                Community
+              </Navbar.Link>
+              <Navbar.Link
+                className={`${location === "/write" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+                href="/write"
+              >
+                Write
+              </Navbar.Link>
+              <Navbar.Link
+                className={`${location === "/contact" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+                href="/contact"
+              >
+                Contact
+              </Navbar.Link>
+            </Navbar.Collapse> :
+            <Navbar.Collapse>
+              <Navbar.Link
+                className={`${location === "/" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+                href="/"
+              >
+                Home
+              </Navbar.Link>
+              <Navbar.Link
+                className={`${location === "/about" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+                href="/about"
+              >
+                About Us
+              </Navbar.Link>
+              <Navbar.Link
+                className={`${location === "/contact" ? "text-[#1f2937] font-bold" : ""} hover:font-bold hover:!text-[#1f2937] `}
+                href="/contact"
+              >
+                Contact
+              </Navbar.Link>
+            </Navbar.Collapse>
         }
       </Navbar>
     </Navbar>
