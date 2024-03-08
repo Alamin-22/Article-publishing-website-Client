@@ -136,9 +136,9 @@ const LatestCard = ({ title, author, text, thumbnail, articleId }) => {
                         <Button color='light' className='bg-transparent border-none' onClick={handleToggleLike}>
                             {isLiked ? <FaHeart className='text-red-500' /> : <FaHeart className='' />}  &nbsp; {likeCount}
                         </Button>
-                        <Button color='light' className='bg-transparent border-none'>
+                        {/* <Button color='light' className='bg-transparent border-none'>
                             <FaSave />&nbsp;
-                        </Button>
+                        </Button> */}
                     </div>
                 </div>
                 {showComments && (
