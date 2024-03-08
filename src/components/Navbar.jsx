@@ -1,5 +1,4 @@
 "use client";
-
 import useAuth from "@/Hooks/useAuth";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { Button } from "flowbite-react";

@@ -5,13 +5,10 @@ import { FaPerson } from "react-icons/fa6";
 import { TbGraph } from "react-icons/tb";
 import { TiChartPieOutline } from "react-icons/ti";
 import { GrArticle } from "react-icons/gr";
-import { GoGear } from "react-icons/go";
 import { BsChatLeftText } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import { ImProfile } from "react-icons/im";
-import { MdFavoriteBorder } from "react-icons/md";
 import { useRouter } from "next/navigation";
-import DashboardNavPhone from "./DashboardNavPhone";
 
 const DashboardNav = () => {
     const { user, logOut } = useAuth();
