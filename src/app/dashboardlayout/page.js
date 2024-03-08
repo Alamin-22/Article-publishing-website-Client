@@ -1,12 +1,15 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import { Spinner } from 'flowbite-react';
+
 const Dashboard = () => {
   const [isClient, setIsClient] = useState(false);
-
+  
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  
 
   if (!isClient) {
     // Render a placeholder or loading indicator during server-side rendering
